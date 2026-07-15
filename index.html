@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankit | Web Development Portfolio</title>
+    <title>Tarun | Web Developer Portfolio</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,22 +158,21 @@
         }
 
         .main-sphere {
-            width: 260px;
-            height: 260px;
-            background: linear-gradient(135deg, var(--accent-color), #ff9f1c);
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(255,107,53,0.3) 0%, rgba(255,159,28,0.05) 70%);
             border-radius: 50%;
-            filter: blur(40px);
-            opacity: 0.25;
+            filter: blur(20px);
+            opacity: 0.7;
             animation: pulse 6s infinite alternate;
         }
 
-        /* The Scroll-Driven Character Art (Goes up on scroll) */
+        /* Colorful Developer Character inspired by the video */
         .character-art {
             position: absolute;
-            width: 250px;
+            width: 280px;
             height: auto;
             z-index: 2;
-            opacity: 0.85;
             transform: translateY(0);
             transition: transform 0.1s ease-out, opacity 0.1s ease-out;
             will-change: transform, opacity;
@@ -197,10 +196,10 @@
             transition: transform 0.1s ease-out;
         }
 
-        .icon-1 { top: 15%; left: 20%; }
-        .icon-2 { top: 25%; right: 15%; }
-        .icon-3 { bottom: 20%; left: 25%; }
-        .icon-4 { bottom: 30%; right: 20%; }
+        .icon-1 { top: 10%; left: 15%; }
+        .icon-2 { top: 20%; right: 10%; }
+        .icon-3 { bottom: 15%; left: 20%; }
+        .icon-4 { bottom: 25%; right: 15%; }
 
         /* General Section Design */
         section {
@@ -346,8 +345,8 @@
 
         /* Background Base Animations */
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.2; }
-            100% { transform: scale(1.1); opacity: 0.3; }
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.08); opacity: 0.8; }
         }
 
         /* Responsive Breakpoints */
@@ -394,7 +393,7 @@
 
     <!-- Navigation Menu -->
     <nav>
-        <div class="logo">ankit<span>.</span></div>
+        <div class="logo">tarun<span>.</span></div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -407,7 +406,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-tag">Web Development Portfolio</div>
-            <h1>Hey, I am Ankit.<br>A <span>Web Developer</span></h1>
+            <h1>Hey, I am Tarun.<br>A <span>Web Developer</span></h1>
             <p>Building responsive front-end tools, interactive user interfaces, and custom logical scripting systems with pure modern code styling.</p>
             <a href="#projects" class="cta-btn">View My Work</a>
         </div>
@@ -416,14 +415,39 @@
         <div class="hero-visual" id="heroVisual">
             <div class="main-sphere"></div>
             
-            <!-- Character Illustration Vector Shape -->
-            <svg class="character-art" id="characterMan" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="100" fill="#1a1814" stroke="#2a2721" stroke-width="2"/>
-                <circle cx="100" cy="75" r="40" fill="#3a3731"/>
-                <path d="M40 160C40 126.863 66.8629 100 100 100C133.137 100 160 126.863 160 160V180H40V160Z" fill="#3a3731"/>
-                <circle cx="85" cy="70" r="5" fill="#f4f4f0"/>
-                <circle cx="115" cy="70" r="5" fill="#f4f4f0"/>
-                <path d="M90 90C90 90 95 95 100 95C105 95 110 90 110 90" stroke="#f4f4f0" stroke-width="3" stroke-linecap="round"/>
+            <!-- Colorful Character Illustration Vector Shape (Orange Hoodie Developer holding a drink) -->
+            <svg class="character-art" id="characterMan" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+                <!-- Cap/Hair -->
+                <path d="M60 50 C 60 20, 140 20, 140 50 Z" fill="#2d1e18" />
+                <!-- Head / Skin tone -->
+                <circle cx="100" cy="75" r="38" fill="#ffd1b3"/>
+                <!-- Cheeks color -->
+                <ellipse cx="75" cy="85" rx="6" ry="4" fill="#ff9e9e" opacity="0.5"/>
+                <ellipse cx="125" cy="85" rx="6" ry="4" fill="#ff9e9e" opacity="0.5"/>
+                <!-- Brown Beard/Stubble -->
+                <path d="M65 80 C 65 115, 135 115, 135 80 C 135 95, 125 112, 100 112 C 75 112, 65 95, 65 80 Z" fill="#4a3319"/>
+                <!-- Eyes -->
+                <circle cx="86" cy="74" r="5" fill="#2d1e18"/>
+                <circle cx="114" cy="74" r="5" fill="#2d1e18"/>
+                <!-- Smile -->
+                <path d="M90 92 Q 100 102 110 92" stroke="#2d1e18" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <!-- Ears -->
+                <circle cx="61" cy="78" r="8" fill="#ffd1b3"/>
+                <circle cx="139" cy="78" r="8" fill="#ffd1b3"/>
+                <!-- Colorful Orange Hoodie Body -->
+                <path d="M45 160 C 45 120, 155 120, 155 160 L 165 220 L 35 220 Z" fill="#ff6b35"/>
+                <!-- Hoodie Drawstrings and collar -->
+                <path d="M85 140 L 85 175" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+                <path d="M115 140 L 115 175" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="85" cy="177" r="4" fill="#ffd1b3"/>
+                <circle cx="115" cy="177" r="4" fill="#ffd1b3"/>
+                <!-- Hand holding a colorful Green Can (soft drink/energy drink) -->
+                <rect x="135" y="150" width="28" height="45" rx="6" fill="#06d6a0"/>
+                <rect x="139" y="155" width="20" height="8" rx="2" fill="#ffffff" opacity="0.3"/>
+                <!-- Hand knuckles wrapping can -->
+                <path d="M130 155 C 130 155, 138 158, 138 162" stroke="#ffd1b3" stroke-width="5" stroke-linecap="round"/>
+                <path d="M130 165 C 130 165, 138 168, 138 172" stroke="#ffd1b3" stroke-width="5" stroke-linecap="round"/>
+                <path d="M130 175 C 130 175, 138 178, 138 182" stroke="#ffd1b3" stroke-width="5" stroke-linecap="round"/>
             </svg>
 
             <!-- Floating UI Elements -->
@@ -483,7 +507,7 @@
     <!-- Footer Content -->
     <footer id="contact">
         <div class="footer-copy">
-            &copy; 2026 Ankit. Located in India.
+            &copy; 2026 Tarun. Located in India.
         </div>
         <div class="footer-contacts">
             Get in touch: <span>Available via Phone</span>
@@ -520,4 +544,5 @@
     </script>
 
 </body>
-</html>
+    </html>
+    
