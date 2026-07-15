@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarun | Interactive Horizontal Portfolio</title>
+    <title>Tarun | Interactive Portfolio</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,12 +13,11 @@
     
     <style>
         :root {
-            --bg-color: #060a0f;
-            --bg-gradient: linear-gradient(90deg, #060a0f 0%, #111a24 50%, #060a0f 100%);
+            --bg-color: #0b0f17;
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 255, 255, 0.07);
             --accent-color: #ff6b35;
-            --neon-glow-primary: rgba(255, 107, 53, 0.6);
+            --accent-glow: rgba(255, 107, 53, 0.4);
             --text-main: #f4f4f0;
             --text-muted: #a4b3c6;
         }
@@ -28,14 +27,13 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
             overflow-x: hidden;
-            overflow-y: scroll;
-            height: 400vh; /* Virtual height to drive scroll */
         }
 
         /* Fixed Navigation */
@@ -48,7 +46,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 8%;
-            background: rgba(6, 10, 15, 0.85);
+            background: rgba(11, 15, 23, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
@@ -62,35 +60,30 @@
 
         .logo span {
             color: var(--accent-color);
-            text-shadow: 0 0 10px var(--neon-glow-primary);
+            text-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* Horizontal Container Setup */
-        .horizontal-scroll-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: flex;
-            width: 400vw;
-            height: 100vh;
-            background-image: var(--bg-gradient);
-            will-change: transform;
-            transition: transform 0.1s ease-out;
-        }
-
-        .slide-section {
+        /* Full Height Sections */
+        section {
             width: 100vw;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             padding: 0 10%;
             position: relative;
-            flex-shrink: 0;
+            border-bottom: 1px solid var(--card-border);
         }
 
-        /* Hero Content Styles */
+        /* Hero Layout - Matching the Video Showcase */
+        #home {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+            padding-top: 80px;
+        }
+
         .hero-content {
-            max-width: 550px;
+            max-width: 600px;
             z-index: 2;
         }
 
@@ -107,21 +100,22 @@
         }
 
         .hero h1 {
-            font-size: 3.8rem;
+            font-size: 4rem;
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.2;
             margin-bottom: 1.5rem;
         }
 
         .hero h1 span {
             color: var(--accent-color);
-            text-shadow: 0 0 20px var(--neon-glow-primary);
+            text-shadow: 0 0 20px var(--accent-glow);
         }
 
         .hero p {
             font-size: 1.1rem;
             color: var(--text-muted);
             margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
         .cta-btn {
@@ -132,13 +126,18 @@
             text-decoration: none;
             font-weight: 700;
             border-radius: 12px;
-            box-shadow: 0 0 20px var(--neon-glow-primary);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transition: transform 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.03);
         }
 
         .hero-social-links {
             display: flex;
             gap: 1.2rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
         .hero-social-links a {
@@ -151,182 +150,81 @@
             color: var(--accent-color);
         }
 
-        /* --- THE SCROLLING MAN (Exact Video Style Replicated in Pure CSS) --- */
-        .scrolling-man-container {
-            position: fixed;
-            bottom: 8%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 350px;
-            z-index: 101;
-            pointer-events: none;
-            will-change: transform, left;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        .vector-man {
+        /* Image Display Visual Container */
+        .hero-avatar-container {
             position: relative;
-            width: 140px;
-            height: 300px;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            height: 100%;
         }
 
-        /* Minimal Round Head */
-        .v-head {
-            width: 45px;
-            height: 45px;
-            background: #ffdbac;
+        /* Abstract dynamic backdrop element matching the video theme overlay */
+        .avatar-ring-bg {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border: 2px dashed rgba(255, 107, 53, 0.2);
             border-radius: 50%;
-            position: relative;
-            z-index: 4;
-        }
-
-        /* Minimal Stylized Hair Group */
-        .v-hair {
-            position: absolute;
-            top: -4px;
-            left: -2px;
-            width: 50px;
-            height: 22px;
-            background: #1a1108;
-            border-radius: 20px 20px 0 0;
-        }
-
-        /* Sleek Minimalist Glasses */
-        .v-glasses {
-            position: absolute;
-            top: 16px;
-            left: 6px;
-            width: 34px;
-            height: 10px;
-            display: flex;
-            justify-content: space-between;
-            z-index: 5;
-        }
-        .v-lens {
-            width: 14px;
-            height: 10px;
-            border: 2px solid #111;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-        }
-        .v-bridge {
-            width: 6px;
-            height: 2px;
-            background: #111;
-            align-self: center;
-        }
-
-        /* Neck */
-        .v-neck {
-            width: 14px;
-            height: 12px;
-            background: #e0b685;
-            margin-top: -4px;
-            z-index: 3;
-        }
-
-        /* Torso / Body (Clean Rounded Hoodie Jacket look) */
-        .v-body {
-            width: 70px;
-            height: 100px;
-            background: #ff6b35; /* Primary Palette Accent */
-            border-radius: 25px 25px 10px 10px;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Minimal Computer Laptop held right in front */
-        .v-laptop {
-            position: absolute;
-            bottom: 25px;
-            left: -25px;
-            width: 120px;
-            height: 8px;
-            background: #d1dbe5;
-            border-radius: 2px;
-            z-index: 6;
-            box-shadow: 0 0 15px rgba(97, 218, 251, 0.7);
-        }
-        .v-laptop::before {
-            content: '';
-            position: absolute;
-            bottom: 8px;
-            left: 20px;
-            width: 80px;
-            height: 50px;
-            background: linear-gradient(180deg, rgba(97, 218, 251, 0.35) 0%, rgba(97, 218, 251, 0) 100%);
-            clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
-        }
-
-        /* Vector Arms wrapping toward laptop */
-        .v-arm {
-            position: absolute;
-            top: 15px;
-            width: 18px;
-            height: 60px;
-            background: #e65a28;
-            border-radius: 10px;
-        }
-        .arm-left { left: -6px; transform: rotate(20deg); }
-        .arm-right { right: -6px; transform: rotate(-20deg); }
-
-        /* Dynamic Legs (Hips down to feet) */
-        .v-legs {
-            display: flex;
-            justify-content: space-between;
-            width: 50px;
-            height: 110px;
-            margin-top: -5px;
-            position: relative;
+            animation: spinRing 25s linear infinite;
             z-index: 1;
         }
 
-        .v-leg {
-            width: 16px;
-            height: 100px;
-            background: #1b2631;
+        @keyframes spinRing {
+            100% { transform: rotate(360deg); }
+        }
+
+        .avatar-img-frame {
             position: relative;
-            transform-origin: top center;
-            border-radius: 0 0 4px 4px;
+            width: 340px;
+            height: 420px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 107, 53, 0.15);
+            border: 1px solid var(--card-border);
+            z-index: 2;
         }
 
-        /* Feet / Shoes */
-        .v-leg::after {
-            content: '';
+        .avatar-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Scroll Down Option UI Button */
+        .scroll-down-btn {
             position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 24px;
-            height: 10px;
-            background: #fff;
-            border-radius: 4px 10px 2px 2px;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.3s;
         }
 
-        /* Bouncy effect core settings */
-        .bounce-mechanic {
-            will-change: transform;
+        .scroll-down-btn:hover {
+            color: var(--accent-color);
         }
 
-        /* Gutter Ground Shadow */
-        .v-shadow {
-            width: 90px;
-            height: 8px;
-            background: rgba(0,0,0,0.5);
-            border-radius: 50%;
-            margin-top: 8px;
-            filter: blur(2px);
-            transition: transform 0.1s ease-out;
+        .scroll-down-btn i {
+            animation: arrowBounce 1.5s infinite alternate;
         }
 
-        /* --- LAYOUT CONTENT MODIFICATIONS --- */
+        @keyframes arrowBounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(8px); }
+        }
+
+        /* Content Layout Sections */
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
@@ -334,17 +232,17 @@
         }
         .section-title span {
             color: var(--accent-color);
-            text-shadow: 0 0 15px var(--neon-glow-primary);
+            text-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* About Slide Layout */
         .about-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 24px;
             padding: 3rem;
             backdrop-filter: blur(12px);
-            max-width: 700px;
+            max-width: 750px;
+            width: 100%;
         }
         .about-text {
             font-size: 1.1rem;
@@ -357,12 +255,11 @@
             font-weight: 600;
         }
 
-        /* Projects Slide Layout */
         .projects-wrapper {
             display: flex;
             flex-direction: column;
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
         }
         .projects-grid {
             display: grid;
@@ -394,10 +291,10 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
+            margin-top: 1rem;
         }
         .project-link:hover { color: var(--accent-color); }
 
-        /* Skills/Contact Slide Layout */
         .skills-contact-wrapper {
             display: flex;
             gap: 4rem;
@@ -430,43 +327,21 @@
         }
         .contact-item i { color: var(--accent-color); font-size: 1.2rem; }
 
-        /* Custom Scroll Instruction HUD */
-        .scroll-indicator {
-            position: fixed;
-            bottom: 2.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            z-index: 10;
-        }
-        .scroll-indicator i {
-            animation: arrowSwing 1.5s infinite alternate;
-        }
-        @keyframes arrowSwing {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(6px); }
-        }
-
         /* Mobile Viewport Adaptability */
         @media (max-width: 992px) {
-            body { height: auto; overflow-y: auto; overflow-x: hidden; }
-            .horizontal-scroll-container {
-                position: relative;
-                flex-direction: column;
-                width: 100vw;
-                height: auto;
-                transform: none !important;
+            #home {
+                grid-template-columns: 1fr;
+                padding-top: 100px;
+                text-align: center;
             }
-            .slide-section { width: 100vw; height: auto; padding: 6rem 8% 4rem 8%; }
-            .scrolling-man-container { display: none; }
+            .hero-content { margin: 0 auto; }
+            .hero-avatar-container { margin-top: 2rem; }
+            .avatar-img-frame { width: 280px; height: 350px; }
+            .avatar-ring-bg { width: 320px; height: 320px; }
+            .hero-social-links { justify-content: center; }
+            .projects-grid { grid-template-columns: 1fr; }
             .skills-contact-wrapper { flex-direction: column; gap: 2.5rem; }
+            section { padding: 4rem 6%; }
         }
     </style>
 </head>
@@ -477,128 +352,103 @@
         <div class="logo">tarun<span>.</span></div>
     </nav>
 
-    <!-- Horizontal Presentation Strip -->
-    <div class="horizontal-scroll-container" id="scrollContainer">
-        
-        <!-- Section 1: Home -->
-        <section class="slide-section" id="home">
-            <div class="hero-content">
-                <div class="hero-tag">Interactive Portfolio Space</div>
-                <h1>Hey, I am Tarun.<br>A <span>Web Developer</span></h1>
-                <p>Scroll downward using your mouse wheel or trackpad swipe to observe the fluid horizontal canvas motion shifts.</p>
-                <div class="hero-social-links">
-                    <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:tarunsingh736781@gmail.com"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2: About Me -->
-        <section class="slide-section" id="about">
-            <div class="about-card">
-                <h2 class="section-title">About <span>Me</span></h2>
-                <p class="about-text">
-                    Hello! I'm <span>Tarun</span>, a highly motivated <span>Web Developer</span> based in India. I focus entirely on creating completely responsive layouts, clean interaction patterns, and logic script layers.
-                </p>
-                <p class="about-text">
-                    This custom interface tracks layout position transformations on the fly to yield clean, high-performing animation profiles.
-                </p>
-            </div>
-        </section>
-
-        <!-- Section 3: Selected Projects -->
-        <section class="slide-section" id="projects">
-            <div class="projects-wrapper">
-                <h2 class="section-title">Selected <span>Projects</span></h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div>
-                            <div class="project-icon"><i class="fa-solid fa-calculator"></i></div>
-                            <h3>Interactive Calculator</h3>
-                            <p>A beautifully structured, highly responsive web application built to execute calculations smoothly.</p>
-                        </div>
-                        <a href="https://rajpoot15.github.io/Calculator/" target="_blank" class="project-link">Live Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                    <div class="project-card">
-                        <div>
-                            <div class="project-icon"><i class="fa-solid fa-cloud-sun-rain"></i></div>
-                            <h3>Weather App</h3>
-                            <p>A dynamic application built to handle live forecasting requests instantly.</p>
-                        </div>
-                        <a href="https://rajpoot15.github.io/Wheather---App/" target="_blank" class="project-link">Live Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 4: Skills & Contact -->
-        <section class="slide-section" id="contact">
-            <div class="skills-contact-wrapper">
-                <div class="skills-half">
-                    <h2 class="section-title">My <span>Skills</span></h2>
-                    <ul class="skills-list">
-                        <li>Python Programming</li>
-                        <li>HTML5 & CSS3</li>
-                        <li>Responsive UI Design</li>
-                        <li>Front-end Engineering</li>
-                        <li>API Integration</li>
-                    </ul>
-                </div>
-                <div class="contact-half">
-                    <h2 class="section-title">Get In <span>Touch</span></h2>
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Let's collaborate on amazing web project assets!</p>
-                    <div class="contact-info">
-                        <a href="mailto:tarunsingh736781@gmail.com" class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>tarunsingh736781@gmail.com</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank" class="contact-item">
-                            <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn Profile</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- The Geometric Vector Character Blueprint -->
-    <div class="scrolling-man-container" id="manContainer">
-        <div class="vector-man bounce-mechanic" id="manAvatar">
-            <div class="v-head">
-                <div class="v-hair"></div>
-                <div class="v-glasses">
-                    <div class="v-lens"></div>
-                    <div class="v-bridge"></div>
-                    <div class="v-lens"></div>
-                </div>
-            </div>
-            <div class="v-neck"></div>
-            <div class="v-body">
-                <div class="v-arm arm-left"></div>
-                <div class="v-laptop"></div>
-                <div class="v-arm arm-right"></div>
-            </div>
-            <div class="v-legs">
-                <div class="v-leg" id="leftLeg"></div>
-                <div class="v-leg" id="rightLeg"></div>
+    <!-- Section 1: Home/Hero Showcase Layout -->
+    <section id="home">
+        <div class="hero-content">
+            <div class="hero-tag">Product Designer & Developer</div>
+            <h1>Hey, I am Tarun.<br>A <span>Web Developer</span></h1>
+            <p>I build interactive frontend experiences and modern, clean digital architectures that bridge intuitive design choices with powerful functionality.</p>
+            <a href="#projects" class="cta-btn">View My Work</a>
+            <div class="hero-social-links">
+                <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:tarunsingh736781@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
-        <div class="v-shadow" id="manShadow"></div>
-    </div>
 
-    <!-- Navigation Prompt Status Overlay -->
-    <div class="scroll-indicator">
-        <span>Scroll to Explore</span>
-        <i class="fa-solid fa-chevron-right"></i>
-    </div>
+        <!-- Character Avatar Module with Ring Backdrop -->
+        <div class="hero-avatar-container">
+            <div class="avatar-ring-bg"></div>
+            <div class="avatar-img-frame">
+                <!-- Replace 'avatar.jpg' with your actual image file path -->
+                <img src="avatar.jpg" alt="Tarun Cartoon Character Avatar Blueprint">
+            </div>
+        </div>
 
-    <!-- Mechanics Controller Hook -->
-    <script>
-        const scrollContainer = document.getElementById('scrollContainer');
-        const manContainer = document.getElementById('manContainer');
-        const manAvatar = document.getElementById('manAvatar');
-        const leftLeg = document.getElementById('leftLeg');
-        const rightLeg = document.getElementById('rightLeg');
-        const manShadow = document.getElementById('man
+        <!-- Interactive Scroll Down Button Interface -->
+        <a href="#about" class="scroll-down-btn">
+            <span>Scroll Down</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- Section 2: About Me -->
+    <section id="about">
+        <div class="about-card">
+            <h2 class="section-title">About <span>Me</span></h2>
+            <p class="about-text">
+                Hello! I'm <span>Tarun</span>, a highly motivated <span>Web Developer</span> based in India. I focus entirely on creating completely responsive layouts, clean interaction patterns, and logic script layers.
+            </p>
+            <p class="about-text">
+                My objective is to constantly bring complex layout challenges to life with simple, aesthetic, and clean standard design layouts.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 3: Selected Projects -->
+    <section id="projects">
+        <div class="projects-wrapper">
+            <h2 class="section-title">Selected <span>Projects</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <div class="project-icon"><i class="fa-solid fa-calculator"></i></div>
+                        <h3>Interactive Calculator</h3>
+                        <p>A beautifully structured, highly responsive web application built to execute calculations smoothly.</p>
+                    </div>
+                    <a href="https://rajpoot15.github.io/Calculator/" target="_blank" class="project-link">Live Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+                <div class="project-card">
+                    <div>
+                        <div class="project-icon"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+                        <h3>Weather App</h3>
+                        <p>A dynamic application built to handle live forecasting requests instantly.</p>
+                    </div>
+                    <a href="https://rajpoot15.github.io/Wheather---App/" target="_blank" class="project-link">Live Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Skills & Contact -->
+    <section id="contact">
+        <div class="skills-contact-wrapper">
+            <div class="skills-half">
+                <h2 class="section-title">My <span>Skills</span></h2>
+                <ul class="skills-list">
+                    <li>Python Programming</li>
+                    <li>HTML5 & CSS3</li>
+                    <li>Responsive UI Design</li>
+                    <li>Front-end Engineering</li>
+                    <li>API Integration</li>
+                </ul>
+            </div>
+            <div class="contact-half">
+                <h2 class="section-title">Get In <span>Touch</span></h2>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Let's collaborate on amazing web project assets!</p>
+                <div class="contact-info">
+                    <a href="mailto:tarunsingh736781@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>tarunsingh736781@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank" class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn Profile</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+
