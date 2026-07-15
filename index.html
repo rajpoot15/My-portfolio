@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarun | Interactive Portfolio</title>
+    <title>Tarun | Interactive Horizontal Portfolio</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,9 +33,9 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            overflow-x: hidden; /* Hide horizontal scrollbar to force custom interaction */
-            overflow-y: scroll; /* Allow vertical mouse wheel to trigger movement */
-            height: 400vh; /* Set virtual height to allow scroll room */
+            overflow-x: hidden;
+            overflow-y: scroll;
+            height: 400vh; /* Virtual height to drive scroll */
         }
 
         /* Fixed Navigation */
@@ -48,7 +48,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 8%;
-            background: rgba(6, 10, 15, 0.8);
+            background: rgba(6, 10, 15, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
@@ -71,14 +71,13 @@
             top: 0;
             left: 0;
             display: flex;
-            width: 400vw; /* 4 screens wide: Home, About, Projects, Skills/Contact */
+            width: 400vw;
             height: 100vh;
             background-image: var(--bg-gradient);
             will-change: transform;
             transition: transform 0.1s ease-out;
         }
 
-        /* Each Section is 1 Full Screen Width */
         .slide-section {
             width: 100vw;
             height: 100vh;
@@ -152,67 +151,187 @@
             color: var(--accent-color);
         }
 
-        /* The Scrolling "Walking" Developer */
-        .scrolling-character-container {
+        /* --- THE SCROLLING MAN (Exact Video Style Replicated in Pure CSS) --- */
+        .scrolling-man-container {
             position: fixed;
-            bottom: 10%;
-            right: 15%; /* Fixed start position on desktop */
-            width: 320px;
-            height: 320px;
-            z-index: 100;
+            bottom: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 350px;
+            z-index: 101;
             pointer-events: none;
+            will-change: transform, left;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .vector-man {
+            position: relative;
+            width: 140px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Minimal Round Head */
+        .v-head {
+            width: 45px;
+            height: 45px;
+            background: #ffdbac;
+            border-radius: 50%;
+            position: relative;
+            z-index: 4;
+        }
+
+        /* Minimal Stylized Hair Group */
+        .v-hair {
+            position: absolute;
+            top: -4px;
+            left: -2px;
+            width: 50px;
+            height: 22px;
+            background: #1a1108;
+            border-radius: 20px 20px 0 0;
+        }
+
+        /* Sleek Minimalist Glasses */
+        .v-glasses {
+            position: absolute;
+            top: 16px;
+            left: 6px;
+            width: 34px;
+            height: 10px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 5;
+        }
+        .v-lens {
+            width: 14px;
+            height: 10px;
+            border: 2px solid #111;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+        .v-bridge {
+            width: 6px;
+            height: 2px;
+            background: #111;
+            align-self: center;
+        }
+
+        /* Neck */
+        .v-neck {
+            width: 14px;
+            height: 12px;
+            background: #e0b685;
+            margin-top: -4px;
+            z-index: 3;
+        }
+
+        /* Torso / Body (Clean Rounded Hoodie Jacket look) */
+        .v-body {
+            width: 70px;
+            height: 100px;
+            background: #ff6b35; /* Primary Palette Accent */
+            border-radius: 25px 25px 10px 10px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Minimal Computer Laptop held right in front */
+        .v-laptop {
+            position: absolute;
+            bottom: 25px;
+            left: -25px;
+            width: 120px;
+            height: 8px;
+            background: #d1dbe5;
+            border-radius: 2px;
+            z-index: 6;
+            box-shadow: 0 0 15px rgba(97, 218, 251, 0.7);
+        }
+        .v-laptop::before {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 20px;
+            width: 80px;
+            height: 50px;
+            background: linear-gradient(180deg, rgba(97, 218, 251, 0.35) 0%, rgba(97, 218, 251, 0) 100%);
+            clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+        }
+
+        /* Vector Arms wrapping toward laptop */
+        .v-arm {
+            position: absolute;
+            top: 15px;
+            width: 18px;
+            height: 60px;
+            background: #e65a28;
+            border-radius: 10px;
+        }
+        .arm-left { left: -6px; transform: rotate(20deg); }
+        .arm-right { right: -6px; transform: rotate(-20deg); }
+
+        /* Dynamic Legs (Hips down to feet) */
+        .v-legs {
+            display: flex;
+            justify-content: space-between;
+            width: 50px;
+            height: 110px;
+            margin-top: -5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .v-leg {
+            width: 16px;
+            height: 100px;
+            background: #1b2631;
+            position: relative;
+            transform-origin: top center;
+            border-radius: 0 0 4px 4px;
+        }
+
+        /* Feet / Shoes */
+        .v-leg::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 24px;
+            height: 10px;
+            background: #fff;
+            border-radius: 4px 10px 2px 2px;
+        }
+
+        /* Bouncy effect core settings */
+        .bounce-mechanic {
             will-change: transform;
+        }
+
+        /* Gutter Ground Shadow */
+        .v-shadow {
+            width: 90px;
+            height: 8px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            margin-top: 8px;
+            filter: blur(2px);
             transition: transform 0.1s ease-out;
         }
 
-        /* Sleek Developer Code Card representing Tarun */
-        .dev-frame {
-            position: relative;
-            width: 100%;
-            background: rgba(10, 18, 30, 0.85);
-            border: 1px solid rgba(255, 107, 53, 0.3);
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255, 107, 53, 0.2);
-            backdrop-filter: blur(15px);
-            font-family: monospace;
-            animation: floating 4s ease-in-out infinite alternate;
-        }
-
-        .frame-header {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 0.5rem;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27c93f; }
-
-        .code-content {
-            font-size: 0.8rem;
-            color: #a4b3c6;
-            line-height: 1.4rem;
-        }
-
-        .code-keyword { color: #ff79c6; }
-        .code-string { color: #f1fa8c; }
-        .code-comment { color: #6272a4; font-style: italic; }
-
-        /* General Section Grid Templates */
+        /* --- LAYOUT CONTENT MODIFICATIONS --- */
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 2.5rem;
         }
-
         .section-title span {
             color: var(--accent-color);
             text-shadow: 0 0 15px var(--neon-glow-primary);
@@ -227,14 +346,12 @@
             backdrop-filter: blur(12px);
             max-width: 700px;
         }
-
         .about-text {
             font-size: 1.1rem;
             color: var(--text-muted);
             margin-bottom: 1.5rem;
             line-height: 1.8;
         }
-
         .about-text span {
             color: var(--text-main);
             font-weight: 600;
@@ -247,46 +364,38 @@
             width: 100%;
             max-width: 800px;
         }
-
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
-
         .project-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 20px;
             padding: 2rem;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, transform 0.3s;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             min-height: 250px;
         }
-
         .project-card:hover {
             border-color: rgba(255, 107, 53, 0.5);
+            transform: translateY(-5px);
         }
-
         .project-icon {
             font-size: 2rem;
             color: var(--accent-color);
             margin-bottom: 1rem;
         }
-
         .project-link {
             color: var(--text-main);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
-            margin-top: 1.5rem;
         }
-
-        .project-link:hover {
-            color: var(--accent-color);
-        }
+        .project-link:hover { color: var(--accent-color); }
 
         /* Skills/Contact Slide Layout */
         .skills-contact-wrapper {
@@ -295,18 +404,13 @@
             width: 100%;
             max-width: 900px;
         }
-
-        .skills-half, .contact-half {
-            flex: 1;
-        }
-
+        .skills-half, .contact-half { flex: 1; }
         .skills-list {
             display: flex;
             flex-wrap: wrap;
             gap: 0.8rem;
             list-style: none;
         }
-
         .skills-list li {
             padding: 0.6rem 1.2rem;
             background: var(--card-bg);
@@ -315,11 +419,7 @@
             font-size: 0.9rem;
             color: var(--text-muted);
         }
-
-        .contact-info {
-            margin-top: 1.5rem;
-        }
-
+        .contact-info { margin-top: 1.5rem; }
         .contact-item {
             display: flex;
             align-items: center;
@@ -328,26 +428,35 @@
             color: var(--text-muted);
             text-decoration: none;
         }
+        .contact-item i { color: var(--accent-color); font-size: 1.2rem; }
 
-        .contact-item i {
-            color: var(--accent-color);
-            font-size: 1.2rem;
+        /* Custom Scroll Instruction HUD */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            z-index: 10;
+        }
+        .scroll-indicator i {
+            animation: arrowSwing 1.5s infinite alternate;
+        }
+        @keyframes arrowSwing {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(6px); }
         }
 
-        /* Float Animation for the Card */
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-15px); }
-        }
-
-        /* Mobile Adjustments (Changes back to vertical scroll for best mobile usability) */
+        /* Mobile Viewport Adaptability */
         @media (max-width: 992px) {
-            body {
-                height: auto;
-                overflow-y: auto;
-                overflow-x: hidden;
-            }
-
+            body { height: auto; overflow-y: auto; overflow-x: hidden; }
             .horizontal-scroll-container {
                 position: relative;
                 flex-direction: column;
@@ -355,61 +464,49 @@
                 height: auto;
                 transform: none !important;
             }
-
-            .slide-section {
-                width: 100vw;
-                height: auto;
-                padding: 6rem 8% 4rem 8%;
-            }
-
-            .scrolling-character-container {
-                display: none; /* Hide floating card on mobile to fit contents */
-            }
-
-            .skills-contact-wrapper {
-                flex-direction: column;
-                gap: 2.5rem;
-            }
+            .slide-section { width: 100vw; height: auto; padding: 6rem 8% 4rem 8%; }
+            .scrolling-man-container { display: none; }
+            .skills-contact-wrapper { flex-direction: column; gap: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Fixed Header -->
+    <!-- Upper Navigation Panel -->
     <nav>
         <div class="logo">tarun<span>.</span></div>
     </nav>
 
-    <!-- Horizontal Scroll Canvas -->
+    <!-- Horizontal Presentation Strip -->
     <div class="horizontal-scroll-container" id="scrollContainer">
         
-        <!-- Slide 1: Home -->
+        <!-- Section 1: Home -->
         <section class="slide-section" id="home">
             <div class="hero-content">
-                <div class="hero-tag">Interactive Dev Space</div>
+                <div class="hero-tag">Interactive Portfolio Space</div>
                 <h1>Hey, I am Tarun.<br>A <span>Web Developer</span></h1>
-                <p>Scroll down or swipe to watch the canvas slide and explore my work interactive system features.</p>
+                <p>Scroll downward using your mouse wheel or trackpad swipe to observe the fluid horizontal canvas motion shifts.</p>
                 <div class="hero-social-links">
-                    <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <a href="mailto:tarunsingh736781@gmail.com"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 2: About Me -->
+        <!-- Section 2: About Me -->
         <section class="slide-section" id="about">
             <div class="about-card">
                 <h2 class="section-title">About <span>Me</span></h2>
                 <p class="about-text">
-                    Hello! I'm <span>Tarun</span>, a highly motivated <span>Web Developer</span> based in India. I specialize in building responsive, user-friendly front-end layouts.
+                    Hello! I'm <span>Tarun</span>, a highly motivated <span>Web Developer</span> based in India. I focus entirely on creating completely responsive layouts, clean interaction patterns, and logic script layers.
                 </p>
                 <p class="about-text">
-                    My development journey is driven by a strong passion for solving real-world challenges through modern, clean browser structures.
+                    This custom interface tracks layout position transformations on the fly to yield clean, high-performing animation profiles.
                 </p>
             </div>
         </section>
 
-        <!-- Slide 3: Selected Projects -->
+        <!-- Section 3: Selected Projects -->
         <section class="slide-section" id="projects">
             <div class="projects-wrapper">
                 <h2 class="section-title">Selected <span>Projects</span></h2>
@@ -434,7 +531,7 @@
             </div>
         </section>
 
-        <!-- Slide 4: Skills & Contact -->
+        <!-- Section 4: Skills & Contact -->
         <section class="slide-section" id="contact">
             <div class="skills-contact-wrapper">
                 <div class="skills-half">
@@ -466,50 +563,42 @@
 
     </div>
 
-    <!-- The Walking Developer Object (Fixed HUD element) -->
-    <div class="scrolling-character-container" id="devCharacter">
-        <div class="dev-frame">
-            <div class="frame-header">
-                <div class="dot dot-red"></div>
-                <div class="dot dot-yellow"></div>
-                <div class="dot dot-green"></div>
+    <!-- The Geometric Vector Character Blueprint -->
+    <div class="scrolling-man-container" id="manContainer">
+        <div class="vector-man bounce-mechanic" id="manAvatar">
+            <div class="v-head">
+                <div class="v-hair"></div>
+                <div class="v-glasses">
+                    <div class="v-lens"></div>
+                    <div class="v-bridge"></div>
+                    <div class="v-lens"></div>
+                </div>
             </div>
-            <div class="code-content">
-                <span class="code-comment">// Running Portfolio...</span><br>
-                <span class="code-keyword">const</span> coder = {<br>
-                &nbsp;&nbsp;name: <span class="code-string">"Tarun"</span>,<br>
-                &nbsp;&nbsp;status: <span class="code-string">"Exploring"</span>,<br>
-                &nbsp;&nbsp;scrollProgress: <span class="code-string">"0%"</span><br>
-                };<br>
-                <span class="code-keyword">function</span> check() {<br>
-                &nbsp;&nbsp;return <span class="code-string">"Ready to Code"</span>;<br>
-                }
+            <div class="v-neck"></div>
+            <div class="v-body">
+                <div class="v-arm arm-left"></div>
+                <div class="v-laptop"></div>
+                <div class="v-arm arm-right"></div>
+            </div>
+            <div class="v-legs">
+                <div class="v-leg" id="leftLeg"></div>
+                <div class="v-leg" id="rightLeg"></div>
             </div>
         </div>
+        <div class="v-shadow" id="manShadow"></div>
     </div>
 
+    <!-- Navigation Prompt Status Overlay -->
+    <div class="scroll-indicator">
+        <span>Scroll to Explore</span>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+
+    <!-- Mechanics Controller Hook -->
     <script>
         const scrollContainer = document.getElementById('scrollContainer');
-        const devCharacter = document.getElementById('devCharacter');
-
-        window.addEventListener('scroll', () => {
-            // Only execute horizontal scroll logic on desktop screens (width > 992px)
-            if (window.innerWidth > 992) {
-                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                const scrollProgress = window.scrollY / maxScroll;
-
-                // Move the background canvas horizontally
-                const translateX = scrollProgress * (scrollContainer.scrollWidth - window.innerWidth);
-                scrollContainer.style.transform = `translateX(-${translateX}px)`;
-
-                // Scroll the Developer Card horizontally back & forth across the screen
-                const characterMaxMove = window.innerWidth - 450; // bounds
-                const characterX = (scrollProgress * characterMaxMove) - (characterMaxMove / 2);
-                
-                // Keep the floating hover animation but slide left/right on scroll
-                devCharacter.style.transform = `translateX(-${characterMaxMove * scrollProgress}px)`;
-            }
-        });
-    </script>
-</body>
-</html>
+        const manContainer = document.getElementById('manContainer');
+        const manAvatar = document.getElementById('manAvatar');
+        const leftLeg = document.getElementById('leftLeg');
+        const rightLeg = document.getElementById('rightLeg');
+        const manShadow = document.getElementById('man
