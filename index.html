@@ -13,16 +13,17 @@
     
     <style>
         :root {
-            /* Premium Attractive Dark Slate Gradient Palette */
-            --bg-color: #0a1118;
-            --bg-gradient: linear-gradient(135deg, #0a1118 0%, #101f30 100%);
+            /* High-End Dark Palette with Vibrant Neon Accent */
+            --bg-color: #060a0f;
+            --bg-gradient: radial-gradient(circle at 80% 20%, #152538 0%, #060a0f 100%);
             --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.06);
+            --card-border: rgba(255, 255, 255, 0.07);
             --accent-color: #ff6b35;
-            --accent-glow: rgba(255, 107, 53, 0.25);
+            --neon-glow-primary: rgba(255, 107, 53, 0.6);
+            --neon-glow-secondary: rgba(255, 183, 3, 0.4);
             --text-main: #f4f4f0;
             --text-muted: #a4b3c6;
-            --nav-bg: rgba(10, 17, 24, 0.75);
+            --nav-bg: rgba(6, 10, 15, 0.8);
         }
 
         * {
@@ -34,14 +35,15 @@
         }
 
         body {
-            background: var(--bg-gradient);
+            background: var(--bg-color);
+            background-image: var(--bg-gradient);
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
             background-attachment: fixed;
         }
 
-        /* Navigation */
+        /* Navigation Menu */
         nav {
             position: fixed;
             top: 0;
@@ -52,8 +54,8 @@
             align-items: center;
             padding: 1.5rem 8%;
             background: var(--nav-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid var(--card-border);
         }
@@ -66,6 +68,7 @@
 
         .logo span {
             color: var(--accent-color);
+            text-shadow: 0 0 10px var(--neon-glow-primary);
         }
 
         .nav-links {
@@ -84,9 +87,10 @@
 
         .nav-links a:hover {
             color: var(--text-main);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
 
-        /* Hero Section */
+        /* Hero Layout */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -105,13 +109,13 @@
             display: inline-block;
             padding: 0.4rem 1rem;
             background: rgba(255, 107, 53, 0.1);
-            border: 1px solid rgba(255, 107, 53, 0.2);
+            border: 1px solid rgba(255, 107, 53, 0.3);
             border-radius: 100px;
             font-size: 0.85rem;
             color: var(--accent-color);
             font-weight: 600;
             margin-bottom: 1.5rem;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.15);
         }
 
         .hero h1 {
@@ -124,7 +128,7 @@
 
         .hero h1 span {
             color: var(--accent-color);
-            text-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+            text-shadow: 0 0 20px var(--neon-glow-primary), 0 0 40px rgba(255, 107, 53, 0.2);
         }
 
         .hero p {
@@ -150,12 +154,12 @@
             font-weight: 700;
             border-radius: 12px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 8px 24px var(--accent-glow);
+            box-shadow: 0 0 20px var(--neon-glow-primary);
         }
 
         .cta-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 0 35px var(--neon-glow-primary), 0 0 15px rgba(255, 183, 3, 0.5);
         }
 
         /* Hero Social Links */
@@ -167,15 +171,16 @@
         .hero-social-links a {
             color: var(--text-muted);
             font-size: 1.4rem;
-            transition: color 0.3s, transform 0.3s;
+            transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
         }
 
         .hero-social-links a:hover {
             color: var(--accent-color);
             transform: translateY(-2px);
+            text-shadow: 0 0 15px var(--neon-glow-primary);
         }
 
-        /* Interactive Visual Container with Neon Aura Background */
+        /* Ultra-Neon Ambient Glow Studio Backing */
         .hero-visual {
             position: absolute;
             right: 8%;
@@ -189,15 +194,27 @@
             z-index: 1;
         }
 
-        /* Advanced Dynamic Studio Aura Glow */
+        /* Ambient Layered Pulsing Neon Spheres */
         .main-sphere {
-            width: 380px;
-            height: 380px;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.3) 0%, rgba(255, 183, 3, 0.05) 60%, transparent 100%);
+            position: absolute;
+            width: 390px;
+            height: 390px;
+            background: radial-gradient(circle, var(--neon-glow-primary) 0%, var(--neon-glow-secondary) 40%, transparent 70%);
             border-radius: 50%;
-            filter: blur(35px);
-            opacity: 0.9;
-            animation: pulse 6s infinite alternate;
+            filter: blur(40px);
+            opacity: 0.85;
+            animation: neonPulse 4s infinite alternate;
+        }
+
+        .secondary-sphere {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(123, 241, 168, 0.25) 0%, transparent 60%);
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.6;
+            animation: neonPulseSecondary 6s infinite alternate;
         }
 
         /* Animated SVG Character */
@@ -209,7 +226,7 @@
             bottom: 30px;
             transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
             will-change: transform;
-            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+            filter: drop-shadow(0 0 35px rgba(255, 107, 53, 0.3)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
         }
 
         /* Floating Tech Tokens */
@@ -217,15 +234,15 @@
             position: absolute;
             width: 64px;
             height: 64px;
-            background: rgba(16, 31, 48, 0.5);
-            border: 1px solid var(--card-border);
+            background: rgba(21, 37, 56, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 1.6rem;
             color: var(--text-main);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.2), inset 0 0 10px rgba(255,255,255,0.05);
             z-index: 3;
             backdrop-filter: blur(12px);
             transition: transform 0.1s ease-out, opacity 0.1s ease-out;
@@ -237,7 +254,7 @@
         .icon-3 { bottom: 35%; left: 4%; }
         .icon-4 { bottom: 40%; right: 6%; }
 
-        /* Scroll Down Indicator Label */
+        /* Animated Scroll Down Indicator Label */
         .scroll-indicator {
             position: absolute;
             bottom: 2.5rem;
@@ -251,14 +268,15 @@
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
             z-index: 10;
         }
 
         .scroll-indicator:hover {
             color: var(--accent-color);
+            text-shadow: 0 0 10px var(--neon-glow-primary);
         }
 
         .scroll-indicator i {
@@ -266,7 +284,7 @@
             animation: bounce 1.8s infinite;
         }
 
-        /* General Section Design */
+        /* General Sections */
         section {
             padding: 8rem 8% 4rem 8%;
         }
@@ -281,9 +299,10 @@
 
         .section-title span {
             color: var(--accent-color);
+            text-shadow: 0 0 15px var(--neon-glow-primary);
         }
 
-        /* Grid Framework for Projects (Glassmorphism Cards) */
+        /* Projects Section (Glassmorphism Cards) */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -307,9 +326,9 @@
         }
 
         .project-card:hover {
-            border-color: rgba(255, 107, 53, 0.4);
+            border-color: rgba(255, 107, 53, 0.5);
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.05);
+            box-shadow: 0 0 25px rgba(255, 107, 53, 0.15);
         }
 
         .project-card::before {
@@ -319,7 +338,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at top right, var(--accent-glow), transparent 60%);
+            background: radial-gradient(circle at top right, rgba(255, 107, 53, 0.2), transparent 60%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -333,6 +352,7 @@
             color: var(--accent-color);
             margin-bottom: 1.5rem;
             z-index: 2;
+            filter: drop-shadow(0 0 8px var(--neon-glow-primary));
         }
 
         .project-card h3 {
@@ -368,6 +388,7 @@
 
         .project-link:hover {
             color: var(--accent-color);
+            text-shadow: 0 0 8px var(--neon-glow-primary);
         }
 
         .project-link:hover i {
@@ -394,9 +415,16 @@
             font-size: 0.9rem;
             color: var(--text-muted);
             backdrop-filter: blur(10px);
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        /* Footer */
+        .skills-list li:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 12px rgba(255, 107, 53, 0.2);
+            color: var(--text-main);
+        }
+
+        /* Footer Section */
         footer {
             padding: 4rem 8%;
             border-top: 1px solid var(--card-border);
@@ -405,7 +433,7 @@
             align-items: center;
             color: var(--text-muted);
             font-size: 0.9rem;
-            background: rgba(10, 17, 24, 0.4);
+            background: rgba(6, 10, 15, 0.8);
         }
 
         .footer-socials {
@@ -417,19 +445,25 @@
         .footer-socials a {
             color: var(--text-muted);
             font-size: 1.4rem;
-            transition: color 0.3s ease, transform 0.3s;
+            transition: color 0.3s ease, transform 0.3s, text-shadow 0.3s;
             text-decoration: none;
         }
 
         .footer-socials a:hover {
             color: var(--accent-color);
             transform: translateY(-2px);
+            text-shadow: 0 0 10px var(--neon-glow-primary);
         }
 
-        /* Animations */
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.7; }
-            100% { transform: scale(1.1); opacity: 1; }
+        /* Custom Animations */
+        @keyframes neonPulse {
+            0% { transform: scale(1); opacity: 0.75; }
+            100% { transform: scale(1.1); opacity: 0.95; }
+        }
+
+        @keyframes neonPulseSecondary {
+            0% { transform: scale(1.05); opacity: 0.5; }
+            100% { transform: scale(0.95); opacity: 0.7; }
         }
 
         @keyframes bounce {
@@ -511,16 +545,17 @@
             <div class="hero-cta-group">
                 <a href="#projects" class="cta-btn">View My Work</a>
                 <div class="hero-social-links">
-                    <!-- Your Active LinkedIn and Email Integrated -->
+                    <!-- Fully Integrated Active Social Details -->
                     <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="Connect on LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:your-email@example.com" title="Send Email"><i class="fas fa-envelope"></i></a>
+                    <a href="mailto:singhtarunkumar9973@gmail.com" title="Send Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
         
-        <!-- Interactive Visual Grid with Scroll Mechanics -->
+        <!-- Interactive Visual Grid with Parallax Scroll Mechanics & Neon Studio Backing -->
         <div class="hero-visual" id="heroVisual">
             <div class="main-sphere"></div>
+            <div class="secondary-sphere"></div>
             
             <!-- Exact 3D Sitting Excited Suit Man SVG Vector Illustration -->
             <svg class="character-art" id="characterDeveloper" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
@@ -564,32 +599,4 @@
                 <!-- Right Hand / Arm -->
                 <path d="M 177 165 Q 200 140 190 125" fill="none" stroke="#3a86c8" stroke-width="15" stroke-linecap="round" />
                 <circle cx="190" cy="115" r="9" fill="#ffd1b3" />
-                <path d="M 193 115 L 198 100" stroke="#ffd1b3" stroke-width="3.5" stroke-linecap="round" />
-
-                <!-- Clean Neck -->
-                <path d="M 116 122 L 144 122 L 140 145 L 120 145 Z" fill="#ffd1b3" />
-
-                <!-- Oblong/Oval Happy Face -->
-                <path d="M 98 85 C 98 55 162 55 162 85 C 162 115 150 132 130 132 C 110 132 98 115 98 85 Z" fill="#ffd1b3" />
-                
-                <!-- Big Open Excited Mouth -->
-                <path d="M 112 105 C 112 125 148 125 148 105 Z" fill="#6d121a" />
-                <path d="M 116 106 Q 130 110 144 106" fill="none" stroke="#ffffff" stroke-width="3" />
-
-                <!-- Huge Excited Eyes -->
-                <circle cx="115" cy="85" r="9.5" fill="#ffffff" stroke="#222222" stroke-width="0.5" />
-                <circle cx="115" cy="85" r="3.5" fill="#111111" />
-                <circle cx="145" cy="85" r="9.5" fill="#ffffff" stroke="#222222" stroke-width="0.5" />
-                <circle cx="145" cy="85" r="3.5" fill="#111111" />
-
-                <!-- Thick Round Black Eyeglasses -->
-                <circle cx="115" cy="85" r="15" fill="none" stroke="#1e1e1e" stroke-width="3" />
-                <circle cx="145" cy="85" r="15" fill="none" stroke="#1e1e1e" stroke-width="3" />
-                <line x1="129" y1="85" x2="131" y2="85" stroke="#1e1e1e" stroke-width="3" />
-
-                <!-- Expressive Eyebrows -->
-                <path d="M 102 68 Q 115 63 125 72" fill="none" stroke="#4a2e1b" stroke-width="3.5" stroke-linecap="round" />
-                <path d="M 158 68 Q 145 63 135 72" fill="none" stroke="#4a2e1b" stroke-width="3.5" stroke-linecap="round" />
-
-                <!-- Messy Fluffy Brown Hair Architecture -->
-                <path d="M 98 7
+   
