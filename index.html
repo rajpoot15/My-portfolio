@@ -95,9 +95,11 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 0 8%;
             position: relative;
             padding-top: 100px;
+            gap: 2rem;
         }
 
         .hero-content {
@@ -180,14 +182,11 @@
             text-shadow: 0 0 15px var(--neon-glow-primary);
         }
 
-        /* Ultra-Neon Ambient Glow Studio Backing */
+        /* Ambient Glow & Reliable Interactive Container */
         .hero-visual {
-            position: absolute;
-            right: 8%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 480px;
-            height: 480px;
+            position: relative;
+            width: 450px;
+            height: 450px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -197,62 +196,89 @@
         /* Ambient Layered Pulsing Neon Spheres */
         .main-sphere {
             position: absolute;
-            width: 390px;
-            height: 390px;
+            width: 350px;
+            height: 350px;
             background: radial-gradient(circle, var(--neon-glow-primary) 0%, var(--neon-glow-secondary) 40%, transparent 70%);
             border-radius: 50%;
             filter: blur(40px);
-            opacity: 0.85;
+            opacity: 0.75;
             animation: neonPulse 4s infinite alternate;
+            z-index: 1;
         }
 
-        .secondary-sphere {
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(123, 241, 168, 0.25) 0%, transparent 60%);
+        /* Sleek Developer Coding Frame (Highly compatible, pure CSS card) */
+        .dev-frame {
+            position: relative;
+            width: 340px;
+            background: rgba(10, 18, 30, 0.75);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 5;
+            font-family: monospace;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .dev-frame:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(255, 107, 53, 0.4);
+        }
+
+        .frame-header {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 0.8rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            filter: blur(50px);
-            opacity: 0.6;
-            animation: neonPulseSecondary 6s infinite alternate;
+        }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .code-content {
+            font-size: 0.85rem;
+            color: #a4b3c6;
+            line-height: 1.5rem;
         }
 
-        /* Animated SVG Character */
-        .character-art {
-            position: absolute;
-            width: 420px;
-            height: auto;
-            z-index: 2;
-            bottom: 30px;
-            transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
-            will-change: transform;
-            filter: drop-shadow(0 0 35px rgba(255, 107, 53, 0.3)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
-        }
+        .code-keyword { color: #ff79c6; }
+        .code-name { color: #50fa7b; }
+        .code-string { color: #f1fa8c; }
+        .code-comment { color: #6272a4; font-style: italic; }
 
         /* Floating Tech Tokens */
         .tech-icon {
             position: absolute;
-            width: 64px;
-            height: 64px;
-            background: rgba(21, 37, 56, 0.6);
+            width: 55px;
+            height: 55px;
+            background: rgba(21, 37, 56, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
+            border-radius: 14px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.6rem;
-            color: var(--text-main);
-            box-shadow: 0 0 15px rgba(255, 107, 53, 0.2), inset 0 0 10px rgba(255,255,255,0.05);
-            z-index: 3;
-            backdrop-filter: blur(12px);
+            font-size: 1.4rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            z-index: 10;
+            backdrop-filter: blur(8px);
             transition: transform 0.1s ease-out, opacity 0.1s ease-out;
             will-change: transform, opacity;
         }
 
-        .icon-1 { top: 2%; left: 8%; }
-        .icon-2 { top: 12%; right: 4%; }
-        .icon-3 { bottom: 35%; left: 4%; }
-        .icon-4 { bottom: 40%; right: 6%; }
+        .icon-1 { top: 10%; left: 5%; }
+        .icon-2 { top: 15%; right: 5%; }
+        .icon-3 { bottom: 15%; left: 8%; }
+        .icon-4 { bottom: 10%; right: 10%; }
 
         /* Animated Scroll Down Indicator Label */
         .scroll-indicator {
@@ -525,12 +551,7 @@
         /* Custom Animations */
         @keyframes neonPulse {
             0% { transform: scale(1); opacity: 0.75; }
-            100% { transform: scale(1.1); opacity: 0.95; }
-        }
-
-        @keyframes neonPulseSecondary {
-            0% { transform: scale(1.05); opacity: 0.5; }
-            100% { transform: scale(0.95); opacity: 0.7; }
+            100% { transform: scale(1.08); opacity: 0.95; }
         }
 
         @keyframes bounce {
@@ -561,11 +582,7 @@
                 font-size: 3rem;
             }
             .hero-visual {
-                position: relative;
-                right: auto;
-                top: auto;
-                transform: none;
-                margin-top: 4rem;
+                margin-top: 2rem;
                 width: 100%;
                 height: 400px;
             }
@@ -580,6 +597,13 @@
             }
             .hero h1 {
                 font-size: 2.4rem;
+            }
+            .dev-frame {
+                width: 290px;
+                padding: 1.2rem;
+            }
+            .code-content {
+                font-size: 0.75rem;
             }
             footer {
                 flex-direction: column;
@@ -613,30 +637,25 @@
             <div class="hero-cta-group">
                 <a href="#about" class="cta-btn">Learn More About Me</a>
                 <div class="hero-social-links">
-                    <!-- Fully Integrated Active Social Details -->
                     <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="Connect on LinkedIn"><i class="fab fa-linkedin"></i></a>
                     <a href="mailto:tarunsingh736781@gmail.com" title="Send Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
         
-        <!-- Interactive Visual Grid with Parallax Scroll Mechanics & Neon Studio Backing -->
+        <!-- Interactive Visual Grid with Parallax Scroll Mechanics -->
         <div class="hero-visual" id="heroVisual">
             <div class="main-sphere"></div>
-            <div class="secondary-sphere"></div>
             
-            <!-- Exact 3D Sitting Excited Suit Man SVG Vector Illustration -->
-            <svg class="character-art" id="characterDeveloper" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
-                <!-- Dynamic Background Splash Effects -->
-                <!-- Left Splashes -->
-                <path d="M 50 110 Q 15 90 25 70 Q 40 70 55 90 Z" fill="#ff6b35" opacity="0.8"/>
-                <path d="M 60 130 Q 30 100 50 65 Q 75 75 68 110 Z" fill="#ffb703" opacity="0.8"/>
-                <circle cx="28" cy="120" r="4" fill="#ff6b35" opacity="0.7"/>
-                
-                <!-- Right Splashes -->
-                <path d="M 200 120 Q 235 95 245 72 Q 230 62 210 90 Z" fill="#f26457" opacity="0.8"/>
-                <path d="M 185 140 Q 220 120 230 100 Q 215 90 195 120 Z" fill="#ffb703" opacity="0.8"/>
-                <path d="M 195 150 Q 225 150 230 138 Q 215 130 195 142 Z" fill="#7bf1a8" opacity="0.7"/>
-                <circle cx="218" cy="125" r="4.5" fill="#f26457" opacity="0.7"/>
-
-                <!-- Cross-legged Sitting 
+            <!-- Highly Stable & Clean Developer Card -->
+            <div class="dev-frame" id="devFrame">
+                <div class="frame-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                </div>
+                <div class="code-content">
+                    <span class="code-comment">// Developer Profile</span><br>
+                    <span class="code-keyword">const</span> dev = {<br>
+                    &nbsp;&nbsp;name: <span class="code-string">"Tarun"</span>,<br>
+          
