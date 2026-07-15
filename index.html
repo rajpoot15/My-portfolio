@@ -13,13 +13,16 @@
     
     <style>
         :root {
-            --bg-color: #0f0e0c;
-            --card-bg: #1a1814;
+            /* Premium Attractive Dark Slate Gradient Palette */
+            --bg-color: #0a1118;
+            --bg-gradient: linear-gradient(135deg, #0a1118 0%, #101f30 100%);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.06);
             --accent-color: #ff6b35;
-            --accent-glow: rgba(255, 107, 53, 0.15);
+            --accent-glow: rgba(255, 107, 53, 0.25);
             --text-main: #f4f4f0;
-            --text-muted: #a09e9a;
-            --border-color: #2a2721;
+            --text-muted: #a4b3c6;
+            --nav-bg: rgba(10, 17, 24, 0.75);
         }
 
         * {
@@ -31,10 +34,11 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            background: var(--bg-gradient);
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
+            background-attachment: fixed;
         }
 
         /* Navigation */
@@ -47,10 +51,11 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 8%;
-            background: rgba(15, 14, 12, 0.8);
-            backdrop-filter: blur(12px);
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--card-border);
         }
 
         .logo {
@@ -88,24 +93,25 @@
             align-items: center;
             padding: 0 8%;
             position: relative;
-            padding-top: 80px;
+            padding-top: 100px;
         }
 
         .hero-content {
-            max-width: 650px;
+            max-width: 600px;
             z-index: 2;
         }
 
         .hero-tag {
             display: inline-block;
             padding: 0.4rem 1rem;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.2);
             border-radius: 100px;
             font-size: 0.85rem;
             color: var(--accent-color);
             font-weight: 600;
             margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
         }
 
         .hero h1 {
@@ -118,12 +124,21 @@
 
         .hero h1 span {
             color: var(--accent-color);
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
         }
 
         .hero p {
             font-size: 1.1rem;
             color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
             margin-bottom: 2.5rem;
+            flex-wrap: wrap;
         }
 
         .cta-btn {
@@ -140,10 +155,27 @@
 
         .cta-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 12px 32px rgba(255, 107, 53, 0.4);
         }
 
-        /* Interactive Visual Container */
+        /* Hero Social Links */
+        .hero-social-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .hero-social-links a {
+            color: var(--text-muted);
+            font-size: 1.4rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .hero-social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Interactive Visual Container with Neon Aura Background */
         .hero-visual {
             position: absolute;
             right: 8%;
@@ -157,13 +189,14 @@
             z-index: 1;
         }
 
+        /* Advanced Dynamic Studio Aura Glow */
         .main-sphere {
-            width: 360px;
-            height: 360px;
-            background: radial-gradient(circle, rgba(255,107,53,0.18) 0%, rgba(255,159,28,0.01) 75%);
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.3) 0%, rgba(255, 183, 3, 0.05) 60%, transparent 100%);
             border-radius: 50%;
-            filter: blur(15px);
-            opacity: 0.8;
+            filter: blur(35px);
+            opacity: 0.9;
             animation: pulse 6s infinite alternate;
         }
 
@@ -173,9 +206,10 @@
             width: 420px;
             height: auto;
             z-index: 2;
-            bottom: 10px;
+            bottom: 30px;
             transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
             will-change: transform;
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
         }
 
         /* Floating Tech Tokens */
@@ -183,16 +217,17 @@
             position: absolute;
             width: 64px;
             height: 64px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            background: rgba(16, 31, 48, 0.5);
+            border: 1px solid var(--card-border);
             border-radius: 16px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 1.6rem;
             color: var(--text-main);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
             z-index: 3;
+            backdrop-filter: blur(12px);
             transition: transform 0.1s ease-out, opacity 0.1s ease-out;
             will-change: transform, opacity;
         }
@@ -201,6 +236,35 @@
         .icon-2 { top: 12%; right: 4%; }
         .icon-3 { bottom: 35%; left: 4%; }
         .icon-4 { bottom: 40%; right: 6%; }
+
+        /* Scroll Down Indicator Label */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            z-index: 10;
+        }
+
+        .scroll-indicator:hover {
+            color: var(--accent-color);
+        }
+
+        .scroll-indicator i {
+            font-size: 1rem;
+            animation: bounce 1.8s infinite;
+        }
 
         /* General Section Design */
         section {
@@ -219,7 +283,7 @@
             color: var(--accent-color);
         }
 
-        /* Grid Framework for Projects */
+        /* Grid Framework for Projects (Glassmorphism Cards) */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -228,10 +292,12 @@
 
         .project-card {
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
             padding: 2.5rem;
-            transition: border-color 0.3s ease, transform 0.3s ease;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -241,8 +307,9 @@
         }
 
         .project-card:hover {
-            border-color: var(--accent-color);
+            border-color: rgba(255, 107, 53, 0.4);
             transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.05);
         }
 
         .project-card::before {
@@ -320,23 +387,25 @@
         }
 
         .skills-list li {
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--card-border);
             border-radius: 100px;
             font-size: 0.9rem;
             color: var(--text-muted);
+            backdrop-filter: blur(10px);
         }
 
-        /* Footer links styling */
+        /* Footer */
         footer {
             padding: 4rem 8%;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--card-border);
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: var(--text-muted);
             font-size: 0.9rem;
+            background: rgba(10, 17, 24, 0.4);
         }
 
         .footer-socials {
@@ -347,19 +416,26 @@
 
         .footer-socials a {
             color: var(--text-muted);
-            font-size: 1.3rem;
-            transition: color 0.3s ease;
+            font-size: 1.4rem;
+            transition: color 0.3s ease, transform 0.3s;
             text-decoration: none;
         }
 
         .footer-socials a:hover {
             color: var(--accent-color);
+            transform: translateY(-2px);
         }
 
-        /* Background Base Animations */
+        /* Animations */
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.6; }
-            100% { transform: scale(1.05); opacity: 0.9; }
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
         }
 
         /* Responsive Breakpoints */
@@ -369,9 +445,16 @@
                 justify-content: center;
                 text-align: center;
                 padding-top: 140px;
+                padding-bottom: 6rem;
             }
             .hero-content {
                 margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-cta-group {
+                justify-content: center;
             }
             .hero h1 {
                 font-size: 3rem;
@@ -384,6 +467,9 @@
                 margin-top: 4rem;
                 width: 100%;
                 height: 400px;
+            }
+            .scroll-indicator {
+                display: none;
             }
         }
 
@@ -421,7 +507,15 @@
             <div class="hero-tag">Web Development Portfolio</div>
             <h1>Hey, I am Tarun.<br>A <span>Web Developer</span></h1>
             <p>Building responsive front-end tools, interactive user interfaces, and custom logical scripting systems with pure modern code styling.</p>
-            <a href="#projects" class="cta-btn">View My Work</a>
+            
+            <div class="hero-cta-group">
+                <a href="#projects" class="cta-btn">View My Work</a>
+                <div class="hero-social-links">
+                    <!-- Your Active LinkedIn and Email Integrated -->
+                    <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="Connect on LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:your-email@example.com" title="Send Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
         </div>
         
         <!-- Interactive Visual Grid with Scroll Mechanics -->
@@ -430,7 +524,7 @@
             
             <!-- Exact 3D Sitting Excited Suit Man SVG Vector Illustration -->
             <svg class="character-art" id="characterDeveloper" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
-                <!-- Dynamic Background Splash Effects (From your Image) -->
+                <!-- Dynamic Background Splash Effects -->
                 <!-- Left Splashes -->
                 <path d="M 50 110 Q 15 90 25 70 Q 40 70 55 90 Z" fill="#ff6b35" opacity="0.8"/>
                 <path d="M 60 130 Q 30 100 50 65 Q 75 75 68 110 Z" fill="#ffb703" opacity="0.8"/>
@@ -465,12 +559,12 @@
                 <!-- Left Hand / Arm -->
                 <path d="M 83 165 Q 60 140 70 125" fill="none" stroke="#3a86c8" stroke-width="15" stroke-linecap="round" />
                 <circle cx="70" cy="115" r="9" fill="#ffd1b3" />
-                <path d="M 67 115 L 62 100" stroke="#ffd1b3" stroke-width="3.5" stroke-linecap="round" /> <!-- Pointing Finger -->
+                <path d="M 67 115 L 62 100" stroke="#ffd1b3" stroke-width="3.5" stroke-linecap="round" />
 
                 <!-- Right Hand / Arm -->
                 <path d="M 177 165 Q 200 140 190 125" fill="none" stroke="#3a86c8" stroke-width="15" stroke-linecap="round" />
                 <circle cx="190" cy="115" r="9" fill="#ffd1b3" />
-                <path d="M 193 115 L 198 100" stroke="#ffd1b3" stroke-width="3.5" stroke-linecap="round" /> <!-- Pointing Finger -->
+                <path d="M 193 115 L 198 100" stroke="#ffd1b3" stroke-width="3.5" stroke-linecap="round" />
 
                 <!-- Clean Neck -->
                 <path d="M 116 122 L 144 122 L 140 145 L 120 145 Z" fill="#ffd1b3" />
@@ -478,7 +572,7 @@
                 <!-- Oblong/Oval Happy Face -->
                 <path d="M 98 85 C 98 55 162 55 162 85 C 162 115 150 132 130 132 C 110 132 98 115 98 85 Z" fill="#ffd1b3" />
                 
-                <!-- Big Open Excited Mouth (From your Image) -->
+                <!-- Big Open Excited Mouth -->
                 <path d="M 112 105 C 112 125 148 125 148 105 Z" fill="#6d121a" />
                 <path d="M 116 106 Q 130 110 144 106" fill="none" stroke="#ffffff" stroke-width="3" />
 
@@ -498,109 +592,4 @@
                 <path d="M 158 68 Q 145 63 135 72" fill="none" stroke="#4a2e1b" stroke-width="3.5" stroke-linecap="round" />
 
                 <!-- Messy Fluffy Brown Hair Architecture -->
-                <path d="M 98 76 C 92 68 95 52 108 45 C 115 36 135 32 148 42 C 158 38 165 52 163 68 C 168 58 152 46 138 50 C 126 44 115 48 108 58 Z" fill="#54351c" />
-                <path d="M 112 48 C 120 34 140 36 148 48 C 152 42 138 34 125 40 Z" fill="#402511" />
-
-                <!-- Forefront Grey Tech Laptop Rim Layer -->
-                <path d="M 70 178 L 190 178 C 196 178 196 230 190 230 L 70 230 C 64 230 64 178 70 178 Z" fill="#b0b5bc" />
-                <path d="M 74 183 L 186 183 C 190 183 190 230 186 230 L 74 230 C 70 230 70 183 74 183 Z" fill="#cfd4da" />
-            </svg>
-
-            <!-- Floating UI Elements -->
-            <div class="tech-icon icon-1" id="token1"><i class="fab fa-python" style="color: #3776AB;"></i></div>
-            <div class="tech-icon icon-2" id="token2"><i class="fab fa-react" style="color: #61DAFB;"></i></div>
-            <div class="tech-icon icon-3" id="token3"><i class="fab fa-html5" style="color: #E34F26;"></i></div>
-            <div class="tech-icon icon-4" id="token4"><i class="fas fa-code" style="color: #ff6b35;"></i></div>
-        </div>
-    </section>
-
-    <!-- Selected Projects Section -->
-    <section id="projects">
-        <h2 class="section-title">Selected <span>Projects</span></h2>
-        
-        <div class="projects-grid">
-            <!-- Project 1 -->
-            <div class="project-card">
-                <div>
-                    <div class="project-icon"><i class="fa-solid fa-calculator"></i></div>
-                    <h3>Interactive Calculator</h3>
-                    <p>A beautifully structured, highly responsive web application built to execute mathematical calculations smoothly across layouts.</p>
-                </div>
-                <a href="https://rajpoot15.github.io/Calculator/" target="_blank" class="project-link">
-                    Live Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card">
-                <div>
-                    <div class="project-icon"><i class="fa-solid fa-cloud-sun-rain"></i></div>
-                    <h3>Live Weather Application</h3>
-                    <p>A dynamic application built to handle live forecasting requests and present immediate contextual metrics smoothly.</p>
-                </div>
-                <a href="https://rajpoot15.github.io/Wheather---App/" target="_blank" class="project-link">
-                    Live Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technical Skillsets Section -->
-    <section id="skills">
-        <h2 class="section-title">Technical <span>Skillsets</span></h2>
-        <div class="skills-container">
-            <ul class="skills-list">
-                <li>Python Programming</li>
-                <li>HTML5 & CSS3</li>
-                <li>Responsive UI Design</li>
-                <li>Front-end Engineering</li>
-                <li>API Implementations</li>
-                <li>Script Design Frameworks</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Footer Section with Links Built In -->
-    <footer id="contact">
-        <div class="footer-copy">
-            &copy; 2026 Tarun. Located in India.
-        </div>
-        <div class="footer-socials">
-            <!-- Replace 'your-username' with your actual LinkedIn identifier link -->
-            <a href="https://www.linkedin.com/in/your-username" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-            <!-- Replace 'your-email@example.com' with your actual email address -->
-            <a href="mailto:your-email@example.com" title="Send Email"><i class="fas fa-envelope"></i></a>
-        </div>
-    </footer>
-
-    <!-- Parallax Scroll Mechanics Script -->
-    <script>
-        window.addEventListener('scroll', () => {
-            const scrollPos = window.scrollY;
-            const developer = document.getElementById('characterDeveloper');
-            
-            const t1 = document.getElementById('token1');
-            const t2 = document.getElementById('token2');
-            const t3 = document.getElementById('token3');
-            const t4 = document.getElementById('token4');
-
-            // Scroll action: Peeking up animation style
-            developer.style.transform = `translateY(${scrollPos * 0.14}px) scale(${1 + (scrollPos * 0.00015)})`;
-
-            // Disperse floating asset tokens outwards and upwards as page drops
-            t1.style.transform = `translate(-${scrollPos * 0.35}px, -${scrollPos * 0.7}px) rotate(-${scrollPos * 0.1}deg)`;
-            t2.style.transform = `translate(${scrollPos * 0.4}px, -${scrollPos * 0.6}px) rotate(${scrollPos * 0.08}deg)`;
-            t3.style.transform = `translate(-${scrollPos * 0.25}px, -${scrollPos * 0.5}px) rotate(-${scrollPos * 0.05}deg)`;
-            t4.style.transform = `translate(${scrollPos * 0.3}px, -${scrollPos * 0.8}px) rotate(${scrollPos * 0.12}deg)`;
-            
-            // Fade out assets as user scrolls away
-            const opacityVal = Math.max(0, 1 - (scrollPos / 380));
-            t1.style.opacity = opacityVal;
-            t2.style.opacity = opacityVal;
-            t3.style.opacity = opacityVal;
-            t4.style.opacity = opacityVal;
-        });
-    </script>
-
-</body>
-</html>
+                <path d="M 98 7
