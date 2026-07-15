@@ -565,4 +565,42 @@
         <div class="footer-copy">
             &copy; 2026 Tarun. Located in India.
         </div>
-        <div class=
+        <div class="footer-socials">
+            <!-- Replace 'your-username' with your actual LinkedIn identifier link -->
+            <a href="https://www.linkedin.com/in/your-username" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+            <!-- Replace 'your-email@example.com' with your actual email address -->
+            <a href="mailto:your-email@example.com" title="Send Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <!-- Parallax Scroll Mechanics Script -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const developer = document.getElementById('characterDeveloper');
+            
+            const t1 = document.getElementById('token1');
+            const t2 = document.getElementById('token2');
+            const t3 = document.getElementById('token3');
+            const t4 = document.getElementById('token4');
+
+            // Scroll action: Peeking up animation style
+            developer.style.transform = `translateY(${scrollPos * 0.14}px) scale(${1 + (scrollPos * 0.00015)})`;
+
+            // Disperse floating asset tokens outwards and upwards as page drops
+            t1.style.transform = `translate(-${scrollPos * 0.35}px, -${scrollPos * 0.7}px) rotate(-${scrollPos * 0.1}deg)`;
+            t2.style.transform = `translate(${scrollPos * 0.4}px, -${scrollPos * 0.6}px) rotate(${scrollPos * 0.08}deg)`;
+            t3.style.transform = `translate(-${scrollPos * 0.25}px, -${scrollPos * 0.5}px) rotate(-${scrollPos * 0.05}deg)`;
+            t4.style.transform = `translate(${scrollPos * 0.3}px, -${scrollPos * 0.8}px) rotate(${scrollPos * 0.12}deg)`;
+            
+            // Fade out assets as user scrolls away
+            const opacityVal = Math.max(0, 1 - (scrollPos / 380));
+            t1.style.opacity = opacityVal;
+            t2.style.opacity = opacityVal;
+            t3.style.opacity = opacityVal;
+            t4.style.opacity = opacityVal;
+        });
+    </script>
+
+</body>
+</html>
