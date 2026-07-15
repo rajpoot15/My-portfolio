@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarun | Web Developer Portfolio</title>
+    <title>Tarun | Interactive Portfolio</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,17 +13,14 @@
     
     <style>
         :root {
-            /* High-End Dark Palette with Vibrant Neon Accent */
             --bg-color: #060a0f;
-            --bg-gradient: radial-gradient(circle at 80% 20%, #152538 0%, #060a0f 100%);
+            --bg-gradient: linear-gradient(90deg, #060a0f 0%, #111a24 50%, #060a0f 100%);
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 255, 255, 0.07);
             --accent-color: #ff6b35;
             --neon-glow-primary: rgba(255, 107, 53, 0.6);
-            --neon-glow-secondary: rgba(255, 183, 3, 0.4);
             --text-main: #f4f4f0;
             --text-muted: #a4b3c6;
-            --nav-bg: rgba(6, 10, 15, 0.8);
         }
 
         * {
@@ -31,19 +28,17 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
-            background: var(--bg-color);
-            background-image: var(--bg-gradient);
+            background-color: var(--bg-color);
             color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-            background-attachment: fixed;
+            overflow-x: hidden; /* Hide horizontal scrollbar to force custom interaction */
+            overflow-y: scroll; /* Allow vertical mouse wheel to trigger movement */
+            height: 400vh; /* Set virtual height to allow scroll room */
         }
 
-        /* Navigation Menu */
+        /* Fixed Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -53,7 +48,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 8%;
-            background: var(--nav-bg);
+            background: rgba(6, 10, 15, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
@@ -63,7 +58,6 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
         }
 
         .logo span {
@@ -71,39 +65,33 @@
             text-shadow: 0 0 10px var(--neon-glow-primary);
         }
 
-        .nav-links {
+        /* Horizontal Container Setup */
+        .horizontal-scroll-container {
+            position: fixed;
+            top: 0;
+            left: 0;
             display: flex;
-            gap: 2.5rem;
-            list-style: none;
+            width: 400vw; /* 4 screens wide: Home, About, Projects, Skills/Contact */
+            height: 100vh;
+            background-image: var(--bg-gradient);
+            will-change: transform;
+            transition: transform 0.1s ease-out;
         }
 
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-main);
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-        }
-
-        /* Hero Layout */
-        .hero {
-            min-height: 100vh;
+        /* Each Section is 1 Full Screen Width */
+        .slide-section {
+            width: 100vw;
+            height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 8%;
+            padding: 0 10%;
             position: relative;
-            padding-top: 100px;
-            gap: 2rem;
+            flex-shrink: 0;
         }
 
+        /* Hero Content Styles */
         .hero-content {
-            max-width: 600px;
+            max-width: 550px;
             z-index: 2;
         }
 
@@ -117,7 +105,6 @@
             color: var(--accent-color);
             font-weight: 600;
             margin-bottom: 1.5rem;
-            box-shadow: 0 0 15px rgba(255, 107, 53, 0.15);
         }
 
         .hero h1 {
@@ -125,26 +112,17 @@
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            letter-spacing: -1px;
         }
 
         .hero h1 span {
             color: var(--accent-color);
-            text-shadow: 0 0 20px var(--neon-glow-primary), 0 0 40px rgba(255, 107, 53, 0.2);
+            text-shadow: 0 0 20px var(--neon-glow-primary);
         }
 
         .hero p {
             font-size: 1.1rem;
             color: var(--text-muted);
             margin-bottom: 2rem;
-        }
-
-        .hero-cta-group {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
         }
 
         .cta-btn {
@@ -155,85 +133,58 @@
             text-decoration: none;
             font-weight: 700;
             border-radius: 12px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 0 20px var(--neon-glow-primary);
         }
 
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 35px var(--neon-glow-primary), 0 0 15px rgba(255, 183, 3, 0.5);
-        }
-
-        /* Hero Social Links */
         .hero-social-links {
             display: flex;
             gap: 1.2rem;
+            margin-top: 1.5rem;
         }
 
         .hero-social-links a {
             color: var(--text-muted);
             font-size: 1.4rem;
-            transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+            transition: color 0.3s;
         }
 
         .hero-social-links a:hover {
             color: var(--accent-color);
-            transform: translateY(-2px);
-            text-shadow: 0 0 15px var(--neon-glow-primary);
         }
 
-        /* Ambient Glow & Reliable Interactive Container */
-        .hero-visual {
-            position: relative;
-            width: 450px;
-            height: 450px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
+        /* The Scrolling "Walking" Developer */
+        .scrolling-character-container {
+            position: fixed;
+            bottom: 10%;
+            right: 15%; /* Fixed start position on desktop */
+            width: 320px;
+            height: 320px;
+            z-index: 100;
+            pointer-events: none;
+            will-change: transform;
+            transition: transform 0.1s ease-out;
         }
 
-        /* Ambient Layered Pulsing Neon Spheres */
-        .main-sphere {
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, var(--neon-glow-primary) 0%, var(--neon-glow-secondary) 40%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(40px);
-            opacity: 0.75;
-            animation: neonPulse 4s infinite alternate;
-            z-index: 1;
-        }
-
-        /* Sleek Developer Coding Frame (Highly compatible, pure CSS card) */
+        /* Sleek Developer Code Card representing Tarun */
         .dev-frame {
             position: relative;
-            width: 340px;
-            background: rgba(10, 18, 30, 0.75);
-            border: 1px solid var(--card-border);
+            width: 100%;
+            background: rgba(10, 18, 30, 0.85);
+            border: 1px solid rgba(255, 107, 53, 0.3);
             border-radius: 20px;
             padding: 1.5rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255, 107, 53, 0.2);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            z-index: 5;
             font-family: monospace;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .dev-frame:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: rgba(255, 107, 53, 0.4);
+            animation: floating 4s ease-in-out infinite alternate;
         }
 
         .frame-header {
             display: flex;
             gap: 6px;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
         }
 
         .dot {
@@ -246,81 +197,20 @@
         .dot-green { background: #27c93f; }
 
         .code-content {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #a4b3c6;
-            line-height: 1.5rem;
+            line-height: 1.4rem;
         }
 
         .code-keyword { color: #ff79c6; }
-        .code-name { color: #50fa7b; }
         .code-string { color: #f1fa8c; }
         .code-comment { color: #6272a4; font-style: italic; }
 
-        /* Floating Tech Tokens */
-        .tech-icon {
-            position: absolute;
-            width: 55px;
-            height: 55px;
-            background: rgba(21, 37, 56, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.4rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            z-index: 10;
-            backdrop-filter: blur(8px);
-            transition: transform 0.1s ease-out, opacity 0.1s ease-out;
-            will-change: transform, opacity;
-        }
-
-        .icon-1 { top: 10%; left: 5%; }
-        .icon-2 { top: 15%; right: 5%; }
-        .icon-3 { bottom: 15%; left: 8%; }
-        .icon-4 { bottom: 10%; right: 10%; }
-
-        /* Animated Scroll Down Indicator Label */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-            z-index: 10;
-        }
-
-        .scroll-indicator:hover {
-            color: var(--accent-color);
-            text-shadow: 0 0 10px var(--neon-glow-primary);
-        }
-
-        .scroll-indicator i {
-            font-size: 1rem;
-            animation: bounce 1.8s infinite;
-        }
-
-        /* General Sections */
-        section {
-            padding: 6rem 8% 4rem 8%;
-        }
-
+        /* General Section Grid Templates */
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 3.5rem;
-            position: relative;
-            display: inline-block;
+            margin-bottom: 2.5rem;
         }
 
         .section-title span {
@@ -328,29 +218,14 @@
             text-shadow: 0 0 15px var(--neon-glow-primary);
         }
 
-        /* About Section Styles */
+        /* About Slide Layout */
         .about-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 24px;
             padding: 3rem;
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            max-width: 900px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 10% 10%, rgba(255, 107, 53, 0.08), transparent 50%);
-            pointer-events: none;
+            max-width: 700px;
         }
 
         .about-text {
@@ -365,101 +240,40 @@
             font-weight: 600;
         }
 
-        .about-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .highlight-item {
+        /* Projects Slide Layout */
+        .projects-wrapper {
             display: flex;
-            align-items: center;
-            gap: 1rem;
+            flex-direction: column;
+            width: 100%;
+            max-width: 800px;
         }
 
-        .highlight-icon {
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            text-shadow: 0 0 10px var(--neon-glow-primary);
-        }
-
-        .highlight-info h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .highlight-info p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* Projects Section (Glassmorphism Cards) */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
         }
 
         .project-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 2.5rem;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: border-color 0.3s;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 320px;
+            min-height: 250px;
         }
 
         .project-card:hover {
             border-color: rgba(255, 107, 53, 0.5);
-            transform: translateY(-5px);
-            box-shadow: 0 0 25px rgba(255, 107, 53, 0.15);
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(255, 107, 53, 0.2), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
         }
 
         .project-icon {
             font-size: 2rem;
             color: var(--accent-color);
-            margin-bottom: 1.5rem;
-            z-index: 2;
-            filter: drop-shadow(0 0 8px var(--neon-glow-primary));
-        }
-
-        .project-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            z-index: 2;
-        }
-
-        .project-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-            z-index: 2;
+            margin-bottom: 1rem;
         }
 
         .project-link {
@@ -467,30 +281,23 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            z-index: 2;
-            transition: color 0.3s ease;
-        }
-
-        .project-link i {
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
+            margin-top: 1.5rem;
         }
 
         .project-link:hover {
             color: var(--accent-color);
-            text-shadow: 0 0 8px var(--neon-glow-primary);
         }
 
-        .project-link:hover i {
-            transform: translate(3px, -3px);
+        /* Skills/Contact Slide Layout */
+        .skills-contact-wrapper {
+            display: flex;
+            gap: 4rem;
+            width: 100%;
+            max-width: 900px;
         }
 
-        /* Skills Layout */
-        .skills-container {
-            max-width: 800px;
+        .skills-half, .contact-half {
+            flex: 1;
         }
 
         .skills-list {
@@ -507,155 +314,202 @@
             border-radius: 100px;
             font-size: 0.9rem;
             color: var(--text-muted);
-            backdrop-filter: blur(10px);
-            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        .skills-list li:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 12px rgba(255, 107, 53, 0.2);
-            color: var(--text-main);
+        .contact-info {
+            margin-top: 1.5rem;
         }
 
-        /* Footer Section */
-        footer {
-            padding: 4rem 8%;
-            border-top: 1px solid var(--card-border);
+        .contact-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
             color: var(--text-muted);
-            font-size: 0.9rem;
-            background: rgba(6, 10, 15, 0.8);
-        }
-
-        .footer-socials {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .footer-socials a {
-            color: var(--text-muted);
-            font-size: 1.4rem;
-            transition: color 0.3s ease, transform 0.3s, text-shadow 0.3s;
             text-decoration: none;
         }
 
-        .footer-socials a:hover {
+        .contact-item i {
             color: var(--accent-color);
-            transform: translateY(-2px);
-            text-shadow: 0 0 10px var(--neon-glow-primary);
+            font-size: 1.2rem;
         }
 
-        /* Custom Animations */
-        @keyframes neonPulse {
-            0% { transform: scale(1); opacity: 0.75; }
-            100% { transform: scale(1.08); opacity: 0.95; }
+        /* Float Animation for the Card */
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-15px); }
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-8px); }
-            60% { transform: translateY(-4px); }
-        }
-
-        /* Responsive Breakpoints */
+        /* Mobile Adjustments (Changes back to vertical scroll for best mobile usability) */
         @media (max-width: 992px) {
-            .hero {
-                flex-direction: column;
-                justify-content: center;
-                text-align: center;
-                padding-top: 140px;
-                padding-bottom: 6rem;
+            body {
+                height: auto;
+                overflow-y: auto;
+                overflow-x: hidden;
             }
-            .hero-content {
-                margin: 0 auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .hero-cta-group {
-                justify-content: center;
-            }
-            .hero h1 {
-                font-size: 3rem;
-            }
-            .hero-visual {
-                margin-top: 2rem;
-                width: 100%;
-                height: 400px;
-            }
-            .scroll-indicator {
-                display: none;
-            }
-        }
 
-        @media (max-width: 576px) {
-            .nav-links {
-                display: none;
-            }
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-            .dev-frame {
-                width: 290px;
-                padding: 1.2rem;
-            }
-            .code-content {
-                font-size: 0.75rem;
-            }
-            footer {
+            .horizontal-scroll-container {
+                position: relative;
                 flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
+                width: 100vw;
+                height: auto;
+                transform: none !important;
+            }
+
+            .slide-section {
+                width: 100vw;
+                height: auto;
+                padding: 6rem 8% 4rem 8%;
+            }
+
+            .scrolling-character-container {
+                display: none; /* Hide floating card on mobile to fit contents */
+            }
+
+            .skills-contact-wrapper {
+                flex-direction: column;
+                gap: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Menu -->
+    <!-- Fixed Header -->
     <nav>
         <div class="logo">tarun<span>.</span></div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-tag">Web Development Portfolio</div>
-            <h1>Hey, I am Tarun.<br>A <span>Web Developer</span></h1>
-            <p>Building responsive front-end tools, interactive user interfaces, and custom logical scripting systems with pure modern code styling.</p>
-            
-            <div class="hero-cta-group">
-                <a href="#about" class="cta-btn">Learn More About Me</a>
+    <!-- Horizontal Scroll Canvas -->
+    <div class="horizontal-scroll-container" id="scrollContainer">
+        
+        <!-- Slide 1: Home -->
+        <section class="slide-section" id="home">
+            <div class="hero-content">
+                <div class="hero-tag">Interactive Dev Space</div>
+                <h1>Hey, I am Tarun.<br>A <span>Web Developer</span></h1>
+                <p>Scroll down or swipe to watch the canvas slide and explore my work interactive system features.</p>
                 <div class="hero-social-links">
-                    <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="Connect on LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:tarunsingh736781@gmail.com" title="Send Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:tarunsingh736781@gmail.com"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-        </div>
-        
-        <!-- Interactive Visual Grid with Parallax Scroll Mechanics -->
-        <div class="hero-visual" id="heroVisual">
-            <div class="main-sphere"></div>
-            
-            <!-- Highly Stable & Clean Developer Card -->
-            <div class="dev-frame" id="devFrame">
-                <div class="frame-header">
-                    <div class="dot dot-red"></div>
-                    <div class="dot dot-yellow"></div>
-                    <div class="dot dot-green"></div>
+        </section>
+
+        <!-- Slide 2: About Me -->
+        <section class="slide-section" id="about">
+            <div class="about-card">
+                <h2 class="section-title">About <span>Me</span></h2>
+                <p class="about-text">
+                    Hello! I'm <span>Tarun</span>, a highly motivated <span>Web Developer</span> based in India. I specialize in building responsive, user-friendly front-end layouts.
+                </p>
+                <p class="about-text">
+                    My development journey is driven by a strong passion for solving real-world challenges through modern, clean browser structures.
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 3: Selected Projects -->
+        <section class="slide-section" id="projects">
+            <div class="projects-wrapper">
+                <h2 class="section-title">Selected <span>Projects</span></h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div>
+                            <div class="project-icon"><i class="fa-solid fa-calculator"></i></div>
+                            <h3>Interactive Calculator</h3>
+                            <p>A beautifully structured, highly responsive web application built to execute calculations smoothly.</p>
+                        </div>
+                        <a href="https://rajpoot15.github.io/Calculator/" target="_blank" class="project-link">Live Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                    <div class="project-card">
+                        <div>
+                            <div class="project-icon"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+                            <h3>Weather App</h3>
+                            <p>A dynamic application built to handle live forecasting requests instantly.</p>
+                        </div>
+                        <a href="https://rajpoot15.github.io/Wheather---App/" target="_blank" class="project-link">Live Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
                 </div>
-                <div class="code-content">
-                    <span class="code-comment">// Developer Profile</span><br>
-                    <span class="code-keyword">const</span> dev = {<br>
-                    &nbsp;&nbsp;name: <span class="code-string">"Tarun"</span>,<br>
-          
+            </div>
+        </section>
+
+        <!-- Slide 4: Skills & Contact -->
+        <section class="slide-section" id="contact">
+            <div class="skills-contact-wrapper">
+                <div class="skills-half">
+                    <h2 class="section-title">My <span>Skills</span></h2>
+                    <ul class="skills-list">
+                        <li>Python Programming</li>
+                        <li>HTML5 & CSS3</li>
+                        <li>Responsive UI Design</li>
+                        <li>Front-end Engineering</li>
+                        <li>API Integration</li>
+                    </ul>
+                </div>
+                <div class="contact-half">
+                    <h2 class="section-title">Get In <span>Touch</span></h2>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Let's collaborate on amazing web project assets!</p>
+                    <div class="contact-info">
+                        <a href="mailto:tarunsingh736781@gmail.com" class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>tarunsingh736781@gmail.com</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank" class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn Profile</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- The Walking Developer Object (Fixed HUD element) -->
+    <div class="scrolling-character-container" id="devCharacter">
+        <div class="dev-frame">
+            <div class="frame-header">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+            </div>
+            <div class="code-content">
+                <span class="code-comment">// Running Portfolio...</span><br>
+                <span class="code-keyword">const</span> coder = {<br>
+                &nbsp;&nbsp;name: <span class="code-string">"Tarun"</span>,<br>
+                &nbsp;&nbsp;status: <span class="code-string">"Exploring"</span>,<br>
+                &nbsp;&nbsp;scrollProgress: <span class="code-string">"0%"</span><br>
+                };<br>
+                <span class="code-keyword">function</span> check() {<br>
+                &nbsp;&nbsp;return <span class="code-string">"Ready to Code"</span>;<br>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const scrollContainer = document.getElementById('scrollContainer');
+        const devCharacter = document.getElementById('devCharacter');
+
+        window.addEventListener('scroll', () => {
+            // Only execute horizontal scroll logic on desktop screens (width > 992px)
+            if (window.innerWidth > 992) {
+                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollProgress = window.scrollY / maxScroll;
+
+                // Move the background canvas horizontally
+                const translateX = scrollProgress * (scrollContainer.scrollWidth - window.innerWidth);
+                scrollContainer.style.transform = `translateX(-${translateX}px)`;
+
+                // Scroll the Developer Card horizontally back & forth across the screen
+                const characterMaxMove = window.innerWidth - 450; // bounds
+                const characterX = (scrollProgress * characterMaxMove) - (characterMaxMove / 2);
+                
+                // Keep the floating hover animation but slide left/right on scroll
+                devCharacter.style.transform = `translateX(-${characterMaxMove * scrollProgress}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
