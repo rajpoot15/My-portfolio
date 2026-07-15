@@ -160,17 +160,17 @@
         .main-sphere {
             width: 320px;
             height: 320px;
-            background: radial-gradient(circle, rgba(255,107,53,0.3) 0%, rgba(255,159,28,0.05) 70%);
+            background: radial-gradient(circle, rgba(255,107,53,0.25) 0%, rgba(255,159,28,0.02) 70%);
             border-radius: 50%;
             filter: blur(20px);
             opacity: 0.7;
             animation: pulse 6s infinite alternate;
         }
 
-        /* Colorful Developer Character (Orange Hoodie + Drink) */
+        /* Beautifully Designed Beach Man SVG */
         .character-art {
             position: absolute;
-            width: 280px;
+            width: 340px;
             height: auto;
             z-index: 2;
             transform: translateY(0);
@@ -196,10 +196,10 @@
             transition: transform 0.1s ease-out;
         }
 
-        .icon-1 { top: 10%; left: 15%; }
-        .icon-2 { top: 20%; right: 10%; }
-        .icon-3 { bottom: 15%; left: 20%; }
-        .icon-4 { bottom: 25%; right: 15%; }
+        .icon-1 { top: 5%; left: 10%; }
+        .icon-2 { top: 15%; right: 5%; }
+        .icon-3 { bottom: 10%; left: 15%; }
+        .icon-4 { bottom: 20%; right: 10%; }
 
         /* General Section Design */
         section {
@@ -415,39 +415,74 @@
         <div class="hero-visual" id="heroVisual">
             <div class="main-sphere"></div>
             
-            <!-- Colorful Character Illustration Vector Shape -->
-            <svg class="character-art" id="characterMan" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
-                <!-- Cap/Hair -->
-                <path d="M60 50 C 60 20, 140 20, 140 50 Z" fill="#2d1e18" />
-                <!-- Head / Skin tone -->
-                <circle cx="100" cy="75" r="38" fill="#ffd1b3"/>
-                <!-- Cheeks color -->
-                <ellipse cx="75" cy="85" rx="6" ry="4" fill="#ff9e9e" opacity="0.5"/>
-                <ellipse cx="125" cy="85" rx="6" ry="4" fill="#ff9e9e" opacity="0.5"/>
-                <!-- Brown Beard/Stubble -->
-                <path d="M65 80 C 65 115, 135 115, 135 80 C 135 95, 125 112, 100 112 C 75 112, 65 95, 65 80 Z" fill="#4a3319"/>
-                <!-- Eyes -->
-                <circle cx="86" cy="74" r="5" fill="#2d1e18"/>
-                <circle cx="114" cy="74" r="5" fill="#2d1e18"/>
-                <!-- Smile -->
-                <path d="M90 92 Q 100 102 110 92" stroke="#2d1e18" stroke-width="3" stroke-linecap="round" fill="none"/>
-                <!-- Ears -->
-                <circle cx="61" cy="78" r="8" fill="#ffd1b3"/>
-                <circle cx="139" cy="78" r="8" fill="#ffd1b3"/>
-                <!-- Colorful Orange Hoodie Body -->
-                <path d="M45 160 C 45 120, 155 120, 155 160 L 165 220 L 35 220 Z" fill="#ff6b35"/>
-                <!-- Hoodie Drawstrings and collar -->
-                <path d="M85 140 L 85 175" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-                <path d="M115 140 L 115 175" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-                <circle cx="85" cy="177" r="4" fill="#ffd1b3"/>
-                <circle cx="115" cy="177" r="4" fill="#ffd1b3"/>
-                <!-- Hand holding a colorful Green Can -->
-                <rect x="135" y="150" width="28" height="45" rx="6" fill="#06d6a0"/>
-                <rect x="139" y="155" width="20" height="8" rx="2" fill="#ffffff" opacity="0.3"/>
-                <!-- Hand knuckles wrapping can -->
-                <path d="M130 155 C 130 155, 138 158, 138 162" stroke="#ffd1b3" stroke-width="5" stroke-linecap="round"/>
-                <path d="M130 165 C 130 165, 138 168, 138 172" stroke="#ffd1b3" stroke-width="5" stroke-linecap="round"/>
-                <path d="M130 175 C 130 175, 138 178, 138 182" stroke="#ffd1b3" stroke-width="5" stroke-linecap="round"/>
+            <!-- High-Quality Beach Man Sunbathing SVG Illustration -->
+            <svg class="character-art" id="characterMan" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+                <!-- Chair Frame Back Legs (Pink/Coral) -->
+                <line x1="60" y1="120" x2="45" y2="205" stroke="#ff85a2" stroke-width="8" stroke-linecap="round" />
+                <line x1="120" y1="110" x2="145" y2="205" stroke="#ff85a2" stroke-width="8" stroke-linecap="round" />
+                
+                <!-- Lounger Chair Body (Teal/Mint) -->
+                <path d="M65 95 L105 185 L175 185" fill="none" stroke="#a6e3e9" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" />
+                
+                <!-- Chair Frame Armrest/Front Legs (Pink/Coral) -->
+                <path d="M50 135 L120 125 C130 125 130 140 120 140 L70 145" fill="none" stroke="#ff85a2" stroke-width="8" stroke-linecap="round" />
+                
+                <!-- Relaxing Man Chubby Body & Legs -->
+                <!-- Thighs & Torso base -->
+                <path d="M90 130 Q110 115 130 130 L135 175 L85 175 Z" fill="#ffd1b3" />
+                <!-- Chubby Belly -->
+                <circle cx="112" cy="165" r="30" fill="#ffd1b3" />
+                <!-- Swim Trunks (Teal) -->
+                <path d="M85 160 C85 148, 140 148, 140 160 L135 185 L90 185 Z" fill="#4ea8de" />
+                
+                <!-- Legs sticking out -->
+                <!-- Left Leg -->
+                <path d="M100 180 L115 212 C117 216, 125 216, 125 212" fill="none" stroke="#ffd1b3" stroke-width="15" stroke-linecap="round"/>
+                <!-- Right Leg -->
+                <path d="M125 180 L140 212 C142 216, 150 216, 150 212" fill="none" stroke="#ffd1b3" stroke-width="15" stroke-linecap="round"/>
+
+                <!-- Left Arm resting comfy on the chair -->
+                <path d="M90 132 Q75 142 80 158" fill="none" stroke="#ffd1b3" stroke-width="13" stroke-linecap="round" />
+
+                <!-- Head -->
+                <circle cx="115" cy="95" r="28" fill="#ffd1b3" />
+                
+                <!-- Rosy Cheeks -->
+                <circle cx="98" cy="101" r="5" fill="#ff85a2" opacity="0.6" />
+                <circle cx="128" cy="101" r="5" fill="#ff85a2" opacity="0.6" />
+                
+                <!-- Cute happy mouth smile -->
+                <path d="M110 103 Q114 107 118 103" fill="none" stroke="#684a37" stroke-width="2.5" stroke-linecap="round" />
+                
+                <!-- Orange Sun Glasses with White Rims -->
+                <!-- Left Lens -->
+                <circle cx="101" cy="92" r="9" fill="#ff9f1c" stroke="#ffffff" stroke-width="2.5" />
+                <circle cx="101" cy="92" r="7" fill="#ffb703" />
+                <!-- Right Lens -->
+                <circle cx="125" cy="92" r="9" fill="#ff9f1c" stroke="#ffffff" stroke-width="2.5" />
+                <circle cx="125" cy="92" r="7" fill="#ffb703" />
+                <!-- Glasses Bridge -->
+                <rect x="108" y="90" width="10" height="2.5" fill="#ffffff" />
+
+                <!-- Swoopy Stylized Hair (Gerdoo Dribbble style) -->
+                <path d="M88 88 C88 65, 115 50, 138 68 C146 75, 142 90, 134 88 C129 86, 124 82, 115 82 C105 82, 101 92, 88 88 Z" fill="#582f0e" />
+                <path d="M106 68 C106 55, 132 50, 138 63 C142 72, 129 76, 115 72 Z" fill="#582f0e" />
+
+                <!-- Right Arm holding drink -->
+                <path d="M128 132 Q148 132 156 146" fill="none" stroke="#ffd1b3" stroke-width="13" stroke-linecap="round" />
+
+                <!-- Cocktail Drink Glass -->
+                <!-- Orange Drink Liquid -->
+                <path d="M152 135 L166 135 L162 155 L156 155 Z" fill="#ff9f1c" />
+                <!-- Glass Body/Stem/Base -->
+                <path d="M150 133 L168 133 L163 157 L155 157 Z" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.8" />
+                <line x1="159" y1="157" x2="159" y2="167" stroke="#ffffff" stroke-width="2.5" opacity="0.8" />
+                <ellipse cx="159" cy="167" rx="7" ry="1.5" fill="#ffffff" opacity="0.8" />
+                <!-- Green Straw -->
+                <line x1="157" y1="147" x2="150" y2="126" stroke="#06d6a0" stroke-width="2.5" stroke-linecap="round" />
+                <!-- Lemon Slice decoration -->
+                <circle cx="168" cy="133" r="4.5" fill="#ffd166" />
+                <circle cx="168" cy="133" r="3" fill="#ffb703" />
             </svg>
 
             <!-- Floating UI Elements -->
@@ -532,17 +567,4 @@
 
             // Disperse floating asset tokens outwards and upwards as page drops
             t1.style.transform = `translate(-${scrollPos * 0.3}px, -${scrollPos * 0.8}px)`;
-            t2.style.transform = `translate(${scrollPos * 0.4}px, -${scrollPos * 0.6}px)`;
-            t3.style.transform = `translate(-${scrollPos * 0.2}px, -${scrollPos * 0.5}px)`;
-            t4.style.transform = `translate(${scrollPos * 0.3}px, -${scrollPos * 0.9}px)`;
-            
-            t1.style.opacity = `${1 - (scrollPos / 400)}`;
-            t2.style.opacity = `${1 - (scrollPos / 400)}`;
-            t3.style.opacity = `${1 - (scrollPos / 400)}`;
-            t4.style.opacity = `${1 - (scrollPos / 400)}`;
-        });
-    </script>
-
-</body>
-    </html>
-                    
+            t2.style.transform = `translate(${scrollPos * 0.4}px, -${scrollPos * 0
