@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarun | Web Developer Portfolio</title>
+    <title>Ankit | Web Developer Portfolio</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -147,7 +147,7 @@
         .hero-visual {
             position: absolute;
             right: 8%;
-            top: 55%;
+            top: 50%;
             transform: translateY(-50%);
             width: 450px;
             height: 450px;
@@ -158,24 +158,24 @@
         }
 
         .main-sphere {
-            width: 320px;
-            height: 320px;
-            background: radial-gradient(circle, rgba(255,107,53,0.25) 0%, rgba(255,159,28,0.02) 70%);
+            width: 340px;
+            height: 340px;
+            background: radial-gradient(circle, rgba(255,107,53,0.2) 0%, rgba(255,159,28,0.01) 75%);
             border-radius: 50%;
-            filter: blur(20px);
-            opacity: 0.7;
+            filter: blur(15px);
+            opacity: 0.8;
             animation: pulse 6s infinite alternate;
         }
 
-        /* Beautifully Designed Beach Man SVG */
+        /* Animated SVG Character */
         .character-art {
             position: absolute;
-            width: 340px;
+            width: 360px;
             height: auto;
             z-index: 2;
-            transform: translateY(0);
-            transition: transform 0.1s ease-out, opacity 0.1s ease-out;
-            will-change: transform, opacity;
+            bottom: 20px;
+            transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
         }
 
         /* Floating Tech Tokens */
@@ -193,13 +193,14 @@
             color: var(--text-main);
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             z-index: 3;
-            transition: transform 0.1s ease-out;
+            transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+            will-change: transform, opacity;
         }
 
         .icon-1 { top: 5%; left: 10%; }
         .icon-2 { top: 15%; right: 5%; }
-        .icon-3 { bottom: 10%; left: 15%; }
-        .icon-4 { bottom: 20%; right: 10%; }
+        .icon-3 { bottom: 25%; left: 8%; }
+        .icon-4 { bottom: 30%; right: 12%; }
 
         /* General Section Design */
         section {
@@ -345,8 +346,8 @@
 
         /* Background Base Animations */
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.08); opacity: 0.8; }
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.05); opacity: 0.9; }
         }
 
         /* Responsive Breakpoints */
@@ -370,7 +371,7 @@
                 transform: none;
                 margin-top: 4rem;
                 width: 100%;
-                height: 350px;
+                height: 380px;
             }
         }
 
@@ -393,7 +394,7 @@
 
     <!-- Navigation Menu -->
     <nav>
-        <div class="logo">tarun<span>.</span></div>
+        <div class="logo">ankit<span>.</span></div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -402,11 +403,11 @@
         </ul>
     </nav>
 
-    <!-- Hero Content Interface -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-tag">Web Development Portfolio</div>
-            <h1>Hey, I am Tarun.<br>A <span>Web Developer</span></h1>
+            <h1>Hey, I am Ankit.<br>A <span>Web Developer</span></h1>
             <p>Building responsive front-end tools, interactive user interfaces, and custom logical scripting systems with pure modern code styling.</p>
             <a href="#projects" class="cta-btn">View My Work</a>
         </div>
@@ -415,74 +416,62 @@
         <div class="hero-visual" id="heroVisual">
             <div class="main-sphere"></div>
             
-            <!-- High-Quality Beach Man Sunbathing SVG Illustration -->
-            <svg class="character-art" id="characterMan" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
-                <!-- Chair Frame Back Legs (Pink/Coral) -->
-                <line x1="60" y1="120" x2="45" y2="205" stroke="#ff85a2" stroke-width="8" stroke-linecap="round" />
-                <line x1="120" y1="110" x2="145" y2="205" stroke="#ff85a2" stroke-width="8" stroke-linecap="round" />
+            <!-- High-Quality Custom SVG Illustration of the Excited Developer (Stock Image inspired) -->
+            <svg class="character-art" id="characterDeveloper" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+                <!-- Shirt Base & Neck (Overshirt Look) -->
+                <path d="M70 200 C70 170, 170 170, 170 200 L170 240 L70 240 Z" fill="#ffffff" />
+                <!-- Brown Jacket/Overshirt -->
+                <path d="M70 195 C60 195, 55 210, 50 240 L85 240 L85 200 Z" fill="#b07d50" />
+                <path d="M170 195 C180 195, 185 210, 190 240 L155 240 L155 200 Z" fill="#b07d50" />
                 
-                <!-- Lounger Chair Body (Teal/Mint) -->
-                <path d="M65 95 L105 185 L175 185" fill="none" stroke="#a6e3e9" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" />
-                
-                <!-- Chair Frame Armrest/Front Legs (Pink/Coral) -->
-                <path d="M50 135 L120 125 C130 125 130 140 120 140 L70 145" fill="none" stroke="#ff85a2" stroke-width="8" stroke-linecap="round" />
-                
-                <!-- Relaxing Man Chubby Body & Legs -->
-                <!-- Thighs & Torso base -->
-                <path d="M90 130 Q110 115 130 130 L135 175 L85 175 Z" fill="#ffd1b3" />
-                <!-- Chubby Belly -->
-                <circle cx="112" cy="165" r="30" fill="#ffd1b3" />
-                <!-- Swim Trunks (Teal) -->
-                <path d="M85 160 C85 148, 140 148, 140 160 L135 185 L90 185 Z" fill="#4ea8de" />
-                
-                <!-- Legs sticking out -->
-                <!-- Left Leg -->
-                <path d="M100 180 L115 212 C117 216, 125 216, 125 212" fill="none" stroke="#ffd1b3" stroke-width="15" stroke-linecap="round"/>
-                <!-- Right Leg -->
-                <path d="M125 180 L140 212 C142 216, 150 216, 150 212" fill="none" stroke="#ffd1b3" stroke-width="15" stroke-linecap="round"/>
+                <!-- Neck -->
+                <path d="M105 155 L135 155 L135 185 L105 185 Z" fill="#ffd1b3" />
+                <!-- Neck shadow -->
+                <path d="M105 170 Q120 180 135 170 L135 185 L105 185 Z" fill="#e0ab8b" opacity="0.5" />
 
-                <!-- Left Arm resting comfy on the chair -->
-                <path d="M90 132 Q75 142 80 158" fill="none" stroke="#ffd1b3" stroke-width="13" stroke-linecap="round" />
+                <!-- Face/Head (Oval/Oblong Structure) -->
+                <path d="M90 100 C90 70, 150 70, 150 100 C150 135, 135 160, 120 160 C105 160, 90 135, 90 100 Z" fill="#ffd1b3" />
+                
+                <!-- Red Ears -->
+                <circle cx="88" cy="112" r="10" fill="#ffd1b3" />
+                <circle cx="152" cy="112" r="10" fill="#ffd1b3" />
+                
+                <!-- Beard/Stubble Structure -->
+                <path d="M90 115 C90 155, 150 155, 150 115 C150 128, 145 156, 120 156 C95 156, 90 128, 90 115 Z" fill="#5c3d24" />
+                <!-- Mustache -->
+                <path d="M104 128 Q120 124 136 128 Q120 136 104 128 Z" fill="#422b19" />
 
-                <!-- Head -->
-                <circle cx="115" cy="95" r="28" fill="#ffd1b3" />
-                
-                <!-- Rosy Cheeks -->
-                <circle cx="98" cy="101" r="5" fill="#ff85a2" opacity="0.6" />
-                <circle cx="128" cy="101" r="5" fill="#ff85a2" opacity="0.6" />
-                
-                <!-- Cute happy mouth smile -->
-                <path d="M110 103 Q114 107 118 103" fill="none" stroke="#684a37" stroke-width="2.5" stroke-linecap="round" />
-                
-                <!-- Orange Sun Glasses with White Rims -->
-                <!-- Left Lens -->
-                <circle cx="101" cy="92" r="9" fill="#ff9f1c" stroke="#ffffff" stroke-width="2.5" />
-                <circle cx="101" cy="92" r="7" fill="#ffb703" />
-                <!-- Right Lens -->
-                <circle cx="125" cy="92" r="9" fill="#ff9f1c" stroke="#ffffff" stroke-width="2.5" />
-                <circle cx="125" cy="92" r="7" fill="#ffb703" />
+                <!-- Wide Excited Smile & White Teeth -->
+                <path d="M105 132 C105 150, 135 150, 135 132 Z" fill="#6d121a" />
+                <path d="M108 133 C112 138, 128 138, 132 133 Z" fill="#ffffff" />
+                <!-- Rosy Cheeks/Nose -->
+                <ellipse cx="120" cy="118" rx="8" ry="6" fill="#f29f8f" />
+
+                <!-- Excited Wide-Open Eyes -->
+                <!-- Left Eye White -->
+                <circle cx="106" cy="103" r="8" fill="#ffffff" />
+                <circle cx="106" cy="103" r="3.5" fill="#1b1b1b" />
+                <!-- Right Eye White -->
+                <circle cx="134" cy="103" r="8" fill="#ffffff" />
+                <circle cx="134" cy="103" r="3.5" fill="#1b1b1b" />
+
+                <!-- Round Black Eye-Glasses -->
+                <!-- Left Frame -->
+                <circle cx="106" cy="103" r="13" fill="none" stroke="#222222" stroke-width="2.5" />
+                <!-- Right Frame -->
+                <circle cx="134" cy="103" r="13" fill="none" stroke="#222222" stroke-width="2.5" />
                 <!-- Glasses Bridge -->
-                <rect x="108" y="90" width="10" height="2.5" fill="#ffffff" />
+                <rect x="117" y="101" width="6" height="2.5" fill="#222222" />
 
-                <!-- Swoopy Stylized Hair (Gerdoo Dribbble style) -->
-                <path d="M88 88 C88 65, 115 50, 138 68 C146 75, 142 90, 134 88 C129 86, 124 82, 115 82 C105 82, 101 92, 88 88 Z" fill="#582f0e" />
-                <path d="M106 68 C106 55, 132 50, 138 63 C142 72, 129 76, 115 72 Z" fill="#582f0e" />
+                <!-- High Messy Spiky Brown Hair -->
+                <path d="M85 92 C80 82, 85 62, 98 52 C105 45, 115 35, 128 42 C138 35, 148 48, 152 58 C158 70, 155 85, 150 92 C158 80, 142 62, 132 68 C122 62, 115 65, 108 72 C102 65, 92 78, 85 92 Z" fill="#5c3d24" />
+                <path d="M102 55 C110 40, 130 40, 136 52 C142 42, 128 35, 115 45 Z" fill="#422b19" />
 
-                <!-- Right Arm holding drink -->
-                <path d="M128 132 Q148 132 156 146" fill="none" stroke="#ffd1b3" stroke-width="13" stroke-linecap="round" />
-
-                <!-- Cocktail Drink Glass -->
-                <!-- Orange Drink Liquid -->
-                <path d="M152 135 L166 135 L162 155 L156 155 Z" fill="#ff9f1c" />
-                <!-- Glass Body/Stem/Base -->
-                <path d="M150 133 L168 133 L163 157 L155 157 Z" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.8" />
-                <line x1="159" y1="157" x2="159" y2="167" stroke="#ffffff" stroke-width="2.5" opacity="0.8" />
-                <ellipse cx="159" cy="167" rx="7" ry="1.5" fill="#ffffff" opacity="0.8" />
-                <!-- Green Straw -->
-                <line x1="157" y1="147" x2="150" y2="126" stroke="#06d6a0" stroke-width="2.5" stroke-linecap="round" />
-                <!-- Lemon Slice decoration -->
-                <circle cx="168" cy="133" r="4.5" fill="#ffd166" />
-                <circle cx="168" cy="133" r="3" fill="#ffb703" />
+                <!-- Grey Laptop Display Cover (Bottom Forefront) -->
+                <path d="M45 210 L195 210 C202 210, 202 240, 195 240 L45 240 C38 240, 38 210, 45 210 Z" fill="#555a60" />
+                <path d="M50 215 L190 215 C194 215, 194 240, 190 240 L50 240 C46 240, 46 215, 50 215 Z" fill="#70777e" />
+                <!-- Decorative Logo on Laptop Case -->
+                <circle cx="120" cy="227" r="4" fill="#ffffff" opacity="0.3" />
             </svg>
 
             <!-- Floating UI Elements -->
@@ -493,7 +482,7 @@
         </div>
     </section>
 
-    <!-- Selected Projects Content -->
+    <!-- Selected Projects Section -->
     <section id="projects">
         <h2 class="section-title">Selected <span>Projects</span></h2>
         
@@ -539,21 +528,21 @@
         </div>
     </section>
 
-    <!-- Footer Content -->
+    <!-- Footer Section -->
     <footer id="contact">
         <div class="footer-copy">
-            &copy; 2026 Tarun. Located in India.
+            &copy; 2026 Ankit. Located in India.
         </div>
         <div class="footer-contacts">
             Get in touch: <span>Available via Phone</span>
         </div>
     </footer>
 
-    <!-- Scroll Interaction Script Logic -->
+    <!-- Complex Parallax & Interaction Script -->
     <script>
         window.addEventListener('scroll', () => {
             const scrollPos = window.scrollY;
-            const characterMan = document.getElementById('characterMan');
+            const developer = document.getElementById('characterDeveloper');
             
             // Adjust individual tokens for a dynamic parallax dispersion effect
             const t1 = document.getElementById('token1');
@@ -561,10 +550,24 @@
             const t3 = document.getElementById('token3');
             const t4 = document.getElementById('token4');
 
-            // As user scrolls down, translate character upward and slowly fade opacity out
-            characterMan.style.transform = `translateY(-${scrollPos * 0.7}px)`;
-            characterMan.style.opacity = `${1 - (scrollPos / 500)}`;
+            // Scroll action: character peeks up subtly behind the laptop screen
+            // and then shifts slowly as we transition downwards
+            developer.style.transform = `translateY(${scrollPos * 0.12}px) scale(${1 + (scrollPos * 0.0002)})`;
 
             // Disperse floating asset tokens outwards and upwards as page drops
-            t1.style.transform = `translate(-${scrollPos * 0.3}px, -${scrollPos * 0.8}px)`;
-            t2.style.transform = `translate(${scrollPos * 0.4}px, -${scrollPos * 0
+            t1.style.transform = `translate(-${scrollPos * 0.35}px, -${scrollPos * 0.7}px) rotate(-${scrollPos * 0.1}deg)`;
+            t2.style.transform = `translate(${scrollPos * 0.4}px, -${scrollPos * 0.6}px) rotate(${scrollPos * 0.08}deg)`;
+            t3.style.transform = `translate(-${scrollPos * 0.25}px, -${scrollPos * 0.5}px) rotate(-${scrollPos * 0.05}deg)`;
+            t4.style.transform = `translate(${scrollPos * 0.3}px, -${scrollPos * 0.8}px) rotate(${scrollPos * 0.12}deg)`;
+            
+            // Fade out assets as user scrolls away
+            const opacityVal = Math.max(0, 1 - (scrollPos / 380));
+            t1.style.opacity = opacityVal;
+            t2.style.opacity = opacityVal;
+            t3.style.opacity = opacityVal;
+            t4.style.opacity = opacityVal;
+        });
+    </script>
+
+</body>
+</html>
