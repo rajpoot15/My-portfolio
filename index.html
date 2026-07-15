@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +63,7 @@
             text-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* Sections */
+        /* Full Height Sections */
         section {
             width: 100vw;
             min-height: 100vh;
@@ -75,6 +74,7 @@
             border-bottom: 1px solid var(--card-border);
         }
 
+        /* Hero Layout Grid */
         #home {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -197,7 +197,7 @@
         .avatar-img-frame svg {
             width: 100%;
             height: 100%;
-            filter: drop-shadow(0 25px 35px rgba(0,0,0,0.6));
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.7));
         }
 
         .avatar-shadow {
@@ -206,13 +206,13 @@
             background: rgba(0, 0, 0, 0.6);
             border-radius: 50%;
             margin-top: -10px;
-            filter: blur(5px);
+            filter: blur(4px);
             will-change: transform;
             transition: transform 0.1s ease-out;
             z-index: 1;
         }
 
-        /* Layout Content Sections */
+        /* Dynamic Section Content Configurations */
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
@@ -315,7 +315,7 @@
         }
         .contact-item i { color: var(--accent-color); font-size: 1.2rem; }
 
-        /* Mobile Adjustments */
+        /* Mobile Viewport Responsiveness */
         @media (max-width: 992px) {
             #home {
                 grid-template-columns: 1fr;
@@ -358,133 +358,156 @@
             <div class="hero-avatar-container" id="avatarContainer">
                 <div class="avatar-ring-bg"></div>
                 <div class="avatar-img-frame">
-                    <!-- Realistic Detailed Vector Render Representation -->
+                    <!-- High Quality Vector Re-creation of the Character Image -->
                     <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <!-- Skin Lighting Definitions -->
-                            <radialGradient id="skinGrad" cx="50%" cy="35%" r="65%">
-                                <stop offset="0%" stop-color="#ffdcd0"/>
-                                <stop offset="60%" stop-color="#f5bca9"/>
-                                <stop offset="100%" stop-color="#d9937b"/>
-                            </radialGradient>
-                            <linearGradient id="skinShadow" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="#d9937b"/>
-                                <stop offset="100%" stop-color="#a86550"/>
+                            <!-- Splashes Gradients -->
+                            <linearGradient id="blueSuit" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3a86c8"/>
+                                <stop offset="100%" stop-color="#23538a"/>
                             </linearGradient>
-
-                            <!-- Premium Fabric Material Gradients -->
-                            <linearGradient id="suitGrad" x1="10%" y1="0%" x2="80%" y2="100%">
-                                <stop offset="0%" stop-color="#4682b4"/>
-                                <stop offset="30%" stop-color="#2a6296"/>
-                                <stop offset="100%" stop-color="#15365c"/>
-                            </linearGradient>
-                            <linearGradient id="suitLapel" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#5594c9"/>
-                                <stop offset="100%" stop-color="#1b436e"/>
-                            </linearGradient>
-
-                            <!-- Realistic Multi-tone Hair Depth -->
-                            <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="#6a4933"/>
-                                <stop offset="50%" stop-color="#4a3222"/>
-                                <stop offset="100%" stop-color="#2b1c12"/>
-                            </linearGradient>
-
-                            <!-- Background Dynamic Lighting Elements -->
-                            <linearGradient id="splashOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <linearGradient id="orangeSplash" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stop-color="#ff7b39"/>
-                                <stop offset="100%" stop-color="#cc3c00"/>
+                                <stop offset="100%" stop-color="#dd4b14"/>
                             </linearGradient>
-                            <linearGradient id="splashYellow" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#ffe066"/>
-                                <stop offset="100%" stop-color="#d49b00"/>
+                            <linearGradient id="yellowSplash" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffd23f"/>
+                                <stop offset="100%" stop-color="#e0a600"/>
                             </linearGradient>
                         </defs>
 
-                        <!-- Stylized Dynamic Artwork Background Splashes -->
-                        <path d="M 110 230 Q 30 150 70 100 Q 120 70 160 160 Z" fill="url(#splashOrange)" opacity="0.9"/>
-                        <path d="M 390 210 Q 480 130 440 80 Q 370 60 330 170 Z" fill="url(#splashYellow)" opacity="0.9"/>
-                        <path d="M 370 280 Q 490 240 460 190 Q 390 170 340 250 Z" fill="url(#splashOrange)" opacity="0.85"/>
-                        <circle cx="60" cy="290" r="10" fill="#cc3c00"/>
-                        <circle cx="440" cy="310" r="8" fill="#ffe066"/>
+                        <!-- Dynamic Vector Background Splash Elements -->
+                        <path d="M 120 220 Q 50 160 80 120 Q 120 90 150 170 Z" fill="url(#orangeSplash)" opacity="0.85"/>
+                        <path d="M 380 220 Q 460 140 430 90 Q 370 70 340 180 Z" fill="url(#yellowSplash)" opacity="0.9"/>
+                        <path d="M 360 270 Q 480 220 450 180 Q 390 180 340 240 Z" fill="url(#orangeSplash)" opacity="0.85"/>
+                        <circle cx="70" cy="270" r="12" fill="#e05a1d"/>
+                        <circle cx="430" cy="290" r="10" fill="#ffd23f"/>
 
-                        <!-- Leg Positions / Trousers Layer Base -->
-                        <path d="M 110 450 C 110 520, 390 520, 390 450 C 390 410, 110 410, 110 450 Z" fill="#183654" />
-                        <!-- Shadow underneath torso base -->
-                        <path d="M 160 440 Q 250 460 340 440 L 330 455 Q 250 470 170 455 Z" fill="#0d1f30" opacity="0.5"/>
+                        <!-- Cross Legged Lower Body trousers -->
+                        <path d="M 120 440 C 120 500, 380 500, 380 440 C 380 400, 120 400, 120 440 Z" fill="#1b4170" />
                         
-                        <!-- Semi-Realistic Styled Leather Shoes -->
-                        <path d="M 145 495 Q 120 495 130 465 Q 175 440 195 475 Z" fill="#542e13" />
-                        <path d="M 145 495 Q 165 495 195 475" stroke="#331c0b" stroke-width="2" fill="none"/>
-                        <path d="M 355 495 Q 380 495 370 465 Q 325 440 305 475 Z" fill="#542e13" />
-                        <path d="M 355 495 Q 335 495 305 475" stroke="#331c0b" stroke-width="2" fill="none"/>
+                        <!-- Brown Shoes Vector Block -->
+                        <path d="M 160 490 Q 130 490 140 460 Q 180 440 200 470 Z" fill="#7a431d" />
+                        <path d="M 340 490 Q 370 490 360 460 Q 320 440 300 470 Z" fill="#7a431d" />
 
-                        <!-- Torso Suit Body -->
-                        <path d="M 165 330 L 335 330 L 355 450 L 145 450 Z" fill="url(#suitGrad)"/>
+                        <!-- Main Suit Torso Body -->
+                        <path d="M 170 330 L 330 330 L 350 450 L 150 450 Z" fill="url(#blueSuit)"/>
                         
-                        <!-- Crisp White Inner Shirt Layer -->
-                        <polygon points="215,330 285,330 250,385" fill="#ffffff" />
-                        <!-- Silk Classic Dark Tie -->
-                        <polygon points="244,365 256,365 258,445 242,445" fill="#0f2642" />
+                        <!-- Crisp White Inner Shirt & Blue Tie Layer -->
+                        <polygon points="220,330 280,330 250,380" fill="#ffffff" />
+                        <polygon points="242,360 258,360 255,440 245,440" fill="#183d6b" />
+                        <polygon points="235,330 250,360 240,360" fill="#e6e6e6" />
+                        <polygon points="265,330 250,360 260,360" fill="#e6e6e6" />
+
+                        <!-- Laptop Asset Base Deck -->
+                        <rect x="170" y="395" width="160" height="95" rx="10" fill="#cfd6df" stroke="#b0b9c5" stroke-width="2"/>
                         
-                        <!-- Realistic Layered Suit Lapels with Crease Depths -->
-                        <path d="M 165 330 L 215 330 L 250 385 L 200 410 Z" fill="url(#suitLapel)"/>
-                        <path d="M 335 330 L 285 330 L 250 385 L 300 410 Z" fill="url(#suitLapel)"/>
-
-                        <!-- Sleek Aluminium Finish Laptop Deck Module -->
-                        <rect x="165" y="395" width="170" height="95" rx="8" fill="#d2d7df"/>
-                        <!-- Top Rim Highlight -->
-                        <rect x="165" y="395" width="170" height="5" rx="2" fill="#ebeeec" opacity="0.8"/>
-                        <!-- Screen Reflection Casting Accent -->
-                        <path d="M 175 400 L 325 400 L 295 480 L 175 480 Z" fill="#ffffff" opacity="0.08"/>
+                        <!-- Expressive Dynamic Vector Hands pointing upward -->
+                        <!-- Left Arm & Hand -->
+                        <path d="M 170 350 Q 120 370 120 420" stroke="url(#blueSuit)" stroke-width="36" stroke-linecap="round" fill="none" />
+                        <circle cx="120" cy="420" r="16" fill="#ffd0b3" />
+                        <rect x="112" y="360" width="12" height="50" rx="6" fill="#ffd0b3" /> <!-- Index Finger Pointing -->
                         
-                        <!-- Arms & Expressive Pointing Hands -->
-                        <!-- Left Arm -->
-                        <path d="M 165 350 Q 115 375 115 420" stroke="url(#suitGrad)" stroke-width="34" stroke-linecap="round" fill="none" />
-                        <circle cx="115" cy="420" r="15" fill="url(#skinGrad)" />
-                        <rect x="108" y="362" width="11" height="48" rx="5.5" fill="url(#skinGrad)" />
-                        <!-- Right Arm -->
-                        <path d="M 335 350 Q 385 375 385 420" stroke="url(#suitGrad)" stroke-width="34" stroke-linecap="round" fill="none" />
-                        <circle cx="385" cy="420" r="15" fill="url(#skinGrad)" />
-                        <rect x="381" y="362" width="11" height="48" rx="5.5" fill="url(#skinGrad)" />
+                        <!-- Right Arm & Hand -->
+                        <path d="M 330 350 Q 380 370 380 420" stroke="url(#blueSuit)" stroke-width="36" stroke-linecap="round" fill="none" />
+                        <circle cx="380" cy="420" r="16" fill="#ffd0b3" />
+                        <rect x="376" y="360" width="12" height="50" rx="6" fill="#ffd0b3" /> <!-- Index Finger Pointing -->
 
-                        <!-- Neck Structure with Core Realistic Ambient Shadowing -->
-                        <rect x="232" y="300" width="36" height="40" fill="url(#skinGrad)" />
-                        <path d="M 232 320 Q 250 340 268 320 L 268 340 L 232 340 Z" fill="url(#skinShadow)" opacity="0.4"/>
+                        <!-- Neck Column -->
+                        <rect x="235" y="300" width="30" height="40" fill="#ffd0b3" />
 
-                        <!-- Highly Rendered Realist Head Shape Template -->
-                        <path d="M 185 215 C 185 130, 315 130, 315 215 C 315 290, 185 290, 185 215 Z" fill="url(#skinGrad)"/>
-                        
-                        <!-- Realist Soft Ears Feature Configurations -->
-                        <circle cx="183" cy="225" r="14" fill="url(#skinGrad)"/>
-                        <circle cx="185" cy="225" r="8" fill="url(#skinShadow)" opacity="0.3"/>
-                        <circle cx="317" cy="225" r="14" fill="url(#skinGrad)"/>
-                        <circle cx="315" cy="225" r="8" fill="url(#skinShadow)" opacity="0.3"/>
+                        <!-- Face/Head Vector Outline Structure -->
+                        <path d="M 190 220 C 190 140, 310 140, 310 220 C 310 290, 190 290, 190 220 Z" fill="#ffd0b3"/>
 
-                        <!-- Expressive Cheerful Mouth Matrix -->
-                        <path d="M 215 252 Q 250 295 285 252 Z" fill="#ffffff"/>
-                        <path d="M 220 255 Q 250 290 280 255 Z" fill="#781313"/>
-                        <!-- Soft Lip Highlight line -->
-                        <path d="M 225 255 Q 250 258 275 255" stroke="#f5bca9" stroke-width="2" fill="none"/>
+                        <!-- Happy Wide Open Smiling Mouth Vector -->
+                        <path d="M 220 255 Q 250 295 280 255 Z" fill="#ffffff"/>
+                        <path d="M 224 258 Q 250 290 276 258 Z" fill="#801a1a"/>
 
-                        <!-- Modern Crisp Eyeglasses Assembly -->
-                        <circle cx="222" cy="208" r="34" fill="none" stroke="#1c1c1c" stroke-width="5"/>
-                        <circle cx="222" cy="208" r="34" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.2"/> <!-- Glass Rim Highlight -->
-                        <circle cx="278" cy="208" r="34" fill="none" stroke="#1c1c1c" stroke-width="5"/>
-                        <circle cx="278" cy="208" r="34" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="240" y1="208" x2="260" y2="208" stroke="#1c1c1c" stroke-width="5"/>
+                        <!-- Big Round Glasses Frames -->
+                        <circle cx="225" cy="210" r="32" fill="none" stroke="#222" stroke-width="6"/>
+                        <circle cx="275" cy="210" r="32" fill="none" stroke="#222" stroke-width="6"/>
+                        <line x1="242" y1="210" x2="258" y2="210" stroke="#222" stroke-width="6"/>
 
-                        <!-- Deep Realistic Eyes & Pupils -->
-                        <circle cx="222" cy="208" r="13" fill="#ffffff"/>
-                        <circle cx="223" cy="207" r="7" fill="#2b1a09"/> <!-- Brown Iris -->
-                        <circle cx="223" cy="207" r="4" fill="#000000"/> <!-- Pupil -->
-                        <circle cx="220" cy="204" r="2" fill="#ffffff"/> <!-- Light Reflection Sparkle -->
+                        <!-- Big Expressive Eyes -->
+                        <circle cx="225" cy="210" r="14" fill="#ffffff"/>
+                        <circle cx="225" cy="210" r="6" fill="#111"/>
+                        <circle cx="275" cy="210" r="14" fill="#ffffff"/>
+                        <circle cx="275" cy="210" r="6" fill="#111"/>
 
-                        <circle cx="278" cy="208" r="13" fill="#ffffff"/>
-                        <circle cx="277" cy="207" r="7" fill="#2b1a09"/>
-                        <circle cx="277" cy="207" r="4" fill="#000000"/>
-                        <circle cx="275" cy="204" r="2" fill="#ffffff"/>
+                        <!-- Animated Fluffy Stylized Brown Hair Layer -->
+                        <path d="M 185 190 Q 170 140 210 120 Q 250 80 280 120 Q 330 130 315 190 Q 250 160 185 190 Z" fill="#5a3d28"/>
+                        <path d="M 210 120 Q 240 140 260 110 Q 280 140 300 125" fill="none" stroke="#422c1d" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="avatar-shadow" id="avatarShadow"></div>
+        </div>
+    </section>
 
-                        <!-- Sophisticated Multi-Strand Layered Realistic Hair Flow Architecture -->
-                        <!-- Primary Mass Base -->
-        
+    <!-- Section 2: About Me -->
+    <section id="about">
+        <div class="about-card">
+            <h2 class="section-title">About <span>Me</span></h2>
+            <p class="about-text">
+                Hello! I'm <span>Tarun</span>, a highly motivated <span>Web Developer</span> based in India. I focus entirely on creating completely responsive layouts, clean interaction patterns, and logic script layers.
+            </p>
+            <p class="about-text">
+                My objective is to constantly bring complex layout challenges to life with simple, aesthetic, and clean standard design layouts.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 3: Selected Projects -->
+    <section id="projects">
+        <div class="projects-wrapper">
+            <h2 class="section-title">Selected <span>Projects</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <div class="project-icon"><i class="fa-solid fa-calculator"></i></div>
+                        <h3>Interactive Calculator</h3>
+                        <p>A beautifully structured, highly responsive web application built to execute calculations smoothly.</p>
+                    </div>
+                    <a href="https://rajpoot15.github.io/Calculator/" target="_blank" class="project-link">Live Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+                <div class="project-card">
+                    <div>
+                        <div class="project-icon"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+                        <h3>Weather App</h3>
+                        <p>A dynamic application built to handle live forecasting requests instantly.</p>
+                    </div>
+                    <a href="https://rajpoot15.github.io/Wheather---App/" target="_blank" class="project-link">Live Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Skills & Contact -->
+    <section id="contact">
+        <div class="skills-contact-wrapper">
+            <div class="skills-half">
+                <h2 class="section-title">My <span>Skills</span></h2>
+                <ul class="skills-list">
+                    <li>Python Programming</li>
+                    <li>HTML5 & CSS3</li>
+                    <li>Responsive UI Design</li>
+                    <li>Front-end Engineering</li>
+                    <li>API Integration</li>
+                </ul>
+            </div>
+            <div class="contact-half">
+                <h2 class="section-title">Get In <span>Touch</span></h2>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Let's collaborate on amazing web project assets!</p>
+                <div class="contact-info">
+                    <a href="mailto:tarunsingh736781@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>tarunsingh736781@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank" class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn Profile</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </se
