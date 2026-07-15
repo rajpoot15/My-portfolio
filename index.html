@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankit | Web Developer Portfolio</title>
+    <title>Tarun | Web Developer Portfolio</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -149,8 +149,8 @@
             right: 8%;
             top: 50%;
             transform: translateY(-50%);
-            width: 450px;
-            height: 450px;
+            width: 480px;
+            height: 480px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -158,9 +158,9 @@
         }
 
         .main-sphere {
-            width: 340px;
-            height: 340px;
-            background: radial-gradient(circle, rgba(255,107,53,0.2) 0%, rgba(255,159,28,0.01) 75%);
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(255,107,53,0.18) 0%, rgba(255,159,28,0.01) 75%);
             border-radius: 50%;
             filter: blur(15px);
             opacity: 0.8;
@@ -170,10 +170,10 @@
         /* Animated SVG Character */
         .character-art {
             position: absolute;
-            width: 360px;
+            width: 420px;
             height: auto;
             z-index: 2;
-            bottom: 20px;
+            bottom: 10px;
             transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
             will-change: transform;
         }
@@ -197,10 +197,10 @@
             will-change: transform, opacity;
         }
 
-        .icon-1 { top: 5%; left: 10%; }
-        .icon-2 { top: 15%; right: 5%; }
-        .icon-3 { bottom: 25%; left: 8%; }
-        .icon-4 { bottom: 30%; right: 12%; }
+        .icon-1 { top: 2%; left: 8%; }
+        .icon-2 { top: 12%; right: 4%; }
+        .icon-3 { bottom: 35%; left: 4%; }
+        .icon-4 { bottom: 40%; right: 6%; }
 
         /* General Section Design */
         section {
@@ -328,7 +328,7 @@
             color: var(--text-muted);
         }
 
-        /* Footer */
+        /* Footer links styling */
         footer {
             padding: 4rem 8%;
             border-top: 1px solid var(--border-color);
@@ -339,9 +339,21 @@
             font-size: 0.9rem;
         }
 
-        .footer-contacts span {
-            color: var(--text-main);
-            font-weight: 600;
+        .footer-socials {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .footer-socials a {
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-color);
         }
 
         /* Background Base Animations */
@@ -371,7 +383,7 @@
                 transform: none;
                 margin-top: 4rem;
                 width: 100%;
-                height: 380px;
+                height: 400px;
             }
         }
 
@@ -394,7 +406,7 @@
 
     <!-- Navigation Menu -->
     <nav>
-        <div class="logo">ankit<span>.</span></div>
+        <div class="logo">tarun<span>.</span></div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -407,7 +419,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-tag">Web Development Portfolio</div>
-            <h1>Hey, I am Ankit.<br>A <span>Web Developer</span></h1>
+            <h1>Hey, I am Tarun.<br>A <span>Web Developer</span></h1>
             <p>Building responsive front-end tools, interactive user interfaces, and custom logical scripting systems with pure modern code styling.</p>
             <a href="#projects" class="cta-btn">View My Work</a>
         </div>
@@ -416,66 +428,82 @@
         <div class="hero-visual" id="heroVisual">
             <div class="main-sphere"></div>
             
-            <!-- Upgraded High-Quality Premium 3D-Style Vector Illustration -->
-            <svg class="character-art" id="characterDeveloper" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
-                <!-- Shirt Base & White Premium Crewneck Inner Shirt -->
-                <path d="M72 196 C72 172, 168 172, 168 196 L168 240 L72 240 Z" fill="#ffffff" />
+            <!-- Exact 3D Sitting Excited Suit Man SVG Vector Illustration -->
+            <svg class="character-art" id="characterDeveloper" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <!-- Dynamic Background Splash Effects (From your Image) -->
+                <!-- Left Splashes -->
+                <path d="M 50 110 Q 15 90 25 70 Q 40 70 55 90 Z" fill="#ff6b35" opacity="0.8"/>
+                <path d="M 60 130 Q 30 100 50 65 Q 75 75 68 110 Z" fill="#ffb703" opacity="0.8"/>
+                <circle cx="28" cy="120" r="4" fill="#ff6b35" opacity="0.7"/>
                 
-                <!-- Smart Caramel-Brown Tailored Open Jacket -->
-                <path d="M72 195 C62 195, 56 208, 52 240 L88 240 L88 198 Z" fill="#a36f41" />
-                <path d="M168 195 C178 195, 184 208, 188 240 L152 240 L152 198 Z" fill="#a36f41" />
+                <!-- Right Splashes -->
+                <path d="M 200 120 Q 235 95 245 72 Q 230 62 210 90 Z" fill="#f26457" opacity="0.8"/>
+                <path d="M 185 140 Q 220 120 230 100 Q 215 90 195 120 Z" fill="#ffb703" opacity="0.8"/>
+                <path d="M 195 150 Q 225 150 230 138 Q 215 130 195 142 Z" fill="#7bf1a8" opacity="0.7"/>
+                <circle cx="218" cy="125" r="4.5" fill="#f26457" opacity="0.7"/>
+
+                <!-- Cross-legged Sitting Pants Base -->
+                <path d="M 45 220 Q 130 255 215 220 L 185 240 L 75 240 Z" fill="#2d6ea6" />
+                <path d="M 55 215 Q 130 235 205 215 C 225 240 205 250 180 250 L 80 250 C 55 250 35 240 55 215 Z" fill="#245885" />
                 
-                <!-- Clean Neck Structure -->
-                <path d="M106 152 L134 152 L134 185 L106 185 Z" fill="#ffd1b3" />
-                <!-- Subtle neck drop-shadow -->
-                <path d="M106 168 Q120 178 134 168 L134 185 L106 185 Z" fill="#e2a785" opacity="0.45" />
+                <!-- Brown Shoes -->
+                <path d="M 60 230 C 50 230 55 252 75 252 C 85 252 85 235 70 230 Z" fill="#7a4b2a" />
+                <path d="M 200 230 C 210 230 205 252 185 252 C 175 252 175 235 190 230 Z" fill="#7a4b2a" />
 
-                <!-- Well-Proportioned Attractive Oblong/Oval Head Structure -->
-                <path d="M92 96 C92 66, 148 66, 148 96 C148 130, 136 156, 120 156 C104 156, 92 130, 92 96 Z" fill="#ffd1b3" />
+                <!-- White Dress Shirt & Blue Tie Inner -->
+                <path d="M 110 140 L 150 140 L 140 180 L 120 180 Z" fill="#ffffff" />
+                <path d="M 124 152 L 136 152 L 132 190 L 128 190 Z" fill="#1b4d73" />
+                <path d="M 112 140 L 125 154 L 125 140 Z" fill="#e6e6e6" />
+                <path d="M 148 140 L 135 154 L 135 140 Z" fill="#e6e6e6" />
+
+                <!-- Blue Formal Suit Jacket Layer -->
+                <path d="M 80 160 C 80 140 180 140 180 160 L 175 220 L 85 220 Z" fill="#3a86c8" />
+                <path d="M 80 160 L 115 195 L 110 220 L 85 220 Z" fill="#2d6ea6" />
+                <path d="M 180 160 L 145 195 L 150 220 L 175 220 Z" fill="#2d6ea6" />
+
+                <!-- Pointing Up Arms & Hands -->
+                <!-- Left Hand / Arm -->
+                <path d="M 83 165 Q 60 140 70 125" fill="none" stroke="#3a86c8" stroke-width="15" stroke-linecap="round" />
+                <circle cx="70" cy="115" r="9" fill="#ffd1b3" />
+                <path d="M 67 115 L 62 100" stroke="#ffd1b3" stroke-width="3.5" stroke-linecap="round" /> <!-- Pointing Finger -->
+
+                <!-- Right Hand / Arm -->
+                <path d="M 177 165 Q 200 140 190 125" fill="none" stroke="#3a86c8" stroke-width="15" stroke-linecap="round" />
+                <circle cx="190" cy="115" r="9" fill="#ffd1b3" />
+                <path d="M 193 115 L 198 100" stroke="#ffd1b3" stroke-width="3.5" stroke-linecap="round" /> <!-- Pointing Finger -->
+
+                <!-- Clean Neck -->
+                <path d="M 116 122 L 144 122 L 140 145 L 120 145 Z" fill="#ffd1b3" />
+
+                <!-- Oblong/Oval Happy Face -->
+                <path d="M 98 85 C 98 55 162 55 162 85 C 162 115 150 132 130 132 C 110 132 98 115 98 85 Z" fill="#ffd1b3" />
                 
-                <!-- Refined Balanced Ears -->
-                <path d="M92 106 C87 106, 85 116, 92 120 Z" fill="#ffd1b3" />
-                <path d="M148 106 C153 106, 155 116, 148 120 Z" fill="#ffd1b3" />
-                
-                <!-- Neat, Sharp Stubble/Groomed Light Beard Outline -->
-                <path d="M92 116 C92 154, 148 154, 148 116 C148 126, 142 151, 120 151 C98 151, 92 126, 92 116 Z" fill="#4d331e" opacity="0.4" />
-                <!-- Sharp Clean-Cut Mustache Line -->
-                <path d="M106 128 Q120 125 134 128 Q120 133 106 128 Z" fill="#4d331e" opacity="0.5" />
+                <!-- Big Open Excited Mouth (From your Image) -->
+                <path d="M 112 105 C 112 125 148 125 148 105 Z" fill="#6d121a" />
+                <path d="M 116 106 Q 130 110 144 106" fill="none" stroke="#ffffff" stroke-width="3" />
 
-                <!-- Confident, Charismatic Gentle Smile -->
-                <path d="M109 133 Q120 141 131 133" fill="none" stroke="#5c261b" stroke-width="2.5" stroke-linecap="round" />
-                <!-- Subtle Cheerful Highlights -->
-                <circle cx="100" cy="116" r="6" fill="#f29f8f" opacity="0.4" />
-                <circle cx="140" cy="116" r="6" fill="#f29f8f" opacity="0.4" />
+                <!-- Huge Excited Eyes -->
+                <circle cx="115" cy="85" r="9.5" fill="#ffffff" stroke="#222222" stroke-width="0.5" />
+                <circle cx="115" cy="85" r="3.5" fill="#111111" />
+                <circle cx="145" cy="85" r="9.5" fill="#ffffff" stroke="#222222" stroke-width="0.5" />
+                <circle cx="145" cy="85" r="3.5" fill="#111111" />
 
-                <!-- Charming, Focused Bright Eyes -->
-                <!-- Left Eye -->
-                <circle cx="107" cy="102" r="6.5" fill="#ffffff" />
-                <circle cx="107" cy="102" r="3" fill="#1f1f1f" />
-                <circle cx="108.5" cy="100.5" r="1" fill="#ffffff" /> <!-- Highlight -->
-                <!-- Right Eye -->
-                <circle cx="133" cy="102" r="6.5" fill="#ffffff" />
-                <circle cx="133" cy="102" r="3" fill="#1f1f1f" />
-                <circle cx="134.5" cy="100.5" r="1" fill="#ffffff" /> <!-- Highlight -->
+                <!-- Thick Round Black Eyeglasses -->
+                <circle cx="115" cy="85" r="15" fill="none" stroke="#1e1e1e" stroke-width="3" />
+                <circle cx="145" cy="85" r="15" fill="none" stroke="#1e1e1e" stroke-width="3" />
+                <line x1="129" y1="85" x2="131" y2="85" stroke="#1e1e1e" stroke-width="3" />
 
-                <!-- Premium Premium Slim Tortoiseshell-Style Round Designer Glasses -->
-                <circle cx="107" cy="102" r="12" fill="none" stroke="#2b2017" stroke-width="2" />
-                <circle cx="133" cy="102" r="12" fill="none" stroke="#2b2017" stroke-width="2" />
-                <line x1="119" y1="102" x2="121" y2="102" stroke="#2b2017" stroke-width="2" />
+                <!-- Expressive Eyebrows -->
+                <path d="M 102 68 Q 115 63 125 72" fill="none" stroke="#4a2e1b" stroke-width="3.5" stroke-linecap="round" />
+                <path d="M 158 68 Q 145 63 135 72" fill="none" stroke="#4a2e1b" stroke-width="3.5" stroke-linecap="round" />
 
-                <!-- Attractive Modern Volume Fade Pompadour Hairstyle -->
-                <!-- Fade Sides (Dark Brown Gradient Feel) -->
-                <path d="M92 92 C88 84, 90 74, 96 70 C100 74, 100 86, 94 92 Z" fill="#3a2312" />
-                <path d="M148 92 C152 84, 150 74, 144 70 C140 74, 140 86, 146 92 Z" fill="#3a2312" />
-                <!-- Thick Textured Top Flow Sweeping Up & Back -->
-                <path d="M94 72 C90 56, 100 36, 120 36 C138 36, 150 50, 146 72 C142 60, 134 50, 120 50 C104 50, 98 62, 94 72 Z" fill="#54351c" />
-                <path d="M100 56 C106 44, 124 42, 134 48 C138 42, 126 38, 118 42 Z" fill="#3a2312" />
+                <!-- Messy Fluffy Brown Hair Architecture -->
+                <path d="M 98 76 C 92 68 95 52 108 45 C 115 36 135 32 148 42 C 158 38 165 52 163 68 C 168 58 152 46 138 50 C 126 44 115 48 108 58 Z" fill="#54351c" />
+                <path d="M 112 48 C 120 34 140 36 148 48 C 152 42 138 34 125 40 Z" fill="#402511" />
 
-                <!-- Premium Minimalist Metal Laptop Rim (Forefront Layer) -->
-                <path d="M44 212 L196 212 C203 212, 203 240, 196 240 L44 240 C37 240, 37 212, 44 212 Z" fill="#4d5156" />
-                <path d="M48 217 L192 217 C195 217, 195 240, 192 240 L48 240 C45 240, 45 217, 48 217 Z" fill="#696e75" />
-                <!-- Sleek Minimalist Central Logo Dot -->
-                <circle cx="120" cy="228" r="3.5" fill="#ffffff" opacity="0.4" />
+                <!-- Forefront Grey Tech Laptop Rim Layer -->
+                <path d="M 70 178 L 190 178 C 196 178 196 230 190 230 L 70 230 C 64 230 64 178 70 178 Z" fill="#b0b5bc" />
+                <path d="M 74 183 L 186 183 C 190 183 190 230 186 230 L 74 230 C 70 230 70 183 74 183 Z" fill="#cfd4da" />
             </svg>
 
             <!-- Floating UI Elements -->
@@ -532,33 +560,9 @@
         </div>
     </section>
 
-    <!-- Footer Section -->
+    <!-- Footer Section with Links Built In -->
     <footer id="contact">
         <div class="footer-copy">
-            &copy; 2026 Ankit. Located in India.
+            &copy; 2026 Tarun. Located in India.
         </div>
-        <div class="footer-contacts">
-            Get in touch: <span>Available via Phone</span>
-        </div>
-    </footer>
-
-    <!-- Complex Parallax & Interaction Script -->
-    <script>
-        window.addEventListener('scroll', () => {
-            const scrollPos = window.scrollY;
-            const developer = document.getElementById('characterDeveloper');
-            
-            // Adjust individual tokens for a dynamic parallax dispersion effect
-            const t1 = document.getElementById('token1');
-            const t2 = document.getElementById('token2');
-            const t3 = document.getElementById('token3');
-            const t4 = document.getElementById('token4');
-
-            // Scroll action: character peeks up subtly behind the laptop screen
-            developer.style.transform = `translateY(${scrollPos * 0.12}px) scale(${1 + (scrollPos * 0.0002)})`;
-
-            // Disperse floating asset tokens outwards and upwards as page drops
-            t1.style.transform = `translate(-${scrollPos * 0.35}px, -${scrollPos * 0.7}px) rotate(-${scrollPos * 0.1}deg)`;
-            t2.style.transform = `translate(${scrollPos * 0.4}px, -${scrollPos * 0.6}px) rotate(${scrollPos * 0.08}deg)`;
-            t3.style.transform = `translate(-${scrollPos * 0.25}px, -${scrollPos * 0.5}px) rotate(-${scrollPos * 0.05}deg)`;
-            t4.style.transform = `translate(${scro
+        <div class=
