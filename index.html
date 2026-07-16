@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarun | Interactive Portfolio</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -22,421 +18,60 @@
             --text-muted: #a4b3c6;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
+        nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 8%; background: rgba(6, 10, 15, 0.85); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid var(--card-border); }
+        .logo { font-size: 1.5rem; font-weight: 700; }
+        .logo span { color: var(--accent-color); }
 
-        /* Fixed Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 8%;
-            background: rgba(6, 10, 15, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--card-border);
-        }
+        section { width: 100vw; min-height: 100vh; display: flex; align-items: center; padding: 0 10%; border-bottom: 1px solid var(--card-border); }
+        #home { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; padding-top: 100px; }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
+        .hero-tag { display: inline-block; padding: 0.4rem 1rem; background: rgba(255, 107, 53, 0.1); border: 1px solid rgba(255, 107, 53, 0.3); border-radius: 100px; font-size: 0.85rem; color: var(--accent-color); font-weight: 600; margin-bottom: 1.5rem; }
+        .hero h1 { font-size: 4rem; font-weight: 700; line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero h1 span { color: var(--accent-color); }
+        .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.6; }
+        .cta-btn { display: inline-block; padding: 0.9rem 2rem; background: var(--accent-color); color: #000; text-decoration: none; font-weight: 700; border-radius: 12px; }
 
-        .logo span {
-            color: var(--accent-color);
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
+        .hero-avatar-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; height: 100%; }
+        .hero-avatar-container { position: relative; display: flex; justify-content: center; align-items: center; will-change: transform; z-index: 2; }
+        .avatar-img-frame { position: relative; width: 340px; height: 420px; z-index: 2; display: flex; align-items: center; justify-content: center; }
+        .avatar-img-frame svg { width: 100%; height: 100%; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.7)); }
+        .avatar-shadow { width: 180px; height: 10px; background: rgba(0, 0, 0, 0.6); border-radius: 50%; margin-top: -10px; filter: blur(4px); will-change: transform; }
 
-        /* Full Height Sections */
-        section {
-            width: 100vw;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 10%;
-            position: relative;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        /* Hero Layout Grid */
-        #home {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 2rem;
-            padding-top: 100px;
-        }
-
-        .hero-content {
-            max-width: 600px;
-            z-index: 2;
-        }
-
-        .hero-tag {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: rgba(255, 107, 53, 0.1);
-            border: 1px solid rgba(255, 107, 53, 0.3);
-            border-radius: 100px;
-            font-size: 0.85rem;
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 span {
-            color: var(--accent-color);
-            text-shadow: 0 0 20px var(--accent-glow);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            padding: 0.9rem 2rem;
-            background: var(--accent-color);
-            color: #000;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 12px;
-            box-shadow: 0 0 20px var(--accent-glow);
-            transition: transform 0.2s;
-        }
-
-        .cta-btn:hover {
-            transform: scale(1.03);
-        }
-
-        .hero-social-links {
-            display: flex;
-            gap: 1.2rem;
-            margin-top: 2rem;
-        }
-
-        .hero-social-links a {
-            color: var(--text-muted);
-            font-size: 1.4rem;
-            transition: color 0.3s;
-        }
-
-        .hero-social-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Avatar Container Setup with Active Physics Hooks */
-        .hero-avatar-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            height: 100%;
-        }
-
-        .hero-avatar-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            will-change: transform;
-            transition: transform 0.1s ease-out;
-            z-index: 2;
-        }
-
-        .avatar-ring-bg {
-            position: absolute;
-            width: 380px;
-            height: 380px;
-            border: 2px dashed rgba(255, 107, 53, 0.2);
-            border-radius: 50%;
-            animation: spinRing 25s linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes spinRing {
-            100% { transform: rotate(360deg); }
-        }
-
-        .avatar-img-frame {
-            position: relative;
-            width: 340px;
-            height: 420px;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .avatar-img-frame svg {
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.7));
-        }
-
-        .avatar-shadow {
-            width: 180px;
-            height: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 50%;
-            margin-top: -10px;
-            filter: blur(4px);
-            will-change: transform;
-            transition: transform 0.1s ease-out;
-            z-index: 1;
-        }
-
-        /* Dynamic Section Content Configurations */
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 2.5rem;
-        }
-        .section-title span {
-            color: var(--accent-color);
-            text-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .about-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 3rem;
-            backdrop-filter: blur(12px);
-            max-width: 750px;
-            width: 100%;
-        }
-        .about-text {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-        .about-text span {
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        .projects-wrapper {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 900px;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: border-color 0.3s, transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 250px;
-        }
-        .project-card:hover {
-            border-color: rgba(255, 107, 53, 0.5);
-            transform: translateY(-5px);
-        }
-        .project-icon {
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-        .project-link {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-        .project-link:hover { color: var(--accent-color); }
-
-        .skills-contact-wrapper {
-            display: flex;
-            gap: 4rem;
-            width: 100%;
-            max-width: 900px;
-        }
-        .skills-half, .contact-half { flex: 1; }
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            list-style: none;
-        }
-        .skills-list li {
-            padding: 0.6rem 1.2rem;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 100px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-        .contact-info { margin-top: 1.5rem; }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-        .contact-item i { color: var(--accent-color); font-size: 1.2rem; }
-
-        /* Mobile Viewport Responsiveness */
-        @media (max-width: 992px) {
-            #home {
-                grid-template-columns: 1fr;
-                padding-top: 100px;
-                text-align: center;
-            }
-            .hero-content { margin: 0 auto; }
-            .hero-avatar-wrapper { margin-top: 3rem; }
-            .avatar-img-frame { width: 280px; height: 350px; }
-            .avatar-ring-bg { width: 320px; height: 320px; }
-            .hero-social-links { justify-content: center; }
-            .projects-grid { grid-template-columns: 1fr; }
-            .skills-contact-wrapper { flex-direction: column; gap: 2.5rem; }
-            section { padding: 5rem 6%; }
-        }
+        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 2.5rem; }
+        .section-title span { color: var(--accent-color); }
+        .about-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 3rem; backdrop-filter: blur(12px); max-width: 750px; }
+        .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .project-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 2rem; }
+        
+        @media (max-width: 992px) { #home { grid-template-columns: 1fr; text-align: center; } .projects-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <!-- Upper Navigation Panel -->
-    <nav>
-        <div class="logo">tarun<span>.</span></div>
-    </nav>
+    <nav><div class="logo">tarun<span>.</span></div></nav>
 
-    <!-- Section 1: Home Showcase Layout -->
     <section id="home">
         <div class="hero-content">
             <div class="hero-tag">Product Designer & Developer</div>
             <h1>Hey, I am Tarun.<br>A <span>Web Developer</span></h1>
-            <p>I build interactive frontend experiences and modern, clean digital architectures that bridge intuitive design choices with powerful functionality.</p>
+            <p>I build interactive frontend experiences and modern, clean digital architectures.</p>
             <a href="#projects" class="cta-btn">View My Work</a>
-            <div class="hero-social-links">
-                <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:tarunsingh736781@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
         </div>
 
-        <!-- Character Avatar Module with Dynamic Bounce Shadow Configuration -->
         <div class="hero-avatar-wrapper">
             <div class="hero-avatar-container" id="avatarContainer">
-                <div class="avatar-ring-bg"></div>
                 <div class="avatar-img-frame">
-                    <!-- High Quality Vector Re-creation of the Character Image -->
                     <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <!-- Splashes Gradients -->
-                            <linearGradient id="blueSuit" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#3a86c8"/>
-                                <stop offset="100%" stop-color="#23538a"/>
-                            </linearGradient>
-                            <linearGradient id="orangeSplash" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#ff7b39"/>
-                                <stop offset="100%" stop-color="#dd4b14"/>
-                            </linearGradient>
-                            <linearGradient id="yellowSplash" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#ffd23f"/>
-                                <stop offset="100%" stop-color="#e0a600"/>
-                            </linearGradient>
-                        </defs>
-
-                        <!-- Dynamic Vector Background Splash Elements -->
-                        <path d="M 120 220 Q 50 160 80 120 Q 120 90 150 170 Z" fill="url(#orangeSplash)" opacity="0.85"/>
-                        <path d="M 380 220 Q 460 140 430 90 Q 370 70 340 180 Z" fill="url(#yellowSplash)" opacity="0.9"/>
-                        <path d="M 360 270 Q 480 220 450 180 Q 390 180 340 240 Z" fill="url(#orangeSplash)" opacity="0.85"/>
-                        <circle cx="70" cy="270" r="12" fill="#e05a1d"/>
-                        <circle cx="430" cy="290" r="10" fill="#ffd23f"/>
-
-                        <!-- Cross Legged Lower Body trousers -->
-                        <path d="M 120 440 C 120 500, 380 500, 380 440 C 380 400, 120 400, 120 440 Z" fill="#1b4170" />
-                        
-                        <!-- Brown Shoes Vector Block -->
-                        <path d="M 160 490 Q 130 490 140 460 Q 180 440 200 470 Z" fill="#7a431d" />
-                        <path d="M 340 490 Q 370 490 360 460 Q 320 440 300 470 Z" fill="#7a431d" />
-
-                        <!-- Main Suit Torso Body -->
-                        <path d="M 170 330 L 330 330 L 350 450 L 150 450 Z" fill="url(#blueSuit)"/>
-                        
-                        <!-- Crisp White Inner Shirt & Blue Tie Layer -->
-                        <polygon points="220,330 280,330 250,380" fill="#ffffff" />
-                        <polygon points="242,360 258,360 255,440 245,440" fill="#183d6b" />
-                        <polygon points="235,330 250,360 240,360" fill="#e6e6e6" />
-                        <polygon points="265,330 250,360 260,360" fill="#e6e6e6" />
-
-                        <!-- Laptop Asset Base Deck -->
-                        <rect x="170" y="395" width="160" height="95" rx="10" fill="#cfd6df" stroke="#b0b9c5" stroke-width="2"/>
-                        
-                        <!-- Expressive Dynamic Vector Hands pointing upward -->
-                        <!-- Left Arm & Hand -->
-                        <path d="M 170 350 Q 120 370 120 420" stroke="url(#blueSuit)" stroke-width="36" stroke-linecap="round" fill="none" />
-                        <circle cx="120" cy="420" r="16" fill="#ffd0b3" />
-                        <rect x="112" y="360" width="12" height="50" rx="6" fill="#ffd0b3" /> <!-- Index Finger Pointing -->
-                        
-                        <!-- Right Arm & Hand -->
-                        <path d="M 330 350 Q 380 370 380 420" stroke="url(#blueSuit)" stroke-width="36" stroke-linecap="round" fill="none" />
-                        <circle cx="380" cy="420" r="16" fill="#ffd0b3" />
-                        <rect x="376" y="360" width="12" height="50" rx="6" fill="#ffd0b3" /> <!-- Index Finger Pointing -->
-
-                        <!-- Neck Column -->
-                        <rect x="235" y="300" width="30" height="40" fill="#ffd0b3" />
-
-                        <!-- Face/Head Vector Outline Structure -->
+                        <path d="M 120 220 Q 50 160 80 120 Q 120 90 150 170 Z" fill="#ff7b39" opacity="0.85"/>
+                        <path d="M 380 220 Q 460 140 430 90 Q 370 70 340 180 Z" fill="#ffd23f" opacity="0.9"/>
+                        <path d="M 170 330 L 330 330 L 350 450 L 150 450 Z" fill="#23538a"/>
                         <path d="M 190 220 C 190 140, 310 140, 310 220 C 310 290, 190 290, 190 220 Z" fill="#ffd0b3"/>
-
-                        <!-- Happy Wide Open Smiling Mouth Vector -->
-                        <path d="M 220 255 Q 250 295 280 255 Z" fill="#ffffff"/>
-                        <path d="M 224 258 Q 250 290 276 258 Z" fill="#801a1a"/>
-
-                        <!-- Big Round Glasses Frames -->
                         <circle cx="225" cy="210" r="32" fill="none" stroke="#222" stroke-width="6"/>
                         <circle cx="275" cy="210" r="32" fill="none" stroke="#222" stroke-width="6"/>
-                        <line x1="242" y1="210" x2="258" y2="210" stroke="#222" stroke-width="6"/>
-
-                        <!-- Big Expressive Eyes -->
-                        <circle cx="225" cy="210" r="14" fill="#ffffff"/>
-                        <circle cx="225" cy="210" r="6" fill="#111"/>
-                        <circle cx="275" cy="210" r="14" fill="#ffffff"/>
-                        <circle cx="275" cy="210" r="6" fill="#111"/>
-
-                        <!-- Animated Fluffy Stylized Brown Hair Layer -->
                         <path d="M 185 190 Q 170 140 210 120 Q 250 80 280 120 Q 330 130 315 190 Q 250 160 185 190 Z" fill="#5a3d28"/>
-                        <path d="M 210 120 Q 240 140 260 110 Q 280 140 300 125" fill="none" stroke="#422c1d" stroke-width="4" stroke-linecap="round"/>
                     </svg>
                 </div>
             </div>
@@ -444,70 +79,51 @@
         </div>
     </section>
 
-    <!-- Section 2: About Me -->
     <section id="about">
         <div class="about-card">
             <h2 class="section-title">About <span>Me</span></h2>
-            <p class="about-text">
-                Hello! I'm <span>Tarun</span>, a highly motivated <span>Web Developer</span> based in India. I focus entirely on creating completely responsive layouts, clean interaction patterns, and logic script layers.
-            </p>
-            <p class="about-text">
-                My objective is to constantly bring complex layout challenges to life with simple, aesthetic, and clean standard design layouts.
-            </p>
+            <p>I focus on creating completely responsive layouts and clean interaction patterns.</p>
         </div>
     </section>
 
-    <!-- Section 3: Selected Projects -->
     <section id="projects">
         <div class="projects-wrapper">
             <h2 class="section-title">Selected <span>Projects</span></h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div>
-                        <div class="project-icon"><i class="fa-solid fa-calculator"></i></div>
-                        <h3>Interactive Calculator</h3>
-                        <p>A beautifully structured, highly responsive web application built to execute calculations smoothly.</p>
-                    </div>
-                    <a href="https://rajpoot15.github.io/Calculator/" target="_blank" class="project-link">Live Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <h3>Interactive Calculator</h3>
+                    <p>Responsive web application.</p>
+                    <a href="https://rajpoot15.github.io/Calculator/" target="_blank">Live Link</a>
                 </div>
                 <div class="project-card">
-                    <div>
-                        <div class="project-icon"><i class="fa-solid fa-cloud-sun-rain"></i></div>
-                        <h3>Weather App</h3>
-                        <p>A dynamic application built to handle live forecasting requests instantly.</p>
-                    </div>
-                    <a href="https://rajpoot15.github.io/Wheather---App/" target="_blank" class="project-link">Live Project Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <h3>Weather App</h3>
+                    <p>Live forecasting application.</p>
+                    <a href="https://rajpoot15.github.io/Wheather---App/" target="_blank">Live Link</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 4: Skills & Contact -->
-    <section id="contact">
-        <div class="skills-contact-wrapper">
-            <div class="skills-half">
-                <h2 class="section-title">My <span>Skills</span></h2>
-                <ul class="skills-list">
-                    <li>Python Programming</li>
-                    <li>HTML5 & CSS3</li>
-                    <li>Responsive UI Design</li>
-                    <li>Front-end Engineering</li>
-                    <li>API Integration</li>
-                </ul>
-            </div>
-            <div class="contact-half">
-                <h2 class="section-title">Get In <span>Touch</span></h2>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Let's collaborate on amazing web project assets!</p>
-                <div class="contact-info">
-                    <a href="mailto:tarunsingh736781@gmail.com" class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>tarunsingh736781@gmail.com</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank" class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn Profile</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </se
+    <script>
+        const avatarContainer = document.getElementById('avatarContainer');
+        const avatarShadow = document.getElementById('avatarShadow');
+        
+        let scrollY = 0;
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const bounceY = Math.sin(scrollY * 0.005) * 40;
+                    avatarContainer.style.transform = `translateY(${bounceY}px)`;
+                    const shadowScale = 1 - (Math.abs(bounceY) / 150);
+                    avatarShadow.style.transform = `scaleX(${shadowScale})`;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    </script>
+</body>
+</html>
