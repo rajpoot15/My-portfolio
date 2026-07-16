@@ -3,392 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarun | Interactive Portfolio</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Tarun | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
             --bg-color: #060a0f;
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 255, 255, 0.07);
             --accent-color: #ff6b35;
-            --accent-glow: rgba(255, 107, 53, 0.4);
             --text-main: #f4f4f0;
             --text-muted: #a4b3c6;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
-
-        /* Fixed Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 8%;
-            background: rgba(6, 10, 15, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .logo span {
-            color: var(--accent-color);
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        /* Sections */
-        section {
-            width: 100vw;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 10%;
-            position: relative;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        #home {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 2rem;
-            padding-top: 100px;
-        }
-
-        .hero-content {
-            max-width: 600px;
-            z-index: 2;
-        }
-
-        .hero-tag {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: rgba(255, 107, 53, 0.1);
-            border: 1px solid rgba(255, 107, 53, 0.3);
-            border-radius: 100px;
-            font-size: 0.85rem;
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 span {
-            color: var(--accent-color);
-            text-shadow: 0 0 20px var(--accent-glow);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            padding: 0.9rem 2rem;
-            background: var(--accent-color);
-            color: #000;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 12px;
-            box-shadow: 0 0 20px var(--accent-glow);
-            transition: transform 0.2s;
-        }
-
-        .cta-btn:hover {
-            transform: scale(1.03);
-        }
-
-        .hero-social-links {
-            display: flex;
-            gap: 1.2rem;
-            margin-top: 2rem;
-        }
-
-        .hero-social-links a {
-            color: var(--text-muted);
-            font-size: 1.4rem;
-            transition: color 0.3s;
-        }
-
-        .hero-social-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Avatar Container Setup with Active Physics Hooks */
-        .hero-avatar-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            height: 100%;
-        }
-
-        .hero-avatar-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            will-change: transform;
-            z-index: 2;
-        }
-
-        .avatar-ring-bg {
-            position: absolute;
-            width: 380px;
-            height: 380px;
-            border: 2px dashed rgba(255, 107, 53, 0.2);
-            border-radius: 50%;
-            animation: spinRing 25s linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes spinRing {
-            100% { transform: rotate(360deg); }
-        }
-
-        .avatar-img-frame {
-            position: relative;
-            width: 340px;
-            height: 420px;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .avatar-img-frame svg {
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0 25px 35px rgba(0,0,0,0.6));
-        }
-
-        .avatar-shadow {
-            width: 180px;
-            height: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 50%;
-            margin-top: -10px;
-            filter: blur(5px);
-            will-change: transform;
-            z-index: 1;
-        }
-
-        /* Layout Content Sections */
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 2.5rem;
-        }
-        .section-title span {
-            color: var(--accent-color);
-            text-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .about-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 3rem;
-            backdrop-filter: blur(12px);
-            max-width: 750px;
-            width: 100%;
-        }
-        .about-text {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-        .about-text span {
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        .projects-wrapper {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 900px;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: border-color 0.3s, transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 250px;
-        }
-        .project-card:hover {
-            border-color: rgba(255, 107, 53, 0.5);
-            transform: translateY(-5px);
-        }
-        .project-icon {
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-        .project-link {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-        .project-link:hover { color: var(--accent-color); }
-
-        .skills-contact-wrapper {
-            display: flex;
-            gap: 4rem;
-            width: 100%;
-            max-width: 900px;
-        }
-        .skills-half, .contact-half { flex: 1; }
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            list-style: none;
-        }
-        .skills-list li {
-            padding: 0.6rem 1.2rem;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 100px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-        .contact-info { margin-top: 1.5rem; }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-        .contact-item i { color: var(--accent-color); font-size: 1.2rem; }
-
-        @media (max-width: 992px) {
-            #home {
-                grid-template-columns: 1fr;
-                padding-top: 100px;
-                text-align: center;
-            }
-            .hero-content { margin: 0 auto; }
-            .hero-avatar-wrapper { margin-top: 3rem; }
-            .avatar-img-frame { width: 280px; height: 350px; }
-            .avatar-ring-bg { width: 320px; height: 320px; }
-            .hero-social-links { justify-content: center; }
-            .projects-grid { grid-template-columns: 1fr; }
-            .skills-contact-wrapper { flex-direction: column; gap: 2.5rem; }
-            section { padding: 5rem 6%; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
+        
+        /* Section styling */
+        section { width: 100vw; min-height: 100vh; display: flex; align-items: center; padding: 0 10%; border-bottom: 1px solid var(--card-border); }
+        
+        /* Hero Section */
+        #home { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; padding-top: 100px; }
+        .hero-content h1 { font-size: 3.5rem; }
+        .hero-content h1 span { color: var(--accent-color); }
+        
+        /* Skills and Projects */
+        .skills-list { display: flex; flex-wrap: wrap; gap: 1rem; list-style: none; }
+        .skills-list li { padding: 0.8rem 1.5rem; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 50px; }
+        .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .project-card { background: var(--card-bg); border: 1px solid var(--card-border); padding: 2rem; border-radius: 20px; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">tarun<span>.</span></div>
-    </nav>
-
     <section id="home">
         <div class="hero-content">
-            <div class="hero-tag">Product Designer & Developer</div>
             <h1>Hey, I am Tarun.<br>A <span>Web Developer</span></h1>
-            <p>I build interactive frontend experiences and modern, clean digital architectures that bridge intuitive design choices with powerful functionality.</p>
-            <a href="#projects" class="cta-btn">View My Work</a>
-            <div class="hero-social-links">
-                <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:tarunsingh736781@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
-        </div>
-
-        <div class="hero-avatar-wrapper">
-            <div class="hero-avatar-container" id="avatarContainer">
-                <div class="avatar-ring-bg"></div>
-                <div class="avatar-img-frame">
-                    <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
-                        <!-- SVGs remain unchanged as requested -->
-                        <path d="M 110 230 Q 30 150 70 100 Q 120 70 160 160 Z" fill="#ff7b39" opacity="0.9"/>
-                        <path d="M 390 210 Q 480 130 440 80 Q 370 60 330 170 Z" fill="#ffe066" opacity="0.9"/>
-                        <path d="M 165 330 L 335 330 L 355 450 L 145 450 Z" fill="#2a6296"/>
-                        <path d="M 190 220 C 190 140, 310 140, 310 220 C 310 290, 190 290, 190 220 Z" fill="#ffdcd0"/>
-                        <circle cx="222" cy="208" r="34" fill="none" stroke="#1c1c1c" stroke-width="5"/>
-                        <circle cx="278" cy="208" r="34" fill="none" stroke="#1c1c1c" stroke-width="5"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="avatar-shadow" id="avatarShadow"></div>
+            <p>I build interactive frontend experiences.</p>
         </div>
     </section>
 
-    <script>
-        const avatarContainer = document.getElementById('avatarContainer');
-        const avatarShadow = document.getElementById('avatarShadow');
-        let ticking = false;
+    <section id="skills">
+        <div>
+            <h2>My Skills</h2>
+            <ul class="skills-list">
+                <li>HTML5 / CSS3</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <li>UI Design</li>
+            </ul>
+        </div>
+    </section>
 
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrollY = window.scrollY;
-                    // Bounce math: avatar up/down based on scroll
-                    const bounceY = Math.sin(scrollY * 0.005) * 40;
-                    avatarContainer.style.transform = `translateY(${bounceY}px)`;
-                    
-                    // Shadow effect: pulse based on bounce
-                    const shadowScale = 1 - (Math.abs(bounceY) / 150);
-                    avatarShadow.style.transform = `scaleX(${shadowScale})`;
-                    
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    </script>
+    <section id="projects">
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Interactive Calculator</h3>
+                <a href="https://rajpoot15.github.io/Calculator/" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <h3>Weather App</h3>
+                <a href="https://rajpoot15.github.io/Wheather---App/" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div>
+            <h2>Contact Me</h2>
+            <p><i class="fas fa-envelope"></i> tarunsingh736781@gmail.com</p>
+            <p><a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank">LinkedIn Profile</a></p>
+        </div>
+    </section>
+
 </body>
 </html>
-
