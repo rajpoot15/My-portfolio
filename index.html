@@ -317,7 +317,7 @@
       </div>
     </section>
 
-    <!-- CONTACT FORM SECTION (UPDATED ENPOINT) -->
+    <!-- CONTACT FORM SECTION -->
     <section id="contact" class="w-full px-4 sm:px-6 py-12 bg-black/50 border-t border-white/10">
       <div class="max-w-2xl mx-auto glass-card p-6 sm:p-10 rounded-2xl flex flex-col gap-6">
         <div class="text-center">
@@ -359,11 +359,13 @@
 
   <!-- INTERACTIVE SCRIPTS -->
   <script>
+    // AUTO-RESET SCROLL IF URL CONTAINS #contact
+    if (window.location.hash === '#contact') {
+      window.scrollTo(0, 0);
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
+
     const cursor = document.getElementById('custom-cursor');
     if (cursor) {
       window.addEventListener('mousemove', (e) => {
-        cursor.style.transform = `translate3d(${e.clientX - 8}px, ${e.clientY - 8}px, 0)`;
-      });
-      const interactiveElements = document.querySelectorAll('a, button, input, textarea, .glass-card');
-      interactiveElements.forEach(el => {
-  
+        cursor.style.transform = `transla
