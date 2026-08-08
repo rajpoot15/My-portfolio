@@ -30,27 +30,83 @@
       background: #000;
       color: #fff;
       overflow-x: hidden;
-      overflow-y: auto;
+      overflow-y: auto !important;
       font-family: "Space Mono", monospace;
       -webkit-font-smoothing: antialiased;
     }
-    .glass-card {
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      transition: transform 0.2s ease, background 0.2s ease;
-      will-change: transform;
+    
+    @media (min-width: 768px) {
+      body { cursor: none; }
+      #custom-cursor {
+        pointer-events: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 16px; height: 16px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 1);
+        mix-blend-mode: difference;
+        transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
+        z-index: 9999;
+      }
+      .cursor-hover #custom-cursor {
+        transform: scale(2.5);
+        background-color: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.8);
+      }
     }
-    .glass-card:hover {
-      background: rgba(0, 0, 0, 0.6);
-      border-color: rgba(255, 255, 255, 0.3);
+
+    .glass-card {
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .project-card.hidden-project {
+      display: none !important;
+    }
+
+    .btn-mate {
+      position: relative;
+      background: #121212;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-mate:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
       transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+    }
+    .btn-mate:active {
+      transform: translateY(0);
+    }
+
+    .btn-mate-accent {
+      background: linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+    .btn-mate-accent:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
     }
   </style>
 </head>
-<body class="bg-black text-white font-mono">
+<body class="bg-black text-white font-mono relative">
 
-  <!-- LIGHTWEIGHT OPTIMIZED BACKGROUND LAYER -->
+  <!-- CUSTOM CURSOR -->
+  <div id="custom-cursor" class="hidden md:block"></div>
+
+  <!-- BACKGROUND LAYER -->
   <div class="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
     <video id="heroVideo" 
            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_083515_290e5a10-0b95-41af-a5e2-32b6389baa4d.mp4" 
@@ -67,157 +123,193 @@
     </div>
   </div>
 
-  <!-- RESPONSIVE NAVBAR -->
-  <nav class="fixed top-0 left-0 w-full h-16 sm:h-20 z-50 flex items-center justify-between px-4 sm:px-12 pointer-events-none">
-    <div class="pointer-events-auto">
-      <div class="h-10 sm:h-12 px-3 sm:px-5 bg-black/70 backdrop-blur-md rounded-full flex items-center gap-2 sm:gap-3 border border-white/10 shadow-2xl">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="text-[11px] sm:text-sm font-bold tracking-wider">TARUN SINGH</span>
-      </div>
+  <!-- TOP NAVBAR -->
+  <nav class="fixed top-0 left-0 w-full h-16 z-50 flex items-center justify-between px-3 sm:px-8 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="text-xs sm:text-sm font-bold tracking-wider">TARUN SINGH</span>
     </div>
 
-    <div class="flex items-center gap-2 sm:gap-3 pointer-events-auto">
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tarunsingh736781@gmail.com" target="_blank" rel="noopener noreferrer" class="h-9 sm:h-12 px-3 sm:px-5 bg-white rounded-full text-black flex items-center gap-1.5 sm:gap-2 font-medium text-xs sm:text-sm hover:bg-neutral-200 transition-all shadow-xl">
-        <i class="bi bi-envelope-fill text-sm sm:text-base"></i>
-        <span>Email</span>
+    <div class="flex items-center gap-2">
+      <a href="#contact" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs">
+        <i class="bi bi-envelope-fill text-amber-400"></i>
+        <span>Contact</span>
       </a>
-      <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" class="h-9 sm:h-12 px-3 sm:px-5 bg-black/70 border border-white/20 text-white rounded-full flex items-center gap-1.5 sm:gap-2 font-medium text-xs sm:text-sm hover:bg-white hover:text-black transition-all shadow-xl backdrop-blur-md">
-        <i class="bi bi-linkedin text-sm sm:text-base text-sky-400"></i>
+      <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank" rel="noopener noreferrer" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs">
+        <i class="bi bi-linkedin text-sky-400"></i>
         <span>LinkedIn</span>
       </a>
     </div>
   </nav>
 
-  <!-- MAIN SCROLL CONTENT -->
-  <div class="relative z-10 w-full">
+  <!-- MAIN CONTAINER -->
+  <div class="relative z-10 w-full pt-16">
 
     <!-- HERO SECTION -->
-    <section class="w-full min-h-[90vh] sm:min-h-[100dvh] flex flex-col justify-end px-4 sm:px-12 pt-24 pb-12">
-      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between w-full max-w-7xl mx-auto">
-        <div class="flex flex-col gap-3 sm:gap-4 max-w-2xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 bg-black/60 backdrop-blur-md w-fit">
-            <i class="bi bi-cpu text-xs text-cyan-400"></i>
-            <span class="text-[10px] uppercase tracking-widest text-white/80">Interactive Architecture</span>
-          </div>
-          <h1 class="text-white font-light leading-[0.95] text-[clamp(36px,8vw,90px)] tracking-tight">
-            Web<br /><span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-white/40">Developer</span>
-          </h1>
-          <p class="text-xs sm:text-sm text-white/80 leading-relaxed max-w-md bg-black/50 backdrop-blur-sm p-3.5 rounded-xl border border-white/10">
-            I build interactive frontend experiences and modern, clean digital architectures that bridge intuitive design choices with powerful functionality.
-          </p>
+    <section class="w-full flex flex-col justify-center px-4 sm:px-12 py-12">
+      <div class="flex flex-col gap-6 max-w-4xl mx-auto w-full">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 bg-black/60 backdrop-blur-md w-fit">
+          <i class="bi bi-cpu text-xs text-cyan-400"></i>
+          <span class="text-[10px] uppercase tracking-widest text-white/80">Interactive Architecture</span>
+        </div>
+        <h1 class="text-white font-light leading-[0.95] text-[clamp(36px,8vw,80px)] tracking-tight">
+          Web<br /><span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-white/40">Developer</span>
+        </h1>
+        <p class="text-xs sm:text-sm text-white/80 leading-relaxed max-w-md bg-black/50 backdrop-blur-sm p-4 rounded-xl border border-white/10">
+          I build interactive frontend experiences and modern digital architectures bridging intuitive design choices with powerful functionality.
+        </p>
+
+        <div class="flex items-center gap-3">
+          <a href="#projects" class="btn-mate px-6 py-3 rounded-full text-xs font-semibold flex items-center gap-2">
+            <span>View Projects</span>
+            <i class="bi bi-arrow-down"></i>
+          </a>
         </div>
       </div>
     </section>
 
     <!-- ABOUT SECTION -->
-    <section class="w-full min-h-screen flex items-center justify-center px-4 sm:px-6 py-16 sm:py-24 bg-black/20 backdrop-blur-sm border-t border-white/10">
-      <div class="max-w-4xl w-full text-center flex flex-col items-center glass-card p-6 sm:p-16 rounded-2xl sm:rounded-3xl">
-        <span class="text-white/60 text-[10px] tracking-[0.3em] uppercase mb-4 sm:mb-6 px-4 py-1 border border-white/20 rounded-full bg-white/10">About</span>
+    <section class="w-full px-4 sm:px-6 py-12 bg-black/30 border-t border-white/10">
+      <div class="max-w-4xl mx-auto text-center flex flex-col items-center glass-card p-6 sm:p-12 rounded-2xl">
+        <span class="text-white/60 text-[10px] tracking-[0.3em] uppercase mb-4 px-4 py-1 border border-white/20 rounded-full bg-white/10">About</span>
         
-        <p class="text-xs sm:text-base text-white/80 leading-relaxed max-w-2xl font-light mb-6 sm:mb-8">
-          I'm <strong class="text-white font-medium">Tarun Singh</strong>, currently pursuing a Bachelor of Computer Applications (BCA) at Lovely Professional University (Expected 2027). Currently working as a Customer Support Executive (Email Process) at Dr ITM Limited since March 2024, combining technical expertise with effective problem-solving and communication.
+        <p class="text-xs sm:text-base text-white/80 leading-relaxed max-w-2xl font-light mb-6">
+          I'm <strong class="text-white font-medium">Tarun Singh</strong>, currently pursuing a Bachelor of Computer Applications (BCA) at Lovely Professional University (Expected 2027). Working as a Customer Support Executive (Email Process) at Dr ITM Limited since March 2024.
         </p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-xl text-left border-t border-white/10 pt-6">
-          <div class="bg-black/40 p-4 rounded-xl border border-white/10">
-            <span class="text-[10px] uppercase text-white/50 block tracking-wider">Education</span>
-            <p class="text-xs text-white/90 font-medium mt-1">BCA — Lovely Professional University</p>
-            <span class="text-[10px] text-emerald-400">Expected Completion: 2027</span>
-          </div>
-          <div class="bg-black/40 p-4 rounded-xl border border-white/10">
-            <span class="text-[10px] uppercase text-white/50 block tracking-wider">Experience</span>
-            <p class="text-xs text-white/90 font-medium mt-1">Customer Support Exec (Email Process)</p>
-            <span class="text-[10px] text-white/60">Dr ITM Limited | Mar 2024 – Present</span>
+        <div class="w-full max-w-xl mb-6">
+          <span class="text-[10px] uppercase text-white/50 block tracking-wider mb-3">Skills & Technologies</span>
+          <div class="flex flex-wrap items-center justify-center gap-2">
+            <span class="px-3 py-1 bg-white/5 border border-white/15 rounded-full text-xs text-white/90 flex items-center gap-1.5"><i class="bi bi-filetype-html text-amber-400"></i> HTML5</span>
+            <span class="px-3 py-1 bg-white/5 border border-white/15 rounded-full text-xs text-white/90 flex items-center gap-1.5"><i class="bi bi-filetype-css text-sky-400"></i> CSS3</span>
+            <span class="px-3 py-1 bg-white/5 border border-white/15 rounded-full text-xs text-white/90 flex items-center gap-1.5"><i class="bi bi-filetype-js text-yellow-400"></i> JavaScript</span>
+            <span class="px-3 py-1 bg-white/5 border border-white/15 rounded-full text-xs text-white/90 flex items-center gap-1.5"><i class="bi bi-bootstrap text-purple-400"></i> Tailwind</span>
+            <span class="px-3 py-1 bg-white/5 border border-white/15 rounded-full text-xs text-white/90 flex items-center gap-1.5"><i class="bi bi-filetype-py text-emerald-400"></i> Python</span>
+            <span class="px-3 py-1 bg-white/5 border border-white/15 rounded-full text-xs text-white/90 flex items-center gap-1.5"><i class="bi bi-git text-orange-500"></i> Git</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- FEATURED PROJECTS SECTION -->
-    <section class="w-full min-h-screen bg-black/40 backdrop-blur-md text-white flex flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-24 border-t border-white/10">
-      <div class="max-w-6xl w-full">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-16 gap-4 bg-black/50 p-4 sm:p-6 rounded-2xl border border-white/10">
+    <section id="projects" class="w-full px-4 sm:px-6 py-12 bg-black/40 border-t border-white/10">
+      <div class="max-w-5xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4 bg-black/60 p-4 rounded-xl border border-white/10">
           <div>
-            <span class="text-white/50 text-[10px] tracking-[0.3em] uppercase block mb-1 sm:mb-2">Portfolio</span>
-            <h3 class="text-2xl sm:text-3xl font-light">Featured Projects</h3>
+            <span class="text-white/50 text-[10px] tracking-[0.3em] uppercase block mb-1">Portfolio</span>
+            <h3 class="text-2xl font-light">Featured Projects</h3>
+          </div>
+
+          <div class="flex items-center gap-2 overflow-x-auto pb-1">
+            <button onclick="filterProjects('all')" class="filter-btn btn-mate active text-xs px-4 py-2 rounded-full font-medium whitespace-nowrap">All</button>
+            <button onclick="filterProjects('web')" class="filter-btn btn-mate text-xs px-4 py-2 rounded-full font-medium whitespace-nowrap">Web Apps</button>
+            <button onclick="filterProjects('ai')" class="filter-btn btn-mate text-xs px-4 py-2 rounded-full font-medium whitespace-nowrap">AI & Bot</button>
+            <button onclick="filterProjects('dashboard')" class="filter-btn btn-mate text-xs px-4 py-2 rounded-full font-medium whitespace-nowrap">Analytics</button>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 gap-4 sm:gap-6">
+        <div class="grid grid-cols-1 gap-6">
 
-          <!-- 1. Interactive Calculator -->
-          <div class="glass-card p-6 sm:p-10 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6">
-            <div class="flex flex-col gap-1.5 sm:gap-2">
-              <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90 w-fit">Web Application</span>
-              <h4 class="text-xl sm:text-2xl font-light">Interactive Calculator</h4>
-              <p class="text-xs text-white/70 max-w-xl leading-relaxed">
-                A beautifully structured, highly responsive web application built to execute calculations smoothly.
-              </p>
-            </div>
-            <a href="https://rajpoot15.github.io/Calculator/" target="_blank" rel="noopener noreferrer" class="w-full md:w-auto text-center px-6 py-2.5 sm:py-3 rounded-full border border-white/20 text-xs font-medium bg-black/60 hover:bg-white hover:text-black transition-all">
-              Visit App <i class="bi bi-arrow-up-right ml-1"></i>
-            </a>
-          </div>
-
-          <!-- 2. Weather App -->
-          <div class="glass-card p-6 sm:p-10 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6">
-            <div class="flex flex-col gap-1.5 sm:gap-2">
-              <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90 w-fit">Web Application</span>
-              <h4 class="text-xl sm:text-2xl font-light">Weather App</h4>
-              <p class="text-xs text-white/70 max-w-xl leading-relaxed">
-                A dynamic application built to handle live forecasting requests instantly.
-              </p>
-            </div>
-            <a href="https://rajpoot15.github.io/Wheather---App/" target="_blank" rel="noopener noreferrer" class="w-full md:w-auto text-center px-6 py-2.5 sm:py-3 rounded-full border border-white/20 text-xs font-medium bg-black/60 hover:bg-white hover:text-black transition-all">
-              Visit App <i class="bi bi-arrow-up-right ml-1"></i>
-            </a>
-          </div>
-
-          <!-- 3. Q Solver Telegram Bot -->
-          <div class="glass-card p-6 sm:p-10 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6">
-            <div class="flex flex-col gap-1.5 sm:gap-2">
-              <div class="flex flex-wrap items-center gap-2 mb-1">
-                <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90">Python & AI Bot</span>
-                <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">Free-Tier Server</span>
+          <!-- 1. Music Player App -->
+          <div class="project-card glass-card p-5 sm:p-6 rounded-2xl flex flex-col gap-4" data-category="web">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 bg-gradient-to-br from-rose-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
+                <i class="bi bi-music-note-beamer text-2xl text-rose-400"></i>
               </div>
-              <h4 class="text-xl sm:text-2xl font-light">Q Solver Telegram Bot</h4>
-              <p class="text-xs text-white/70 max-w-xl leading-relaxed">
-                An AI-powered bot built with Python and Gemini API.
-              </p>
-              <p class="text-[11px] text-white/50 italic mt-0.5">
-                Note: Hosted on a free-tier server, not available 24/7.
-              </p>
+              <div class="flex flex-col gap-1">
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90 w-fit">Web Application</span>
+                <h4 class="text-lg sm:text-xl font-medium">Music Player App</h4>
+              </div>
             </div>
-            <a href="https://web.telegram.org/k/#@HelperinfoBuddy_bot" target="_blank" rel="noopener noreferrer" class="w-full md:w-auto text-center px-6 py-2.5 sm:py-3 rounded-full border border-white/20 text-xs font-medium bg-black/60 hover:bg-white hover:text-black transition-all">
-              Open Bot <i class="bi bi-telegram ml-1"></i>
+            <p class="text-xs text-white/70 leading-relaxed">
+              A sleek web streaming app with continuous autoplay, artist detection, and instant search functionality.
+            </p>
+            <a href="https://rajpoot15.github.io/My-music-App/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-3.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5">
+              <span>Visit Music Player</span>
+              <i class="bi bi-arrow-up-right"></i>
             </a>
           </div>
 
-          <!-- 4. Performance Dashboard -->
-          <div class="glass-card p-6 sm:p-10 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6">
-            <div class="flex flex-col gap-1.5 sm:gap-2">
-              <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90 w-fit">Analytics Dashboard</span>
-              <h4 class="text-xl sm:text-2xl font-light">Performance Dashboard</h4>
-              <p class="text-xs text-white/70 max-w-xl leading-relaxed">
-                A comprehensive analytics dashboard for real-time performance tracking.
-              </p>
+          <!-- 2. Interactive Calculator -->
+          <div class="project-card glass-card p-5 sm:p-6 rounded-2xl flex flex-col gap-4" data-category="web">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 bg-gradient-to-br from-indigo-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
+                <i class="bi bi-calculator text-2xl text-indigo-400"></i>
+              </div>
+              <div class="flex flex-col gap-1">
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90 w-fit">Web Application</span>
+                <h4 class="text-lg sm:text-xl font-medium">Interactive Calculator</h4>
+              </div>
             </div>
-            <a href="https://rajpoot15.github.io/Performance-Dashboard/" target="_blank" rel="noopener noreferrer" class="w-full md:w-auto text-center px-6 py-2.5 sm:py-3 rounded-full border border-white/20 text-xs font-medium bg-black/60 hover:bg-white hover:text-black transition-all">
-              Visit Dashboard <i class="bi bi-arrow-up-right ml-1"></i>
+            <p class="text-xs text-white/70 leading-relaxed">
+              A responsive, sleek web calculator built to execute complex math operations smoothly.
+            </p>
+            <a href="https://rajpoot15.github.io/Calculator/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-3.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5">
+              <span>Visit Calculator</span>
+              <i class="bi bi-arrow-up-right"></i>
             </a>
           </div>
 
-          <!-- 5. Music Player App -->
-          <div class="glass-card p-6 sm:p-10 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6">
-            <div class="flex flex-col gap-1.5 sm:gap-2">
-              <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90 w-fit">Web Application</span>
-              <h4 class="text-xl sm:text-2xl font-light">Music Player App</h4>
-              <p class="text-xs text-white/70 max-w-xl leading-relaxed">
-                A sleek web streaming app with continuous autoplay, artist detection, and instant search.
-              </p>
+          <!-- 3. Weather App -->
+          <div class="project-card glass-card p-5 sm:p-6 rounded-2xl flex flex-col gap-4" data-category="web">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 bg-gradient-to-br from-sky-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
+                <i class="bi bi-cloud-sun text-2xl text-sky-400"></i>
+              </div>
+              <div class="flex flex-col gap-1">
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90 w-fit">Web Application</span>
+                <h4 class="text-lg sm:text-xl font-medium">Weather App</h4>
+              </div>
             </div>
-            <a href="https://rajpoot15.github.io/My-music-App/" target="_blank" rel="noopener noreferrer" class="w-full md:w-auto text-center px-6 py-2.5 sm:py-3 rounded-full border border-white/20 text-xs font-medium bg-black/60 hover:bg-white hover:text-black transition-all">
-              Visit App <i class="bi bi-arrow-up-right ml-1"></i>
+            <p class="text-xs text-white/70 leading-relaxed">
+              A dynamic application providing live forecasting weather data instantly for any location.
+            </p>
+            <a href="https://rajpoot15.github.io/Wheather---App/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-3.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5">
+              <span>Visit Weather App</span>
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+
+          <!-- 4. Q Solver Telegram Bot -->
+          <div class="project-card glass-card p-5 sm:p-6 rounded-2xl flex flex-col gap-4" data-category="ai">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 bg-gradient-to-br from-amber-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
+                <i class="bi bi-robot text-2xl text-amber-400"></i>
+              </div>
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90">Python & AI Bot</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">Free Server</span>
+                </div>
+                <h4 class="text-lg sm:text-xl font-medium">Q Solver Telegram Bot</h4>
+              </div>
+            </div>
+            <p class="text-xs text-white/70 leading-relaxed">
+              An AI-powered bot built with Python and Gemini API to solve complex query prompts.
+            </p>
+            <a href="https://web.telegram.org/k/#@HelperinfoBuddy_bot" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-3.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5">
+              <span>Open Telegram Bot</span>
+              <i class="bi bi-telegram text-sky-400"></i>
+            </a>
+          </div>
+
+          <!-- 5. Performance Dashboard -->
+          <div class="project-card glass-card p-5 sm:p-6 rounded-2xl flex flex-col gap-4" data-category="dashboard">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 bg-gradient-to-br from-emerald-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
+                <i class="bi bi-speedometer2 text-2xl text-emerald-400"></i>
+              </div>
+              <div class="flex flex-col gap-1">
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90 w-fit">Analytics Dashboard</span>
+                <h4 class="text-lg sm:text-xl font-medium">Performance Dashboard</h4>
+              </div>
+            </div>
+            <p class="text-xs text-white/70 leading-relaxed">
+              A comprehensive analytics dashboard for real-time performance tracking and metrics monitoring.
+            </p>
+            <a href="https://rajpoot15.github.io/Performance-Dashboard/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-3.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5">
+              <span>Visit Dashboard</span>
+              <i class="bi bi-arrow-up-right"></i>
             </a>
           </div>
 
@@ -225,42 +317,53 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="w-full bg-black/90 backdrop-blur-md border-t border-white/10 p-6 sm:p-12 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-      <div>
-        <p class="text-white/90 text-sm font-medium">Tarun Singh</p>
-        <p class="text-white/50 text-xs mt-0.5">© 2026 All rights reserved.</p>
+    <!-- CONTACT FORM SECTION (UPDATED ENPOINT) -->
+    <section id="contact" class="w-full px-4 sm:px-6 py-12 bg-black/50 border-t border-white/10">
+      <div class="max-w-2xl mx-auto glass-card p-6 sm:p-10 rounded-2xl flex flex-col gap-6">
+        <div class="text-center">
+          <span class="text-white/60 text-[10px] tracking-[0.3em] uppercase block mb-2 px-4 py-1 border border-white/20 rounded-full bg-white/10 w-fit mx-auto">Get In Touch</span>
+          <h3 class="text-2xl font-light">Send Me a Message</h3>
+        </div>
+
+        <form action="https://formspree.io/f/xjybgrrk" method="POST" class="flex flex-col gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label for="name" class="text-xs text-white/70">Your Name</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-white transition-all">
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="email" class="text-xs text-white/70">Your Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-white transition-all">
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="message" class="text-xs text-white/70">Your Message</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Write your message here..." class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-white transition-all resize-none"></textarea>
+          </div>
+
+          <button type="submit" class="btn-mate w-full py-3.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 mt-2">
+            <span>Send Message</span>
+            <i class="bi bi-send-fill text-amber-400"></i>
+          </button>
+        </form>
       </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-black border-t border-white/10 p-6 text-center flex flex-col items-center gap-2">
+      <p class="text-white/80 text-xs font-medium">Tarun Singh — Web Developer</p>
+      <a href="mailto:tarunsingh736781@gmail.com" class="text-white/50 hover:text-white text-xs transition-all">tarunsingh736781@gmail.com</a>
     </footer>
 
   </div>
 
-  <!-- HIGH-PERFORMANCE THROTTLED SCRUBBER -->
+  <!-- INTERACTIVE SCRIPTS -->
   <script>
-    const vid = document.getElementById('heroVideo');
-
-    if (vid) {
-      let ticking = false;
-
-      const updateScrollFrame = () => {
-        if (!vid.duration) return;
-        const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollProgress = totalScroll > 0 ? window.scrollY / totalScroll : 0;
-        vid.currentTime = Math.min(Math.max(scrollProgress * vid.duration, 0), vid.duration - 0.05);
-      };
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            updateScrollFrame();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
-
-      vid.addEventListener('loadedmetadata', updateScrollFrame);
-    }
-  </script>
-</body>
-</html>
+    const cursor = document.getElementById('custom-cursor');
+    if (cursor) {
+      window.addEventListener('mousemove', (e) => {
+        cursor.style.transform = `translate3d(${e.clientX - 8}px, ${e.clientY - 8}px, 0)`;
+      });
+      const interactiveElements = document.querySelectorAll('a, button, input, textarea, .glass-card');
+      interactiveElements.forEach(el => {
+  
