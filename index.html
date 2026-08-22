@@ -3,13 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <meta property="og:title" content="Tarun Singh — Web Developer Portfolio" />
-  <meta property="og:description" content="Interactive showcase of my software projects, web apps, and technical capabilities." />
-  <meta property="og:image" content="https://rajpoot15.github.io/My-portfolio/preview-image.jpg" />
-  <meta property="og:url" content="https://rajpoot15.github.io/My-portfolio/" />
-  <meta property="og:type" content="website" />
-
   <title>Tarun Singh — Web Developer</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,107 +26,38 @@
 
   <style>
     *, ::before, ::after { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    html {
-      background-color: #000000;
-      color: #ffffff;
-      height: 100%;
-    }
-
-    body {
-      background-color: #000000;
-      color: #ffffff;
-      font-family: "Space Mono", monospace;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      position: relative;
-    }
-    
+    html { background-color: #000000; color: #ffffff; height: 100%; }
+    body { background-color: #000000; color: #ffffff; font-family: "Space Mono", monospace; min-height: 100vh; position: relative; }
     @media (min-width: 768px) {
       body { cursor: none; }
       #custom-cursor {
-        pointer-events: none;
-        position: fixed;
-        top: 0; left: 0;
-        width: 16px; height: 16px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(255, 255, 255, 1);
-        mix-blend-mode: difference;
-        transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
-        z-index: 9999;
+        pointer-events: none; position: fixed; top: 0; left: 0; width: 16px; height: 16px; border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.8); border: 1px solid rgba(255, 255, 255, 1);
+        mix-blend-mode: difference; transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease; z-index: 9999;
       }
-      .cursor-hover #custom-cursor {
-        transform: scale(2.5);
-        background-color: rgba(255, 255, 255, 0.2);
-        border-color: rgba(255, 255, 255, 0.8);
-      }
+      .cursor-hover #custom-cursor { transform: scale(2.5); background-color: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.8); }
     }
-
-    .glass-card {
-      background: rgba(18, 18, 18, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .project-card.hidden-category {
-      display: none !important;
-    }
-
+    .glass-card { background: rgba(18, 18, 18, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.15); }
+    .project-card.hidden-category { display: none !important; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-    .btn-mate {
-      position: relative;
-      background: #121212;
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .btn-mate:hover {
-      background: #ffffff;
-      color: #000000;
-      border-color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
-    }
-
-    .btn-mate-accent {
-      background: linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-      transition: all 0.3s ease;
-    }
-    .btn-mate-accent:hover {
-      background: #ffffff;
-      color: #000000;
-      border-color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
-    }
+    .btn-mate { background: #121212; color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease; }
+    .btn-mate:hover { background: #ffffff; color: #000000; border-color: #ffffff; transform: translateY(-2px); }
+    .btn-mate-accent { background: linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.25); transition: all 0.3s ease; }
+    .btn-mate-accent:hover { background: #ffffff; color: #000000; border-color: #ffffff; transform: translateY(-2px); }
   </style>
 </head>
 <body class="bg-black text-white font-mono">
 
   <div id="custom-cursor" class="hidden md:block"></div>
 
-  <!-- VIDEO BACKGROUND LAYER -->
+  <!-- VIDEO BACKGROUND -->
   <div class="fixed inset-0 w-full h-full pointer-events-none overflow-hidden" style="z-index: 0;">
-    <video id="heroVideo" 
-           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_083515_290e5a10-0b95-41af-a5e2-32b6389baa4d.mp4" 
-           autoplay loop muted playsinline preload="metadata"
-           class="w-full h-full object-cover opacity-80"></video>
-    
+    <video id="heroVideo" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_083515_290e5a10-0b95-41af-a5e2-32b6389baa4d.mp4" autoplay loop muted playsinline class="w-full h-full object-cover opacity-80"></video>
     <div class="absolute inset-0 opacity-15" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
     <div class="absolute inset-0" style="background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.85) 100%);"></div>
-
     <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
-      <h1 class="font-watermark uppercase tracking-[-6px] opacity-10 select-none leading-none text-center text-[22vw] text-white">
-        DEVELOPER
-      </h1>
+      <h1 class="font-watermark uppercase tracking-[-6px] opacity-10 select-none leading-none text-center text-[22vw] text-white">DEVELOPER</h1>
     </div>
   </div>
 
@@ -145,10 +69,10 @@
     </div>
 
     <div class="flex items-center gap-2">
-      <button onclick="toggleContactModal()" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs">
+      <a href="contact.html" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs">
         <i class="bi bi-envelope-fill text-amber-400"></i>
         <span>Contact</span>
-      </button>
+      </a>
       <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank" rel="noopener noreferrer" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs">
         <i class="bi bi-linkedin text-sky-400"></i>
         <span>LinkedIn</span>
@@ -156,10 +80,8 @@
     </div>
   </nav>
 
-  <!-- MAIN CONTENT WRAPPER -->
+  <!-- MAIN CONTENT -->
   <div class="relative z-10 w-full pt-16">
-    
-    <!-- HERO SECTION -->
     <section class="w-full flex flex-col justify-center px-4 sm:px-12 py-12">
       <div class="flex flex-col gap-6 max-w-4xl mx-auto w-full">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 bg-black/60 backdrop-blur-md w-fit">
@@ -186,11 +108,9 @@
     <section class="w-full px-4 sm:px-6 py-12 bg-black/30 border-t border-white/10">
       <div class="max-w-4xl mx-auto text-center flex flex-col items-center glass-card p-6 sm:p-12 rounded-2xl">
         <span class="text-white/60 text-[10px] tracking-[0.3em] uppercase mb-4 px-4 py-1 border border-white/20 rounded-full bg-white/10">About</span>
-        
         <p class="text-xs sm:text-base text-white/80 leading-relaxed max-w-2xl font-light mb-6">
           I'm <strong class="text-white font-medium">Tarun Singh</strong>, currently pursuing a Bachelor of Computer Applications (BCA) at Lovely Professional University (Expected 2027). Working as a Customer Support Executive (Email Process) at Dr ITM Limited since March 2024.
         </p>
-
         <div class="w-full max-w-xl mb-6">
           <span class="text-[10px] uppercase text-white/50 block tracking-wider mb-3">Skills & Technologies</span>
           <div class="flex flex-wrap items-center justify-center gap-2">
@@ -205,16 +125,14 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO PROJECTS SECTION -->
+    <!-- PORTFOLIO PROJECTS -->
     <section id="projects" class="w-full py-12 bg-black/40 border-t border-white/10">
       <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-4 bg-black/60 p-4 rounded-xl border border-white/10">
           <div>
             <span class="text-white/50 text-[10px] tracking-[0.3em] uppercase block mb-1">Portfolio</span>
             <h3 class="text-2xl font-light">Featured Projects</h3>
           </div>
-
           <div class="flex items-center gap-2 overflow-x-auto pb-1 max-w-full no-scrollbar">
             <button onclick="filterProjects('all', event)" class="filter-btn btn-mate active text-xs px-3.5 py-1.5 rounded-full font-medium whitespace-nowrap">All</button>
             <button onclick="filterProjects('web', event)" class="filter-btn btn-mate text-xs px-3.5 py-1.5 rounded-full font-medium whitespace-nowrap">Web Apps</button>
@@ -224,8 +142,6 @@
         </div>
 
         <div id="projectContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- FOR-DM -->
           <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between border-2 border-emerald-500/40 relative" data-category="web">
             <span class="absolute -top-3 right-4 px-2.5 py-0.5 rounded-full text-[9px] bg-emerald-500 text-black font-bold uppercase tracking-wider">LATEST</span>
             <div class="flex flex-col gap-3">
@@ -238,9 +154,7 @@
                   <h4 class="text-base font-medium mt-1">For-DM Project</h4>
                 </div>
               </div>
-              <p class="text-xs text-white/70 leading-relaxed">
-                An interactive web interface designed for direct messaging and personalized digital engagement.
-              </p>
+              <p class="text-xs text-white/70 leading-relaxed">An interactive web interface designed for direct messaging and personalized digital engagement.</p>
             </div>
             <a href="https://rajpoot15.github.io/For-DM/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5 mt-4">
               <span>Visit For-DM</span>
@@ -248,7 +162,6 @@
             </a>
           </div>
 
-          <!-- Music Player -->
           <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="web">
             <div class="flex flex-col gap-3">
               <div class="flex items-center gap-3">
@@ -260,9 +173,7 @@
                   <h4 class="text-base font-medium mt-1">Music Player</h4>
                 </div>
               </div>
-              <p class="text-xs text-white/70 leading-relaxed">
-                A sleek web streaming app with continuous autoplay, artist detection, and instant search functionality.
-              </p>
+              <p class="text-xs text-white/70 leading-relaxed">A sleek web streaming app with continuous autoplay, artist detection, and instant search functionality.</p>
             </div>
             <a href="https://rajpoot15.github.io/My-music-App/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5 mt-4">
               <span>Visit App</span>
@@ -270,7 +181,6 @@
             </a>
           </div>
 
-          <!-- Calculator -->
           <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="web">
             <div class="flex flex-col gap-3">
               <div class="flex items-center gap-3">
@@ -282,9 +192,7 @@
                   <h4 class="text-base font-medium mt-1">Calculator</h4>
                 </div>
               </div>
-              <p class="text-xs text-white/70 leading-relaxed">
-                A responsive, sleek web calculator built to execute complex math operations smoothly.
-              </p>
+              <p class="text-xs text-white/70 leading-relaxed">A responsive, sleek web calculator built to execute complex math operations smoothly.</p>
             </div>
             <a href="https://rajpoot15.github.io/Calculator/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5 mt-4">
               <span>Visit Calculator</span>
@@ -292,7 +200,6 @@
             </a>
           </div>
 
-          <!-- Weather App -->
           <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="web">
             <div class="flex flex-col gap-3">
               <div class="flex items-center gap-3">
@@ -304,9 +211,7 @@
                   <h4 class="text-base font-medium mt-1">Weather App</h4>
                 </div>
               </div>
-              <p class="text-xs text-white/70 leading-relaxed">
-                A dynamic application providing live forecasting weather data instantly for any location.
-              </p>
+              <p class="text-xs text-white/70 leading-relaxed">A dynamic application providing live forecasting weather data instantly for any location.</p>
             </div>
             <a href="https://rajpoot15.github.io/Wheather---App/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5 mt-4">
               <span>Visit Weather App</span>
@@ -314,7 +219,6 @@
             </a>
           </div>
 
-          <!-- Q Solver Bot -->
           <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="ai">
             <div class="flex flex-col gap-3">
               <div class="flex items-center gap-3">
@@ -326,9 +230,7 @@
                   <h4 class="text-base font-medium mt-1">Q Solver Bot</h4>
                 </div>
               </div>
-              <p class="text-xs text-white/70 leading-relaxed">
-                An AI-powered bot built with Python and Gemini API to solve complex query prompts.
-              </p>
+              <p class="text-xs text-white/70 leading-relaxed">An AI-powered bot built with Python and Gemini API to solve complex query prompts.</p>
             </div>
             <a href="https://web.telegram.org/k/#@HelperinfoBuddy_bot" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5 mt-4">
               <span>Open Telegram Bot</span>
@@ -336,7 +238,6 @@
             </a>
           </div>
 
-          <!-- Dashboard -->
           <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="dashboard">
             <div class="flex flex-col gap-3">
               <div class="flex items-center gap-3">
@@ -348,29 +249,49 @@
                   <h4 class="text-base font-medium mt-1">Dashboard</h4>
                 </div>
               </div>
-              <p class="text-xs text-white/70 leading-relaxed">
-                A comprehensive analytics dashboard for real-time performance tracking and metrics monitoring.
-              </p>
+              <p class="text-xs text-white/70 leading-relaxed">A comprehensive analytics dashboard for real-time performance tracking and metrics monitoring.</p>
             </div>
             <a href="https://rajpoot15.github.io/Performance-Dashboard/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5 mt-4">
               <span>Visit Dashboard</span>
               <i class="bi bi-arrow-up-right"></i>
             </a>
           </div>
-
         </div>
-
       </div>
     </section>
 
-    <!-- FOOTER WITH MADE BY RAJPOOT -->
-    <footer class="w-full bg-black border-t border-white/10 p-6 text-center flex flex-col items-center gap-2 relative z-20">
+    <!-- FOOTER -->
+    <footer class="w-full bg-black border-t border-white/10 p-6 text-center flex flex-col items-center gap-2">
       <p class="text-xs text-white/50 font-mono">© 2026 Tarun Singh. All rights reserved.</p>
       <p class="text-xs text-emerald-400/90 font-mono tracking-wide">Made by Rajpøøt</p>
     </footer>
-
   </div>
 
-  <!-- INTERACTIVE CONTACT MODAL -->
-  <div id="contactModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden transition-opacity duration-300">
-    <div class="glass-card max-w-
+  <script>
+    const customCursor = document.getElementById('custom-cursor');
+    if (customCursor) {
+      document.addEventListener('mousemove', e => {
+        customCursor.style.left = `${e.clientX - 8}px`;
+        customCursor.style.top = `${e.clientY - 8}px`;
+      });
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+    }
+
+    function filterProjects(category, evt) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (evt && evt.target) evt.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        const matchesCategory = (category === 'all' || card.getAttribute('data-category') === category);
+        if (matchesCategory) card.classList.remove('hidden-category');
+        else card.classList.add('hidden-category');
+      });
+    }
+  </script>
+</body>
+</html>
