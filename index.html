@@ -71,9 +71,9 @@
     }
 
     .glass-card {
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(18, 18, 18, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
@@ -98,9 +98,6 @@
       border-color: #ffffff;
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
-    }
-    .btn-mate:active {
-      transform: translateY(0);
     }
 
     .btn-mate-accent {
@@ -141,17 +138,17 @@
   </div>
 
   <!-- NAVBAR -->
-  <nav class="fixed top-0 left-0 w-full h-16 z-50 flex items-center justify-between px-4 sm:px-8 bg-black/80 backdrop-blur-md border-b border-white/10">
+  <nav class="fixed top-0 left-0 w-full h-16 z-40 flex items-center justify-between px-4 sm:px-8 bg-black/80 backdrop-blur-md border-b border-white/10">
     <div class="flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
       <span class="text-xs sm:text-sm font-bold tracking-wider">TARUN SINGH</span>
     </div>
 
     <div class="flex items-center gap-2">
-      <a href="contact.html" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs">
+      <button onclick="toggleContactModal()" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs">
         <i class="bi bi-envelope-fill text-amber-400"></i>
         <span>Contact</span>
-      </a>
+      </button>
       <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank" rel="noopener noreferrer" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs">
         <i class="bi bi-linkedin text-sky-400"></i>
         <span>LinkedIn</span>
@@ -374,9 +371,6 @@
 
   </div>
 
-  <script>
-    const customCursor = document.getElementById('custom-cursor');
-
-    if (customCursor) {
-      document.addEventListener('mousemove', e => {
-        customCursor.style.left = `$
+  <!-- INTERACTIVE CONTACT MODAL -->
+  <div id="contactModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden transition-opacity duration-300">
+    <div class="glass-card max-w-
