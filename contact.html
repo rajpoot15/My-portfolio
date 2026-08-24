@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — Tarun Singh</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Projects — Tarun Singh</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
     body { background-color: #000000; color: #ffffff; font-family: 'Space Mono', monospace; }
     .glass-card { background: rgba(18, 18, 18, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); }
@@ -14,46 +14,79 @@
     .btn-mate:hover { background: #ffffff; color: #000000; border-color: #ffffff; }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4 sm:p-8 bg-black">
+<body class="min-h-screen bg-black text-white p-4 sm:p-8 flex flex-col justify-between">
 
-  <div class="max-w-xl w-full glass-card p-8 sm:p-12 rounded-3xl flex flex-col gap-6 shadow-2xl relative">
-    <div class="text-center">
-      <span class="text-white/60 text-[11px] tracking-[0.3em] uppercase px-6 py-2 border border-white/20 rounded-full bg-white/5 inline-block mb-4">
-        GET IN TOUCH
-      </span>
-      <h1 class="text-3xl sm:text-4xl font-light tracking-wide text-white">Send Me a Message</h1>
-      <p class="text-xs sm:text-sm text-white/60 mt-2">Fill out your details below and I'll get back to you as soon as possible.</p>
-    </div>
-
-    <form action="https://formspree.io/f/xjybgrrk" method="POST" class="flex flex-col gap-4 w-full">
-      <div class="flex flex-col gap-1.5">
-        <label for="name" class="text-xs text-white/80 tracking-wider uppercase">Your Name</label>
-        <input type="text" id="name" name="name" required placeholder="John Doe" class="w-full bg-neutral-900 border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white transition-all">
+  <div class="max-w-4xl mx-auto w-full flex flex-col gap-8 py-6">
+    
+    <!-- HEADER -->
+    <div class="flex items-center justify-between border-b border-white/10 pb-6">
+      <div>
+        <span class="text-emerald-400 text-[10px] tracking-[0.3em] uppercase px-3 py-1 border border-emerald-500/30 rounded-full bg-emerald-500/10 inline-block mb-2">
+          DELIVERED PROJECTS
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-light">Client Work Showcase</h1>
       </div>
-
-      <div class="flex flex-col gap-1.5">
-        <label for="email" class="text-xs text-white/80 tracking-wider uppercase">Your Email</label>
-        <input type="email" id="email" name="email" required placeholder="john@example.com" class="w-full bg-neutral-900 border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white transition-all">
-      </div>
-
-      <div class="flex flex-col gap-1.5">
-        <label for="message" class="text-xs text-white/80 tracking-wider uppercase">Your Message</label>
-        <textarea id="message" name="message" rows="4" required placeholder="Write your message here..." class="w-full bg-neutral-900 border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white transition-all resize-none"></textarea>
-      </div>
-
-      <button type="submit" class="btn-mate w-full py-3.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 mt-2">
-        <span>Send Message</span>
-        <i class="bi bi-send-fill text-amber-400"></i>
-      </button>
-    </form>
-
-    <div class="text-center pt-4 border-t border-white/10 flex flex-col gap-2">
-      <a href="index.html" class="text-xs text-white/60 hover:text-white transition-colors inline-flex items-center justify-center gap-1.5">
+      <a href="index.html" class="btn-mate px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5">
         <i class="bi bi-arrow-left"></i>
-        <span>Back to Main Portfolio</span>
+        <span>Home</span>
       </a>
-      <p class="text-xs text-emerald-400/90 font-mono tracking-wide mt-2">Made by Rajpøøt</p>
     </div>
+
+    <!-- CLIENT PROJECTS LIST -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- CLIENT PROJECT 1: SHASHANK KUMAR PORTFOLIO -->
+      <div class="glass-card p-6 rounded-3xl flex flex-col justify-between border border-cyan-500/40 relative shadow-lg shadow-cyan-500/10">
+        <span class="absolute top-4 right-4 text-[10px] px-2.5 py-1 bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 rounded-full font-mono">Client Project</span>
+        
+        <div class="flex flex-col gap-4">
+          <div class="w-12 h-12 bg-cyan-950/60 rounded-2xl border border-cyan-500/30 flex items-center justify-center">
+            <i class="bi bi-person-workspace text-2xl text-cyan-400"></i>
+          </div>
+          <div>
+            <h2 class="text-xl font-medium text-white">Shashank Kumar Portfolio</h2>
+            <p class="text-xs text-white/50 mt-1">Custom Personal Brand Showcase</p>
+          </div>
+          <p class="text-xs text-white/70 leading-relaxed">
+            A bespoke portfolio website designed and developed for a client to highlight their professional skills, achievements, and work samples.
+          </p>
+        </div>
+
+        <a href="https://shashankkumar-ai.github.io/portfolio/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 mt-6">
+          <span>View Live Project</span>
+          <i class="bi bi-box-arrow-up-right"></i>
+        </a>
+      </div>
+
+      <!-- CLIENT PROJECT 2: FOR-DM WEBSITE -->
+      <div class="glass-card p-6 rounded-3xl flex flex-col justify-between border border-emerald-500/40 relative shadow-lg shadow-emerald-500/10">
+        <span class="absolute top-4 right-4 text-[10px] px-2.5 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full font-mono">Client Project</span>
+        
+        <div class="flex flex-col gap-4">
+          <div class="w-12 h-12 bg-emerald-950/60 rounded-2xl border border-emerald-500/30 flex items-center justify-center">
+            <i class="bi bi-chat-heart-fill text-2xl text-emerald-400"></i>
+          </div>
+          <div>
+            <h2 class="text-xl font-medium text-white">For-DM Website</h2>
+            <p class="text-xs text-white/50 mt-1">Interactive Messaging & Client Portal</p>
+          </div>
+          <p class="text-xs text-white/70 leading-relaxed">
+            A custom interactive web interface created for direct messaging, customized digital interaction, and streamlined client communication.
+          </p>
+        </div>
+
+        <a href="https://rajpoot15.github.io/For-DM/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 mt-6">
+          <span>View Live Project</span>
+          <i class="bi bi-box-arrow-up-right"></i>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="text-center py-4 border-t border-white/10">
+    <p class="text-xs text-emerald-400/90 font-mono tracking-wide">Made by Rajpøøt</p>
   </div>
 
 </body>
