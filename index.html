@@ -48,27 +48,6 @@
       min-height: 100vh;
       position: relative;
     }
-    
-    @media (min-width: 768px) {
-      body { cursor: none; }
-      #custom-cursor {
-        pointer-events: none;
-        position: fixed;
-        top: 0; left: 0;
-        width: 16px; height: 16px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(255, 255, 255, 1);
-        mix-blend-mode: difference;
-        transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
-        z-index: 9999;
-      }
-      .cursor-hover #custom-cursor {
-        transform: scale(2.5);
-        background-color: rgba(255, 255, 255, 0.2);
-        border-color: rgba(255, 255, 255, 0.8);
-      }
-    }
 
     .glass-card {
       background: rgba(18, 18, 18, 0.92);
@@ -92,7 +71,7 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .btn-mate:hover {
+    .btn-mate:hover, .btn-mate.active {
       background: #ffffff;
       color: #000000;
       border-color: #ffffff;
@@ -118,17 +97,16 @@
 </head>
 <body class="bg-black text-white font-mono">
 
-  <div id="custom-cursor" class="hidden md:block"></div>
-
-  <!-- VIDEO BACKGROUND LAYER -->
+  <!-- BACKGROUND VIDEO LAYER -->
   <div class="fixed inset-0 w-full h-full pointer-events-none overflow-hidden" style="z-index: 0;">
     <video id="heroVideo" 
-           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_083515_290e5a10-0b95-41af-a5e2-32b6389baa4d.mp4" 
-           autoplay loop muted playsinline preload="metadata"
-           class="w-full h-full object-cover opacity-80"></video>
+           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260826_041744_63efcd78-bf7d-4039-99e2-2461e8a61903.mp4" 
+           muted playsinline preload="auto"
+           class="w-full h-full object-cover opacity-60"
+           style="object-position: center;"></video>
     
     <div class="absolute inset-0 opacity-15" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
-    <div class="absolute inset-0" style="background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.85) 100%);"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.95) 100%);"></div>
 
     <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
       <h1 class="font-watermark uppercase tracking-[-6px] opacity-10 select-none leading-none text-center text-[22vw] text-white">
@@ -145,19 +123,16 @@
     </div>
 
     <div class="flex items-center gap-2">
-      <!-- CLIENT WORK BUTTON -->
       <a href="client-work.html" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs border border-emerald-500/50 text-emerald-400">
         <i class="bi bi-briefcase-fill"></i>
         <span>Client Work</span>
       </a>
 
-      <!-- CONTACT BUTTON -->
       <a href="contact.html" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs">
         <i class="bi bi-envelope-fill text-amber-400"></i>
         <span>Contact</span>
       </a>
 
-      <!-- LINKEDIN BUTTON -->
       <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank" rel="noopener noreferrer" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs hidden sm:flex">
         <i class="bi bi-linkedin text-sky-400"></i>
         <span>LinkedIn</span>
@@ -358,20 +333,7 @@
   </div>
 
   <script>
-    const customCursor = document.getElementById('custom-cursor');
-
-    if (customCursor) {
-      document.addEventListener('mousemove', e => {
-        customCursor.style.left = `${e.clientX - 8}px`;
-        customCursor.style.top = `${e.clientY - 8}px`;
-      });
-
-      document.querySelectorAll('a, button, input, textarea').forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-      });
-    }
-
+    // 1. PROJECT CATEGORY FILTER
     function filterProjects(category, evt) {
       const buttons = document.querySelectorAll('.filter-btn');
       buttons.forEach(btn => btn.classList.remove('active'));
@@ -386,6 +348,44 @@
           card.classList.remove('hidden-category');
         } else {
           card.classList.add('hidden-category');
+        }
+      });
+    }
+
+    // 2. MOUSE-SCRUB CONTROLLED BACKGROUND VIDEO
+    const video = document.getElementById('heroVideo');
+    let prevX = null;
+    let targetTime = 0;
+    let isSeeking = false;
+
+    if (video) {
+      window.addEventListener('mousemove', (e) => {
+        if (!video.duration) return;
+
+        if (prevX === null) {
+          prevX = e.clientX;
+          return;
+        }
+
+        const delta = e.clientX - prevX;
+        prevX = e.clientX;
+
+        const SENSITIVITY = 0.8;
+        const timeOffset = (delta / window.innerWidth) * SENSITIVITY * video.duration;
+
+        targetTime = Math.max(0, Math.min(video.duration, targetTime + timeOffset));
+
+        if (!isSeeking) {
+          isSeeking = true;
+          video.currentTime = targetTime;
+        }
+      });
+
+      video.addEventListener('seeked', () => {
+        if (Math.abs(video.currentTime - targetTime) > 0.05) {
+          video.currentTime = targetTime;
+        } else {
+          isSeeking = false;
         }
       });
     }
