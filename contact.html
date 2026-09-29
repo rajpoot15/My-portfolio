@@ -3,91 +3,169 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Client Projects — Tarun Singh</title>
+  
+  <title>Contact — Tarun Singh</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['"Space Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    body { background-color: #000000; color: #ffffff; font-family: 'Space Mono', monospace; }
-    .glass-card { background: rgba(18, 18, 18, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); }
-    .btn-mate { background: #121212; color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease; }
-    .btn-mate:hover { background: #ffffff; color: #000000; border-color: #ffffff; }
+    *, ::before, ::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: "Space Mono", monospace;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    .glass-card {
+      background: rgba(18, 18, 18, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-mate {
+      position: relative;
+      background: #121212;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-mate:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-mate-accent {
+      background: linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+    .btn-mate-accent:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .input-field {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    .input-field:focus {
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
   </style>
 </head>
-<body class="min-h-screen bg-black text-white p-4 sm:p-8 flex flex-col justify-between">
+<body class="bg-black text-white font-mono flex flex-col justify-between min-h-screen">
 
-  <div class="max-w-4xl mx-auto w-full flex flex-col gap-8 py-6">
-    
-    <!-- HEADER -->
-    <div class="flex items-center justify-between border-b border-white/10 pb-6">
-      <div>
-        <span class="text-emerald-400 text-[10px] tracking-[0.3em] uppercase px-3 py-1 border border-emerald-500/30 rounded-full bg-emerald-500/10 inline-block mb-2">
-          DELIVERED PROJECTS
-        </span>
-        <h1 class="text-3xl sm:text-4xl font-light">Client Work Showcase</h1>
-      </div>
-      <a href="index.html" class="btn-mate px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5">
-        <i class="bi bi-arrow-left"></i>
+  <!-- BACKGROUND GRID -->
+  <div class="fixed inset-0 w-full h-full pointer-events-none" style="z-index: 0;">
+    <div class="absolute inset-0 opacity-15" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.95) 80%);"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 w-full h-16 z-40 flex items-center justify-between px-4 sm:px-8 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <a href="index.html" class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="text-xs sm:text-sm font-bold tracking-wider">TARUN SINGH</span>
+    </a>
+
+    <div class="flex items-center gap-2">
+      <a href="index.html" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs">
+        <i class="bi bi-house-door-fill text-amber-400"></i>
         <span>Home</span>
       </a>
+
+      <a href="client-work.html" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs border border-emerald-500/50 text-emerald-400">
+        <i class="bi bi-briefcase-fill"></i>
+        <span>Client Work</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/tarun-kumar-singh-4721b937a" target="_blank" rel="noopener noreferrer" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs hidden sm:flex">
+        <i class="bi bi-linkedin text-sky-400"></i>
+        <span>LinkedIn</span>
+      </a>
     </div>
+  </nav>
 
-    <!-- CLIENT PROJECTS LIST -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <!-- CLIENT PROJECT 1: SHASHANK KUMAR PORTFOLIO -->
-      <div class="glass-card p-6 rounded-3xl flex flex-col justify-between border border-cyan-500/40 relative shadow-lg shadow-cyan-500/10">
-        <span class="absolute top-4 right-4 text-[10px] px-2.5 py-1 bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 rounded-full font-mono">Client Project</span>
-        
-        <div class="flex flex-col gap-4">
-          <div class="w-12 h-12 bg-cyan-950/60 rounded-2xl border border-cyan-500/30 flex items-center justify-center">
-            <i class="bi bi-person-workspace text-2xl text-cyan-400"></i>
-          </div>
-          <div>
-            <h2 class="text-xl font-medium text-white">Shashank Kumar Portfolio</h2>
-            <p class="text-xs text-white/50 mt-1">Custom Personal Brand Showcase</p>
-          </div>
-          <p class="text-xs text-white/70 leading-relaxed">
-            A bespoke portfolio website designed and developed for a client to highlight their professional skills, achievements, and work samples.
-          </p>
-        </div>
-
-        <a href="https://shashankkumar-ai.github.io/portfolio/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 mt-6">
-          <span>View Live Project</span>
-          <i class="bi bi-box-arrow-up-right"></i>
-        </a>
+  <!-- MAIN CONTACT CONTENT -->
+  <main class="relative z-10 w-full pt-24 pb-12 px-4 sm:px-6 flex-grow flex items-center justify-center">
+    <div class="max-w-xl w-full mx-auto flex flex-col gap-6">
+      
+      <!-- HEADER -->
+      <div class="text-center">
+        <span class="text-white/60 text-[10px] tracking-[0.3em] uppercase mb-2 px-4 py-1 border border-white/20 rounded-full bg-white/10 inline-block">Contact</span>
+        <h1 class="text-3xl font-light mt-3">Let's Build Together</h1>
+        <p class="text-xs text-white/70 mt-2 leading-relaxed">
+          Have a project query or want to collaborate? Send a message through the form below.
+        </p>
       </div>
 
-      <!-- CLIENT PROJECT 2: FOR-DM WEBSITE -->
-      <div class="glass-card p-6 rounded-3xl flex flex-col justify-between border border-emerald-500/40 relative shadow-lg shadow-emerald-500/10">
-        <span class="absolute top-4 right-4 text-[10px] px-2.5 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full font-mono">Client Project</span>
-        
-        <div class="flex flex-col gap-4">
-          <div class="w-12 h-12 bg-emerald-950/60 rounded-2xl border border-emerald-500/30 flex items-center justify-center">
-            <i class="bi bi-chat-heart-fill text-2xl text-emerald-400"></i>
-          </div>
+      <!-- CONTACT FORM -->
+      <div class="glass-card p-6 sm:p-8 rounded-2xl">
+        <form action="https://formspree.io/f/xjybgrrk" method="POST" class="flex flex-col gap-4">
           <div>
-            <h2 class="text-xl font-medium text-white">For-DM Website</h2>
-            <p class="text-xs text-white/50 mt-1">Interactive Messaging & Client Portal</p>
+            <label class="text-[10px] uppercase tracking-wider text-white/60 block mb-1.5">Your Name</label>
+            <input type="text" name="name" required placeholder="Enter your name" class="input-field w-full px-4 py-2.5 rounded-xl text-xs" />
           </div>
-          <p class="text-xs text-white/70 leading-relaxed">
-            A custom interactive web interface created for direct messaging, customized digital interaction, and streamlined client communication.
-          </p>
-        </div>
 
-        <a href="https://rajpoot15.github.io/For-DM/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 mt-6">
-          <span>View Live Project</span>
-          <i class="bi bi-box-arrow-up-right"></i>
-        </a>
+          <div>
+            <label class="text-[10px] uppercase tracking-wider text-white/60 block mb-1.5">Your Email</label>
+            <input type="email" name="email" required placeholder="name@example.com" class="input-field w-full px-4 py-2.5 rounded-xl text-xs" />
+          </div>
+
+          <div>
+            <label class="text-[10px] uppercase tracking-wider text-white/60 block mb-1.5">Message</label>
+            <textarea name="message" rows="4" required placeholder="Write your message here..." class="input-field w-full px-4 py-2.5 rounded-xl text-xs resize-none"></textarea>
+          </div>
+
+          <button type="submit" class="btn-mate w-full py-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 mt-2">
+            <span>Send Message</span>
+            <i class="bi bi-send-fill text-amber-400"></i>
+          </button>
+        </form>
       </div>
 
     </div>
+  </main>
 
-  </div>
-
-  <div class="text-center py-4 border-t border-white/10">
+  <!-- FOOTER -->
+  <footer class="w-full bg-black border-t border-white/10 p-6 text-center flex flex-col items-center gap-2 relative z-20">
+    <p class="text-xs text-white/50 font-mono">© 2026 Tarun Singh. All rights reserved.</p>
     <p class="text-xs text-emerald-400/90 font-mono tracking-wide">Made by Rajpøøt</p>
-  </div>
+  </footer>
 
 </body>
 </html>
