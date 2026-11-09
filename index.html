@@ -99,13 +99,32 @@
       box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
     }
 
-    @keyframes superGlow {
-      0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.7); transform: scale(1); }
-      50% { box-shadow: 0 0 15px 5px rgba(34, 211, 238, 0.4); transform: scale(1.03); }
-      100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); transform: scale(1); }
+    /* Floating AI Chat Button (Bottom-Right: 24px) */
+    .floating-ai-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #06b6d4, #0284c7);
+      color: #000000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 25px rgba(6, 182, 212, 0.5);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: floatGlow 2s infinite ease-in-out;
     }
-    .glowing-nav-btn {
-      animation: superGlow 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    .floating-ai-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(6, 182, 212, 0.8);
+    }
+
+    @keyframes floatGlow {
+      0%, 100% { transform: translateY(0); box-shadow: 0 6px 25px rgba(6, 182, 212, 0.5); }
+      50% { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(6, 182, 212, 0.8); }
     }
   </style>
 </head>
@@ -129,6 +148,11 @@
     </div>
   </div>
 
+  <!-- FLOATING AI CHAT BUTTON -->
+  <a href="ai-chat.html" class="floating-ai-btn" title="Ask AI Assistant">
+    <i class="bi bi-robot text-2xl font-bold"></i>
+  </a>
+
   <!-- NAVBAR -->
   <nav class="fixed top-0 left-0 w-full h-16 z-50 flex items-center justify-between px-3 sm:px-8 bg-black/90 backdrop-blur-md border-b border-white/10">
     <div class="flex items-center gap-2">
@@ -142,10 +166,10 @@
         <span>Client Work</span>
       </a>
 
-      <!-- Link to ai-chat.html -->
-      <a href="ai-chat.html" class="glowing-nav-btn btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs border border-cyan-400 text-cyan-300 bg-cyan-950/40">
-        <i class="bi bi-robot text-cyan-400 animate-bounce"></i>
-        <span>Ask AI 💬</span>
+      <!-- LinkedIn Link Near Contact -->
+      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs border border-sky-500/40 text-sky-400">
+        <i class="bi bi-linkedin"></i>
+        <span class="hidden sm:inline">LinkedIn</span>
       </a>
 
       <a href="contact.html" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs">
@@ -334,7 +358,7 @@
             </a>
           </div>
 
-          <!-- AI Bug Fixer Card (Fully visible clickable button) -->
+          <!-- AI Bug Fixer Card -->
           <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between border-cyan-500/40" data-category="ai">
             <div class="flex flex-col gap-2">
               <div class="flex items-center gap-3">
@@ -359,23 +383,4 @@
         </div>
 
       </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="w-full bg-black border-t border-white/10 p-6 text-center flex flex-col items-center gap-2 relative z-20">
-      <p class="text-xs text-white/50 font-mono">© 2026 Tarun Singh. All rights reserved.</p>
-      <p class="text-xs text-emerald-400/90 font-mono tracking-wide">Made by Rajpøøt</p>
-    </footer>
-
-  </div>
-
-  <script>
-    // 1. PROJECT CATEGORY FILTER
-    function filterProjects(category, evt) {
-      const buttons = document.querySelectorAll('.filter-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      if (evt && evt.target) {
-        evt.target.classList.add('active');
-      }
-
-      const
+    </se
