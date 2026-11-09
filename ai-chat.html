@@ -92,7 +92,7 @@
             <i class="bi bi-robot text-cyan-400 text-xs"></i>
           </div>
           <div class="bg-neutral-900 border border-white/10 p-3 rounded-2xl rounded-tl-none max-w-[85%] text-xs leading-relaxed text-neutral-200">
-            👋 Hi! I'm Tarun Singh's Portfolio AI. Ask me about Tarun's skills, BCA degree, Dr ITM Limited role, projects, or request code snippets!
+            👋 Hi! I'm Tarun Singh's Portfolio AI. Ask me about Tarun's skills, BCA degree, Dr ITM Limited role, or featured web projects!
           </div>
         </div>
 
@@ -109,14 +109,14 @@
         <button onclick="sendQuickPrompt('Tell me about his work experience')" class="px-2.5 py-1 rounded-full bg-amber-950/60 border border-amber-500/30 text-[10px] text-amber-300 hover:bg-amber-900/80 whitespace-nowrap transition-all">
           💼 Work Experience
         </button>
-        <button onclick="sendQuickPrompt('Show me a Python code example')" class="px-2.5 py-1 rounded-full bg-purple-950/60 border border-purple-500/30 text-[10px] text-purple-300 hover:bg-purple-900/80 whitespace-nowrap transition-all">
-          ⚡ Request Code
+        <button onclick="sendQuickPrompt('What projects has he built?')" class="px-2.5 py-1 rounded-full bg-purple-950/60 border border-purple-500/30 text-[10px] text-purple-300 hover:bg-purple-900/80 whitespace-nowrap transition-all">
+          🚀 Featured Projects
         </button>
       </div>
 
       <!-- INPUT FORM -->
       <div class="flex items-center gap-2 bg-black/90 p-2 rounded-xl border border-white/20 shrink-0">
-        <input type="text" id="userInput" placeholder="Ask about Tarun or request code..." 
+        <input type="text" id="userInput" placeholder="Ask anything about Tarun..." 
                class="bg-transparent text-xs text-white placeholder-neutral-500 focus:outline-none w-full px-2 py-1"
                onkeyup="if(event.key === 'Enter') sendMessage()">
         <button onclick="sendMessage()" class="bg-cyan-500 text-black px-3.5 py-2 rounded-lg text-xs font-bold hover:bg-cyan-400 active:scale-95 transition-all flex items-center gap-1 shrink-0">
@@ -189,45 +189,35 @@
         `;
         messagesContainer.innerHTML += botMsgHTML;
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
-      }, 600);
+      }, 500);
     }
 
     function generateAIResponse(query) {
       const q = query.toLowerCase();
 
-      // OUT OF SCOPE GUARDRAIL CHECK
-      const isOutboundQuery = q.includes('capital') || q.includes('france') || q.includes('cricket') || q.includes('match') || q.includes('weather in') || q.includes('movie') || q.includes('president') || q.includes('prime minister') || q.includes('recipe') || q.includes('history');
+      // STRICT SCOPE CHECK: Match Portfolio Keywords
+      const isPortfolioRelated = 
+        q.includes('who') || q.includes('tarun') || q.includes('about') || q.includes('bio') ||
+        q.includes('skill') || q.includes('tech') || q.includes('language') || q.includes('stack') ||
+        q.includes('experience') || q.includes('job') || q.includes('work') || q.includes('itm') ||
+        q.includes('project') || q.includes('bot') || q.includes('app') || q.includes('dashboard') ||
+        q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('lpu') || q.includes('bca');
 
-      if (isOutboundQuery) {
-        return "⚠️ <strong>Sorry, I can't provide this information.</strong> I am an assistant built specifically for Tarun Singh's portfolio. I can only answer questions about Tarun's education, skills, work experience, projects, or provide relevant programming code snippets.";
-      }
-
-      // CODE REQUEST HANDLER
-      if (q.includes('code') || q.includes('python') || q.includes('javascript') || q.includes('html') || q.includes('script') || q.includes('snippet')) {
-        return `
-          Here is a sample code snippet for Tarun's tech stack:
-          <div class="mt-2 bg-black/90 p-2.5 rounded-lg border border-cyan-500/30 font-mono text-[10px] text-cyan-300 overflow-x-auto whitespace-pre">
-<span class="text-rose-400"># Python Gemini API Automation Snippet</span>
-<span class="text-purple-400">import</span> google.generativeai <span class="text-purple-400">as</span> genai
-
-genai.configure(api_key=<span class="text-emerald-300">"YOUR_API_KEY"</span>)
-model = genai.GenerativeModel(<span class="text-emerald-300">'gemini-pro'</span>)
-response = model.generate_content(<span class="text-emerald-300">'Fix bugs in code'</span>)
-print(response.text)</div>
-        `;
+      if (!isPortfolioRelated) {
+        return "⚠️ <strong>Sorry, I can't provide this information.</strong> I am an assistant built specifically for Tarun Singh's portfolio. I can only answer questions about Tarun's education, technical skills, work experience, and featured projects.";
       }
 
       // TARUN PORTFOLIO KNOWLEDGE BASE
-      if (q.includes('who') || q.includes('tarun') || q.includes('about') || q.includes('bio')) {
-        return "Tarun Singh is a Web Developer pursuing a BCA online at Lovely Professional University (expected 2027). He works as a Customer Support Executive (Email Process) at Dr ITM Limited since March 2024.";
+      if (q.includes('who') || q.includes('tarun') || q.includes('about') || q.includes('bio') || q.includes('lpu') || q.includes('bca')) {
+        return "Tarun Singh is a Web Developer pursuing a BCA online at Lovely Professional University (expected graduation 2027). He works as a Customer Support Executive (Email Process) at Dr ITM Limited since March 2024.";
       }
       
       if (q.includes('skill') || q.includes('tech') || q.includes('language') || q.includes('stack')) {
-        return "Tarun's core tech stack includes HTML5, CSS3, JavaScript, Tailwind CSS, Python, Git, and Gemini API integrations.";
+        return "Tarun's core technical skills include HTML5, CSS3, JavaScript, Tailwind CSS, Python, Git, and Gemini API integrations.";
       }
 
       if (q.includes('experience') || q.includes('job') || q.includes('work') || q.includes('itm')) {
-        return "Tarun has been working at Dr ITM Limited as a Customer Support Executive (Email Process) since March 13, 2024, balancing full-time responsibilities with web engineering projects.";
+        return "Tarun has been working at Dr ITM Limited as a Customer Support Executive (Email Process) since March 13, 2024, balancing professional workplace support with software development.";
       }
 
       if (q.includes('project') || q.includes('bot') || q.includes('app') || q.includes('dashboard')) {
@@ -238,8 +228,7 @@ print(response.text)</div>
         return "You can reach out to Tarun through the Contact page link in the main navigation header!";
       }
 
-      // DEFAULT FALLBACK FOR GENERAL PORTFOLIO TOPICS
-      return "Tarun Singh is a passionate web developer and BCA student at LPU. You can ask me about his technical skills, projects like the Telegram AI Bot or Music App, or his work at Dr ITM Limited!";
+      return "Tarun Singh is a passionate web developer and BCA student at LPU. Feel free to ask about his skills, work experience at Dr ITM Limited, or projects!";
     }
 
     function escapeHtml(text) {
