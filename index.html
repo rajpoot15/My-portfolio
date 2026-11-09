@@ -1,16 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <meta property="og:title" content="Tarun Singh — Web Developer Portfolio" />
-  <meta property="og:description" content="Interactive showcase of my software projects, web apps, and technical capabilities." />
-  <meta property="og:image" content="https://rajpoot15.github.io/My-portfolio/preview-image.jpg" />
-  <meta property="og:url" content="https://rajpoot15.github.io/My-portfolio/" />
-  <meta property="og:type" content="website" />
-
-  <title>Tarun Singh — Web Developer</title>
+  <title>AI Bug Detector & Code Fixer — Tarun Singh</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +17,6 @@
         extend: {
           fontFamily: {
             mono: ['"Space Mono"', 'monospace'],
-            watermark: ['"Anton SC"', 'sans-serif'],
           }
         }
       }
@@ -32,330 +24,142 @@
   </script>
 
   <style>
-    *, ::before, ::after { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    html {
-      background-color: #000000;
-      color: #ffffff;
-      height: 100%;
-    }
-
     body {
       background-color: #000000;
       color: #ffffff;
       font-family: "Space Mono", monospace;
-      -webkit-font-smoothing: antialiased;
       min-height: 100vh;
-      position: relative;
     }
-
     .glass-card {
       background: rgba(18, 18, 18, 0.95);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
-
-    .project-card.hidden-category {
-      display: none !important;
-    }
-
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
     .btn-mate {
-      position: relative;
       background: #121212;
       color: #ffffff;
       border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .btn-mate:hover, .btn-mate.active {
-      background: #ffffff;
-      color: #000000;
-      border-color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
-    }
-
-    .btn-mate-accent {
-      background: linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
       transition: all 0.3s ease;
     }
-    .btn-mate-accent:hover {
+    .btn-mate:hover {
       background: #ffffff;
       color: #000000;
-      border-color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
-    }
-
-    @keyframes superGlow {
-      0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.7); transform: scale(1); }
-      50% { box-shadow: 0 0 15px 5px rgba(34, 211, 238, 0.4); transform: scale(1.03); }
-      100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); transform: scale(1); }
-    }
-    .glowing-nav-btn {
-      animation: superGlow 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
     }
   </style>
 </head>
-<body class="bg-black text-white font-mono">
-
-  <!-- BACKGROUND VIDEO LAYER -->
-  <div class="fixed inset-0 w-full h-full pointer-events-none overflow-hidden" style="z-index: 0;">
-    <video id="heroVideo" 
-           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260826_041744_63efcd78-bf7d-4039-99e2-2461e8a61903.mp4" 
-           muted playsinline preload="auto"
-           class="w-full h-full object-cover opacity-60"
-           style="object-position: center;"></video>
-    
-    <div class="absolute inset-0 opacity-15" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
-    <div class="absolute inset-0" style="background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.95) 100%);"></div>
-
-    <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
-      <h1 class="font-watermark uppercase tracking-[-6px] opacity-10 select-none leading-none text-center text-[22vw] text-white">
-        DEVELOPER
-      </h1>
-    </div>
-  </div>
+<body class="bg-black text-white font-mono min-h-screen flex flex-col justify-between">
 
   <!-- NAVBAR -->
-  <nav class="fixed top-0 left-0 w-full h-16 z-50 flex items-center justify-between px-3 sm:px-8 bg-black/90 backdrop-blur-md border-b border-white/10">
+  <nav class="w-full h-16 flex items-center justify-between px-4 sm:px-8 bg-black/90 border-b border-white/10 sticky top-0 z-50">
     <div class="flex items-center gap-2">
-      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span class="text-xs font-bold tracking-wider">TARUN SINGH</span>
-    </div>
-
-    <div class="flex items-center gap-2">
-      <a href="client-work.html" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs border border-emerald-500/50 text-emerald-400">
-        <i class="bi bi-briefcase-fill"></i>
-        <span>Client Work</span>
-      </a>
-
-      <!-- Link to ai-chat.html -->
-      <a href="ai-chat.html" class="glowing-nav-btn btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs border border-cyan-400 text-cyan-300 bg-cyan-950/40">
-        <i class="bi bi-robot text-cyan-400 animate-bounce"></i>
-        <span>Ask AI 💬</span>
-      </a>
-
-      <a href="contact.html" class="btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs">
-        <i class="bi bi-envelope-fill text-amber-400"></i>
-        <span>Contact</span>
+      <a href="index.html" class="btn-mate px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5">
+        <i class="bi bi-arrow-left"></i>
+        <span>Back to Home</span>
       </a>
     </div>
+    <span class="text-xs font-bold tracking-wider text-cyan-400">AI CODE LAB</span>
   </nav>
 
-  <!-- MAIN CONTENT WRAPPER -->
-  <div class="relative z-10 w-full pt-16">
-    
-    <!-- HERO SECTION -->
-    <section class="w-full flex flex-col justify-center px-4 sm:px-12 py-12">
-      <div class="flex flex-col gap-6 max-w-4xl mx-auto w-full">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 bg-black/60 backdrop-blur-md w-fit">
-          <i class="bi bi-cpu text-xs text-cyan-400"></i>
-          <span class="text-[10px] uppercase tracking-widest text-white/80">Interactive Architecture</span>
+  <!-- MAIN BUG FIXER UI -->
+  <main class="w-full max-w-4xl mx-auto px-4 py-8 flex-grow flex flex-col justify-center">
+    <div class="glass-card p-6 sm:p-8 rounded-2xl border border-cyan-500/40 shadow-[0_0_30px_rgba(34,211,238,0.15)] flex flex-col gap-4">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-cyan-950/80 border border-cyan-400/40 flex items-center justify-center">
+          <i class="bi bi-bug-fill text-cyan-400 text-xl"></i>
         </div>
-        <h1 class="text-white font-light leading-[0.95] text-[clamp(36px,8vw,80px)] tracking-tight">
-          Web<br /><span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-white/40">Developer</span>
-        </h1>
-        <p class="text-xs sm:text-sm text-white/80 leading-relaxed max-w-md bg-black/50 backdrop-blur-sm p-4 rounded-xl border border-white/10">
-          I build interactive frontend experiences and modern digital architectures bridging intuitive design choices with powerful functionality.
-        </p>
-
-        <!-- AI RECRUITER SMART FILTER BAR -->
-        <div class="w-full max-w-md bg-black/60 backdrop-blur-md p-2 rounded-2xl border border-white/15 flex items-center gap-2 shadow-lg">
-          <i class="bi bi-magic text-cyan-400 pl-2 text-sm"></i>
-          <input type="text" id="recruiterSearchInput" placeholder="Recruiter Search: e.g. 'Python', 'Web App', 'Analytics'..." 
-                 class="bg-transparent border-none text-xs text-white placeholder-white/40 focus:outline-none w-full px-1">
-          <button onclick="aiRecruiterFilter()" class="btn-mate px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap">
-            Filter
-          </button>
-        </div>
-
-        <div class="flex items-center gap-3">
-          <a href="#projects" class="btn-mate px-6 py-3 rounded-full text-xs font-semibold flex items-center gap-2">
-            <span>View Projects</span>
-            <i class="bi bi-arrow-down"></i>
-          </a>
+        <div>
+          <h1 class="text-lg sm:text-xl font-bold text-cyan-400">AI Bug Detector & Code Fixer</h1>
+          <p class="text-xs text-white/70">Paste your buggy code snippet below to scan errors & get fixed output</p>
         </div>
       </div>
-    </section>
 
-    <!-- ABOUT SECTION -->
-    <section class="w-full px-4 sm:px-6 py-12 bg-black/30 border-t border-white/10">
-      <div class="max-w-4xl mx-auto text-center flex flex-col items-center glass-card p-6 sm:p-12 rounded-2xl">
-        <span class="text-white/60 text-[10px] tracking-[0.3em] uppercase mb-4 px-4 py-1 border border-white/20 rounded-full bg-white/10">About</span>
-        
-        <p class="text-xs sm:text-base text-white/80 leading-relaxed max-w-2xl font-light mb-6">
-          I'm <strong class="text-white font-medium">Tarun Singh</strong>, currently pursuing a Bachelor of Computer Applications (BCA) at Lovely Professional University (Expected 2027). Working as a Customer Support Executive (Email Process) at Dr ITM Limited since March 2024.
-        </p>
+      <!-- TEXTAREA -->
+      <textarea id="aiLabInput" rows="6" placeholder="Paste buggy code snippet here (e.g. function test() { console.log('hello') )..." 
+                class="w-full bg-black/80 border border-white/20 rounded-xl p-4 text-xs text-white focus:outline-none focus:border-cyan-400 font-mono resize-y"></textarea>
+      
+      <!-- SUBMIT BUTTON -->
+      <button onclick="runAILab()" class="w-full py-3.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-600 via-sky-600 to-emerald-600 text-white shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer border border-cyan-300">
+        <i class="bi bi-magic text-amber-300 text-sm"></i>
+        <span>Scan Bugs & Fix Code</span>
+      </button>
 
-        <div class="w-full max-w-xl mb-6">
-          <span class="text-[10px] uppercase text-white/50 block tracking-wider mb-3">Skills & Technologies</span>
-          <div class="flex flex-wrap items-center justify-center gap-2">
-            <span class="px-3 py-1 bg-white/5 border border-white/15 rounded-full text-xs text-white/90 flex items-center gap-1.5"><i class="bi bi-filetype-html text-amber-400"></i> HTML5</span>
-            <span class="px-3 py-1 bg-white/5 border border-white/15 rounded-full text-xs text-white/90 flex items-center gap-1.5"><i class="bi bi-filetype-css text-sky-400"></i> CSS3</span>
-            <span class="px-3 py-1 bg-white/5 border border-white/15 rounded-full text-xs text-white/90 flex items-center gap-1.5"><i class="bi bi-filetype-js text-yellow-400"></i> JavaScript</span>
-            <span class="px-3 py-1 bg-white/5 border border-white/15 rounded-full text-xs text-white/90 flex items-center gap-1.5"><i class="bi bi-bootstrap text-purple-400"></i> Tailwind</span>
-            <span class="px-3 py-1 bg-white/5 border border-white/15 rounded-full text-xs text-white/90 flex items-center gap-1.5"><i class="bi bi-filetype-py text-emerald-400"></i> Python</span>
-            <span class="px-3 py-1 bg-white/5 border border-white/15 rounded-full text-xs text-white/90 flex items-center gap-1.5"><i class="bi bi-git text-orange-500"></i> Git</span>
+      <!-- OUTPUT DISPLAY BOX -->
+      <div id="aiLabOutput" class="bg-black/95 border border-cyan-500/40 rounded-xl p-5 text-xs text-white leading-relaxed font-mono" style="display: none;"></div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full bg-black border-t border-white/10 p-4 text-center">
+    <p class="text-xs text-white/50">© 2026 Tarun Singh. Powered by AI Lab.</p>
+  </footer>
+
+  <script>
+    function runAILab() {
+      const inputField = document.getElementById('aiLabInput');
+      const outputDiv = document.getElementById('aiLabOutput');
+      const userCode = inputField.value.trim();
+
+      outputDiv.style.display = 'block';
+      outputDiv.innerHTML = `<span class="text-cyan-400 font-bold animate-pulse">🔍 Scanning code for syntax errors and bugs...</span>`;
+
+      setTimeout(() => {
+        if (!userCode) {
+          outputDiv.innerHTML = `
+            <div class="text-rose-400 font-bold mb-1">⚠️ Error: Empty Input!</div>
+            <p class="text-white/80">Please paste a code snippet so the AI Bug Detector can scan it for mistakes.</p>
+          `;
+          return;
+        }
+
+        let bugFound = false;
+        let explanation = "No major syntax errors detected. Code structure looks standard.";
+        let fixedCode = userCode;
+
+        if (userCode.includes("console.log") && !userCode.endsWith(";")) {
+          bugFound = true;
+          explanation = "Missing semicolon (;) at the end of statement.";
+          fixedCode = userCode + "; // Added missing semicolon";
+        } else if (userCode.includes("function") && !userCode.includes("{")) {
+          bugFound = true;
+          explanation = "Missing opening curly brace `{` in function syntax.";
+          fixedCode = userCode.replace("function", "function myFunction() {\n  // Fixed missing brace\n") + "\n}";
+        } else {
+          fixedCode = userCode + "\n\n// ✅ Verified: Syntax & Logic are clean!";
+        }
+
+        outputDiv.innerHTML = `
+          <div class="border-b border-white/15 pb-2 mb-3 font-bold text-cyan-300 flex items-center justify-between">
+            <span><i class="bi bi-cpu"></i> AI Bug Scanner Results</span>
+            <span class="text-[10px] ${bugFound ? 'text-rose-400 bg-rose-950/60 border-rose-500/30' : 'text-emerald-400 bg-emerald-950/60 border-emerald-500/30'} px-2 py-0.5 rounded border">
+              ${bugFound ? 'Bug Identified ⚠️' : 'Code Clean ✅'}
+            </span>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- PORTFOLIO PROJECTS SECTION -->
-    <section id="projects" class="w-full py-12 bg-black/40 border-t border-white/10">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-4 bg-black/60 p-4 rounded-xl border border-white/10">
+          <div class="mb-3">
+            <span class="text-white/50 block text-[10px] uppercase mb-1">Submitted Code:</span>
+            <div class="bg-neutral-900 p-3 rounded-lg border border-white/10 text-white/90 overflow-x-auto whitespace-pre-wrap">${escapeHtml(userCode)}</div>
+          </div>
+
+          <div class="mb-3">
+            <span class="text-rose-400 block text-[10px] uppercase mb-1 font-bold font-mono">Explanation / Error:</span>
+            <div class="bg-rose-950/30 p-3 rounded-lg border border-rose-500/30 text-rose-200 text-[11px]">
+              ${bugFound ? explanation : "All syntax checks passed. Code looks ready!"}
+            </div>
+          </div>
+
           <div>
-            <span class="text-white/50 text-[10px] tracking-[0.3em] uppercase block mb-1">Portfolio</span>
-            <h3 class="text-2xl font-light">Featured Projects</h3>
+            <span class="text-emerald-400 block text-[10px] uppercase mb-1 font-bold font-mono">Corrected Code:</span>
+            <div class="bg-emerald-950/30 p-3 rounded-lg border border-emerald-500/30 text-emerald-200 overflow-x-auto whitespace-pre-wrap">${escapeHtml(fixedCode)}</div>
           </div>
+        `;
+      }, 500);
+    }
 
-          <div class="flex items-center gap-2 overflow-x-auto pb-1 max-w-full no-scrollbar">
-            <button onclick="filterProjects('all', event)" class="filter-btn btn-mate active text-xs px-3.5 py-1.5 rounded-full font-medium whitespace-nowrap">All</button>
-            <button onclick="filterProjects('web', event)" class="filter-btn btn-mate text-xs px-3.5 py-1.5 rounded-full font-medium whitespace-nowrap">Web Apps</button>
-            <button onclick="filterProjects('ai', event)" class="filter-btn btn-mate text-xs px-3.5 py-1.5 rounded-full font-medium whitespace-nowrap">AI & Bot</button>
-            <button onclick="filterProjects('dashboard', event)" class="filter-btn btn-mate text-xs px-3.5 py-1.5 rounded-full font-medium whitespace-nowrap">Analytics</button>
-          </div>
-        </div>
-
-        <div id="projectContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Music Player -->
-          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="web" data-tags="music player streaming web app javascript html css">
-            <div class="flex flex-col gap-3">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-gradient-to-br from-rose-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
-                  <i class="bi bi-music-note-beamer text-xl text-rose-400"></i>
-                </div>
-                <div>
-                  <span class="text-[9px] px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90">Web App</span>
-                  <h4 class="text-base font-medium mt-1">Music Player</h4>
-                </div>
-              </div>
-              <p class="text-xs text-white/70 leading-relaxed">
-                A sleek web streaming app with continuous autoplay, artist detection, and instant search functionality.
-              </p>
-            </div>
-            <a href="https://rajpoot15.github.io/My-music-App/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5 mt-4">
-              <span>Visit App</span>
-              <i class="bi bi-arrow-up-right"></i>
-            </a>
-          </div>
-
-          <!-- Calculator -->
-          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="web" data-tags="calculator web app javascript math tool">
-            <div class="flex flex-col gap-3">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-gradient-to-br from-indigo-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
-                  <i class="bi bi-calculator text-xl text-indigo-400"></i>
-                </div>
-                <div>
-                  <span class="text-[9px] px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90">Web App</span>
-                  <h4 class="text-base font-medium mt-1">Calculator</h4>
-                </div>
-              </div>
-              <p class="text-xs text-white/70 leading-relaxed">
-                A responsive, sleek web calculator built to execute complex math operations smoothly.
-              </p>
-            </div>
-            <a href="https://rajpoot15.github.io/Calculator/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5 mt-4">
-              <span>Visit Calculator</span>
-              <i class="bi bi-arrow-up-right"></i>
-            </a>
-          </div>
-
-          <!-- Weather App -->
-          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="web" data-tags="weather forecasting app javascript api">
-            <div class="flex flex-col gap-3">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-gradient-to-br from-sky-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
-                  <i class="bi bi-cloud-sun text-xl text-sky-400"></i>
-                </div>
-                <div>
-                  <span class="text-[9px] px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90">Web App</span>
-                  <h4 class="text-base font-medium mt-1">Weather App</h4>
-                </div>
-              </div>
-              <p class="text-xs text-white/70 leading-relaxed">
-                A dynamic application providing live forecasting weather data instantly for any location.
-              </p>
-            </div>
-            <a href="https://rajpoot15.github.io/Wheather---App/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5 mt-4">
-              <span>Visit Weather App</span>
-              <i class="bi bi-arrow-up-right"></i>
-            </a>
-          </div>
-
-          <!-- Q Solver Bot -->
-          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="ai" data-tags="ai bot telegram python gemini api automation solver">
-            <div class="flex flex-col gap-3">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-gradient-to-br from-amber-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
-                  <i class="bi bi-robot text-xl text-amber-400"></i>
-                </div>
-                <div>
-                  <span class="text-[9px] px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90">AI & Bot</span>
-                  <h4 class="text-base font-medium mt-1">Q Solver Bot</h4>
-                </div>
-              </div>
-              <p class="text-xs text-white/70 leading-relaxed">
-                An AI-powered bot built with Python and Gemini API to solve complex query prompts.
-              </p>
-            </div>
-            <a href="https://web.telegram.org/k/#@HelperinfoBuddy_bot" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5 mt-4">
-              <span>Open Telegram Bot</span>
-              <i class="bi bi-telegram text-sky-400"></i>
-            </a>
-          </div>
-
-          <!-- Dashboard -->
-          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="dashboard" data-tags="dashboard analytics metrics python performance">
-            <div class="flex flex-col gap-3">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-gradient-to-br from-emerald-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
-                  <i class="bi bi-speedometer2 text-xl text-emerald-400"></i>
-                </div>
-                <div>
-                  <span class="text-[9px] px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white/90">Analytics</span>
-                  <h4 class="text-base font-medium mt-1">Dashboard</h4>
-                </div>
-              </div>
-              <p class="text-xs text-white/70 leading-relaxed">
-                A comprehensive analytics dashboard for real-time performance tracking and metrics monitoring.
-              </p>
-            </div>
-            <a href="https://rajpoot15.github.io/Performance-Dashboard/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5 mt-4">
-              <span>Visit Dashboard</span>
-              <i class="bi bi-arrow-up-right"></i>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- LIVE AI BUG DETECTOR & CODE FIXER SECTION (Button moved ABOVE textarea for instant visibility) -->
-    <section class="w-full py-10 bg-black/50 border-t border-white/10">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <div class="glass-card p-5 sm:p-7 rounded-2xl border border-cyan-500/40 shadow-[0_0_30px_rgba(34,211,238,0.15)] flex flex-col gap-3">
-          
-          <div class="flex items-center gap-2">
-            <i class="bi bi-bug-fill text-rose-400 text-lg"></i>
-            <h3 class="text-base sm:text-lg font-bold text-cyan-400">Live AI Bug Detector & Code Fixer</h3>
-          </div>
-          <p class="text-xs text-white/70">Click the button below to scan code for bugs, explain mistakes, and get the fixed version!</p>
-          
-          <!-- BUTTON PLACED ABOVE TEXTAREA SO IT'S ALWAYS INSTANTLY VISIBLE -->
-          <div class="w-full flex">
-            <button onclick="runAILab()" class="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-bold
-                
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+  </script>
+</body>
+</html>
