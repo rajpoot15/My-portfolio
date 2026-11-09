@@ -344,17 +344,20 @@
       </div>
     </section>
 
-    <!-- LIVE AI LAB & BUG FIXER SECTION -->
-    <section class="w-full py-12 bg-black/50 border-t border-white/10">
+    <!-- LIVE AI BUG DETECTOR & CODE FIXER SECTION (Compact & Fixed Button Layout) -->
+    <section class="w-full py-10 bg-black/50 border-t border-white/10">
       <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <div class="glass-card p-6 sm:p-8 rounded-2xl border border-cyan-500/40 shadow-[0_0_30px_rgba(34,211,238,0.15)]">
-          <div class="flex items-center gap-2 mb-2">
+        <div class="glass-card p-5 sm:p-7 rounded-2xl border border-cyan-500/40 shadow-[0_0_30px_rgba(34,211,238,0.15)] flex flex-col gap-3">
+          
+          <div class="flex items-center gap-2">
             <i class="bi bi-bug-fill text-rose-400 text-lg"></i>
-            <h3 class="text-lg font-bold text-cyan-400">Live AI Bug Detector & Code Fixer</h3>
+            <h3 class="text-base sm:text-lg font-bold text-cyan-400">Live AI Bug Detector & Code Fixer</h3>
           </div>
-          <p class="text-xs text-white/70 mb-4">Paste code with errors below, and the AI will scan for bugs, explain the mistakes, and give you the corrected code!</p>
+          <p class="text-xs text-white/70">Paste code with errors below, and the AI will scan for bugs, explain mistakes, and give the fixed code!</p>
           
-          <textarea id="aiLabInput" rows="4" placeholder="Paste buggy code here (e.g., console.log(x missing semicolon or syntax mistake)..." 
-                    class="w-full bg-black/80 border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-400 mb-3 font-mono"></textarea>
+          <textarea id="aiLabInput" rows="3" placeholder="Paste buggy code snippet here..." 
+                    class="w-full bg-black/80 border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-400 font-mono resize-none"></textarea>
           
-          <button onclick="runAILab()" class="btn-mate px-5 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 bg-cyan-950/60 text-cyan-300 border border-cya
+          <!-- ALWAYS VISIBLE HIGH-GLOW BUTTON -->
+          <div class="w-full flex justify-center pt-1">
+            <button onclick="runAILab()" c
