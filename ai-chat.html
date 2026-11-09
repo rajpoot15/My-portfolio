@@ -50,10 +50,10 @@
     }
 
     .glass-card {
-      background: rgba(18, 18, 18, 0.95);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(12, 12, 12, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .project-card.hidden-category {
@@ -102,6 +102,10 @@
     .glowing-nav-btn {
       animation: superGlow 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
     }
+
+    /* Custom Scrollbar for Chat Messages */
+    #chatMessages::-webkit-scrollbar { width: 4px; }
+    #chatMessages::-webkit-scrollbar-thumb { background: rgba(34, 211, 238, 0.3); border-radius: 4px; }
   </style>
 </head>
 <body class="bg-black text-white font-mono">
@@ -357,9 +361,4 @@
           <textarea id="aiLabInput" rows="3" placeholder="Paste code snippet or question here..." 
                     class="w-full bg-black/60 border border-white/15 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-400 mb-3"></textarea>
           
-          <button onclick="runAILab()" class="btn-mate px-5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
-            <span>Analyze with AI</span>
-            <i class="bi bi-play-fill text-emerald-400"></i>
-          </button>
-
-          <div id="aiLabOutput" class="mt-4 bg-black/8
+          <button onclick="runAILab()" class="btn-mate px-5 py-2 rounded-xl text-xs font-semibold 
