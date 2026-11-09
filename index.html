@@ -172,17 +172,6 @@
           I build interactive frontend experiences and modern digital architectures bridging intuitive design choices with powerful functionality.
         </p>
 
-        <!-- AI RECRUITER SMART FILTER BAR -->
-        <div class="w-full max-w-md bg-black/60 backdrop-blur-md p-2 rounded-2xl border border-white/15 flex items-center gap-2 shadow-lg">
-          <i class="bi bi-magic text-cyan-400 pl-2 text-sm"></i>
-          <input type="text" id="recruiterSearchInput" placeholder="Recruiter Search: e.g. 'Python', 'Music', 'Dashboard'..." 
-                 class="bg-transparent border-none text-xs text-white placeholder-white/40 focus:outline-none w-full px-1"
-                 onkeyup="if(event.key === 'Enter') aiRecruiterFilter()">
-          <button onclick="aiRecruiterFilter()" class="btn-mate px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap">
-            Filter
-          </button>
-        </div>
-
         <div class="flex items-center gap-3">
           <a href="#projects" class="btn-mate px-6 py-3 rounded-full text-xs font-semibold flex items-center gap-2">
             <span>View Projects</span>
@@ -236,7 +225,7 @@
         <div id="projectContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           
           <!-- Music Player -->
-          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="web" data-tags="music player streaming web app javascript html css">
+          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="web">
             <div class="flex flex-col gap-3">
               <div class="flex items-center gap-3">
                 <div class="w-12 h-12 bg-gradient-to-br from-rose-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
@@ -258,7 +247,7 @@
           </div>
 
           <!-- Calculator -->
-          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="web" data-tags="calculator web app javascript math tool">
+          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="web">
             <div class="flex flex-col gap-3">
               <div class="flex items-center gap-3">
                 <div class="w-12 h-12 bg-gradient-to-br from-indigo-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
@@ -280,7 +269,7 @@
           </div>
 
           <!-- Weather App -->
-          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="web" data-tags="weather forecasting app javascript api">
+          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="web">
             <div class="flex flex-col gap-3">
               <div class="flex items-center gap-3">
                 <div class="w-12 h-12 bg-gradient-to-br from-sky-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
@@ -302,7 +291,7 @@
           </div>
 
           <!-- Q Solver Bot -->
-          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="ai" data-tags="ai bot telegram python gemini api automation solver">
+          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="ai">
             <div class="flex flex-col gap-3">
               <div class="flex items-center gap-3">
                 <div class="w-12 h-12 bg-gradient-to-br from-amber-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
@@ -324,7 +313,7 @@
           </div>
 
           <!-- Dashboard -->
-          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="dashboard" data-tags="dashboard analytics metrics python performance">
+          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between" data-category="dashboard">
             <div class="flex flex-col gap-3">
               <div class="flex items-center gap-3">
                 <div class="w-12 h-12 bg-gradient-to-br from-emerald-950 to-neutral-900 rounded-xl border border-white/10 flex items-center justify-center shrink-0">
@@ -345,8 +334,8 @@
             </a>
           </div>
 
-          <!-- AI Bug Fixer Card (With fully visible active button) -->
-          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between border-cyan-500/40" data-category="ai" data-tags="ai bug detector code fixer python javascript html syntax">
+          <!-- AI Bug Fixer Card (Fully visible clickable button) -->
+          <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between border-cyan-500/40" data-category="ai">
             <div class="flex flex-col gap-2">
               <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-gradient-to-br from-cyan-950 to-neutral-900 rounded-xl border border-cyan-400/40 flex items-center justify-center shrink-0">
@@ -358,4 +347,35 @@
                 </div>
               </div>
               <p class="text-xs text-white/70 leading-snug">
-                Interactive AI tool that scans buggy code, highlights errors, and provide
+                Interactive AI tool that scans buggy code, highlights errors, and provides fixed code snippets.
+              </p>
+            </div>
+            <a href="ai-fixer.html" class="btn-mate w-full py-3 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2 mt-4 bg-cyan-950 text-cyan-300 border-cyan-400 shadow-lg cursor-pointer">
+              <span>Open Code Fixer Lab ⚡</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-black border-t border-white/10 p-6 text-center flex flex-col items-center gap-2 relative z-20">
+      <p class="text-xs text-white/50 font-mono">© 2026 Tarun Singh. All rights reserved.</p>
+      <p class="text-xs text-emerald-400/90 font-mono tracking-wide">Made by Rajpøøt</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // 1. PROJECT CATEGORY FILTER
+    function filterProjects(category, evt) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (evt && evt.target) {
+        evt.target.classList.add('active');
+      }
+
+      const
