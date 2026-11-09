@@ -75,22 +75,29 @@
   </footer>
 
   <script>
+    // STANDARD GOOGLE AI STUDIO API KEY FORMAT
     const API_KEY = "AQ.Ab8RN6KrE1vJVh0qaX2OML17B2127l6Ps-Nd8V8CfN3UuJFtQg";
     const MODEL_NAME = "gemini-1.5-flash";
 
     async function callGemini(promptText) {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
+      const url = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
       try {
         const response = await fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ contents: [{ parts: [{ text: promptText }] }] })
+          body: JSON.stringify({
+            contents: [{
+              parts: [{ text: promptText }]
+            }]
+          })
         });
         const data = await response.json();
-        if (!response.ok) return `❌ Error: ${data.error?.message || "API failed."}`;
-        return data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't process that.";
+        if (!response.ok) {
+          return `❌ Error: ${data.error?.message || "API request failed."}`;
+        }
+        return data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response.";
       } catch (err) {
-        return `❌ Connection Failed. Check internet.`;
+        return `❌ Connection Error. Please check your network.`;
       }
     }
 
@@ -139,4 +146,3 @@
   </script>
 </body>
 </html>
-
