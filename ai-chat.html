@@ -3,149 +3,236 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tarun's AI Assistant</title>
+  <title>Ask AI — Tarun Singh Portfolio</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { background-color: #000000; color: #ffffff; font-family: "Space Mono", monospace; }
-    .glass-card {
-      background: rgba(12, 12, 12, 0.95);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-    #chatMessages::-webkit-scrollbar { width: 4px; }
-    #chatMessages::-webkit-scrollbar-thumb { background: rgba(34, 211, 238, 0.3); border-radius: 4px; }
-  </style>
-</head>
-<body class="min-h-screen flex flex-col justify-between p-4 sm:p-6 bg-black">
-
-  <!-- TOP HEADER -->
-  <header class="max-w-2xl mx-auto w-full flex justify-between items-center glass-card p-4 rounded-2xl mb-4 border border-cyan-500/30 shadow-lg">
-    <div class="flex items-center gap-2.5">
-      <div class="w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400">
-        <i class="bi bi-robot text-sm"></i>
-      </div>
-      <div>
-        <h1 class="text-xs sm:text-sm font-bold tracking-wider text-cyan-300 flex items-center gap-1.5">
-          TARUN'S AI ASSISTANT
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        </h1>
-        <p class="text-[10px] text-cyan-300/80">Online • Portfolio Assistant</p>
-      </div>
-    </div>
-    <a href="index.html" class="text-xs bg-white/10 hover:bg-white/20 px-3 py-2 rounded-xl border border-white/20 transition flex items-center gap-1.5 text-white">
-      <i class="bi bi-arrow-left"></i>
-      <span>Back to Portfolio</span>
-    </a>
-  </header>
-
-  <!-- CHAT CONTAINER -->
-  <main class="max-w-2xl mx-auto w-full flex-grow glass-card rounded-2xl flex flex-col shadow-2xl overflow-hidden border border-cyan-500/30 h-[70vh]">
-    
-    <!-- Messages Box -->
-    <div id="chatMessages" class="flex-grow p-4 overflow-y-auto space-y-4 text-xs sm:text-sm">
-      <div class="flex gap-2.5">
-        <div class="w-6 h-6 rounded-full bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shrink-0 text-[10px]">
-          <i class="bi bi-robot"></i>
-        </div>
-        <div class="bg-gradient-to-br from-neutral-900 to-cyan-950/30 border border-cyan-500/30 p-3.5 rounded-2xl rounded-tl-sm text-white/90 max-w-[85%] leading-relaxed shadow-lg">
-          👋 Hi there! Main Tarun Singh ka AI Assistant hoon. Aap mujhse Tarun ke skills, BCA studies (LPU), work experience (Dr ITM Limited), ya unke projects ke baare mein kuch bhi pooch sakte hain!
-        </div>
-      </div>
-    </div>
-
-    <!-- Input Bar -->
-    <div class="p-3 bg-black/90 border-t border-white/10 flex gap-2 items-center">
-      <input type="text" id="chatInput" placeholder="Ask anything about Tarun..." 
-             onkeypress="if(event.key==='Enter') sendChatMessage()"
-             class="bg-white/5 border border-white/15 text-xs sm:text-sm rounded-xl px-4 py-3 flex-grow focus:outline-none focus:border-cyan-400 text-white placeholder-white/40">
-      <button onclick="sendChatMessage()" class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-black font-bold px-5 py-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center shadow-lg shadow-cyan-500/20">
-        <i class="bi bi-send-fill text-black"></i>
-      </button>
-    </div>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="text-center text-[10px] text-white/40 mt-4">
-    Smart Portfolio Assistant • Built by Tarun Singh
-  </footer>
-
+  
   <script>
-    // SMART PORTFOLIO KNOWLEDGE BASE (No API key expiration or CORS errors)
-    function getSmartAIResponse(query) {
-      const q = query.toLowerCase();
-
-      if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('namaste')) {
-        return "Hello! How can I help you learn more about Tarun Singh's professional background and development projects today?";
-      } 
-      else if (q.includes('who is tarun') || q.includes('tarun singh') || q.includes('about tarun') || q.includes('intro')) {
-        return "Tarun Singh is a dedicated Web Developer and BCA student at Lovely Professional University (LPU), graduating in 2027. He also works as a Customer Support Executive in an email process role at Dr ITM Limited since March 2024.";
-      } 
-      else if (q.includes('education') || q.includes('college') || q.includes('bca') || q.includes('lpu')) {
-        return "Tarun is pursuing his Bachelor of Computer Applications (BCA) online through Lovely Professional University (LPU), with an expected graduation in 2027.";
-      } 
-      else if (q.includes('job') || q.includes('work') || q.includes('company') || q.includes('dr itm') || q.includes('experience')) {
-        return "Tarun works as a Customer Support Executive handling email processes at Dr ITM Limited, where he has been employed since March 13, 2024.";
-      } 
-      else if (q.includes('skills') || q.includes('tech') || q.includes('stack') || q.includes('languages')) {
-        return "Tarun's technical stack includes HTML5, CSS3, JavaScript, Tailwind CSS, Python automation, and Git. He builds responsive web applications entirely through mobile development environments.";
-      } 
-      else if (q.includes('project') || q.includes('portfolio') || q.includes('app') || q.includes('best project')) {
-        return "Tarun has built several awesome projects including:\n1. Music Player App (streaming & search)\n2. Interactive Web Calculator\n3. Live Weather Forecasting App\n4. Q Solver Telegram Bot (powered by Python & Gemini API)\n5. Performance Dashboard";
-      } 
-      else if (q.includes('contact') || q.includes('hire') || q.includes('email') || q.includes('reach')) {
-        return "You can connect with Tarun through the Contact section of his portfolio or check out his client work and GitHub repositories directly!";
-      } 
-      else {
-        return `That's an interesting question about "${query}"! Tarun specializes in frontend web development, Python automation tools, and building interactive web apps. Feel free to ask about his BCA studies at LPU, work at Dr ITM Limited, or his featured web projects!`;
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['"Space Mono"', 'monospace'],
+          }
+        }
       }
     }
+  </script>
 
-    async function sendChatMessage() {
-      const inputField = document.getElementById('chatInput');
-      const messageBox = document.getElementById('chatMessages');
-      const userText = inputField.value.trim();
-      if (!userText) return;
+  <style>
+    body {
+      background-color: #050505;
+      color: #ffffff;
+      font-family: "Space Mono", monospace;
+      min-height: 100vh;
+    }
+    .glass-card {
+      background: rgba(12, 12, 16, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+    .btn-mate {
+      background: #121212;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    .btn-mate:hover {
+      background: #ffffff;
+      color: #000000;
+    }
+    .chat-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .chat-scroll::-webkit-scrollbar-thumb {
+      background: rgba(34, 211, 238, 0.3);
+      border-radius: 4px;
+    }
+    .neon-border {
+      box-shadow: 0 0 25px rgba(34, 211, 238, 0.15);
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-mono flex flex-col h-screen overflow-hidden">
 
-      // Append User Message
-      messageBox.innerHTML += `
-        <div class="flex gap-2.5 justify-end">
-          <div class="bg-cyan-500/20 border border-cyan-500/30 p-3.5 rounded-2xl rounded-tr-sm text-white max-w-[85%] text-right shadow-lg">
-            ${userText}
+  <!-- NAVBAR -->
+  <nav class="w-full h-16 flex items-center justify-between px-4 sm:px-8 bg-black/90 border-b border-white/10 shrink-0 z-50">
+    <div class="flex items-center gap-2">
+      <a href="index.html" class="btn-mate px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5">
+        <i class="bi bi-arrow-left"></i>
+        <span>Home</span>
+      </a>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+      <span class="text-xs font-bold tracking-wider text-cyan-400">TARUN AI ASSISTANT v2.0</span>
+    </div>
+  </nav>
+
+  <!-- CHAT CONTAINER -->
+  <main class="flex-grow w-full max-w-4xl mx-auto px-3 sm:px-6 py-4 flex flex-col min-h-0">
+    
+    <div class="glass-card flex-grow rounded-2xl p-4 sm:p-6 flex flex-col justify-between overflow-hidden neon-border">
+      
+      <!-- CHAT MESSAGES BOX -->
+      <div id="chatMessages" class="chat-scroll flex-grow overflow-y-auto space-y-4 pr-2 mb-4">
+        
+        <!-- BOT WELCOME MSG -->
+        <div class="flex gap-3 items-start">
+          <div class="w-8 h-8 rounded-xl bg-cyan-950 border border-cyan-400/40 flex items-center justify-center shrink-0">
+            <i class="bi bi-robot text-cyan-400 text-sm"></i>
           </div>
-        </div>`;
+          <div class="bg-neutral-900 border border-white/10 p-3.5 rounded-2xl rounded-tl-none max-w-[85%] text-xs leading-relaxed text-neutral-200">
+            👋 Hi! I'm Tarun Singh's Portfolio AI. Ask me anything about Tarun's skills, BCA degree, Dr ITM Limited role, projects, or request custom code snippets!
+          </div>
+        </div>
+
+      </div>
+
+      <!-- QUICK SUGGESTION PROMPT CHIPS -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 mb-2 no-scrollbar">
+        <button onclick="sendQuickPrompt('Who is Tarun Singh?')" class="px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-[10px] text-cyan-300 hover:bg-cyan-900/80 whitespace-nowrap transition-all">
+          👤 Who is Tarun?
+        </button>
+        <button onclick="sendQuickPrompt('What are his technical skills?')" class="px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-[10px] text-emerald-300 hover:bg-emerald-900/80 whitespace-nowrap transition-all">
+          💻 Technical Skills
+        </button>
+        <button onclick="sendQuickPrompt('Tell me about his work experience')" class="px-3 py-1 rounded-full bg-amber-950/60 border border-amber-500/30 text-[10px] text-amber-300 hover:bg-amber-900/80 whitespace-nowrap transition-all">
+          💼 Work Experience
+        </button>
+        <button onclick="sendQuickPrompt('Show me a Python code example')" class="px-3 py-1 rounded-full bg-purple-950/60 border border-purple-500/30 text-[10px] text-purple-300 hover:bg-purple-900/80 whitespace-nowrap transition-all">
+          ⚡ Request Code
+        </button>
+      </div>
+
+      <!-- INPUT FORM -->
+      <div class="flex items-center gap-2 bg-black/80 p-2 rounded-xl border border-white/20">
+        <input type="text" id="userInput" placeholder="Ask about Tarun or request code..." 
+               class="bg-transparent text-xs text-white placeholder-neutral-500 focus:outline-none w-full px-2"
+               onkeyup="if(event.key === 'Enter') sendMessage()">
+        <button onclick="sendMessage()" class="bg-cyan-500 text-black px-4 py-2 rounded-lg text-xs font-bold hover:bg-cyan-400 active:scale-95 transition-all flex items-center gap-1 shrink-0">
+          <span>Send</span>
+          <i class="bi bi-send-fill"></i>
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    function sendQuickPrompt(promptText) {
+      document.getElementById('userInput').value = promptText;
+      sendMessage();
+    }
+
+    function sendMessage() {
+      const inputField = document.getElementById('userInput');
+      const messagesContainer = document.getElementById('chatMessages');
+      const text = inputField.value.trim();
+
+      if (!text) return;
+
+      // 1. Append User Message
+      const userMsgHTML = `
+        <div class="flex gap-3 items-start justify-end">
+          <div class="bg-cyan-950/80 border border-cyan-400/30 p-3.5 rounded-2xl rounded-tr-none max-w-[85%] text-xs leading-relaxed text-cyan-100">
+            ${escapeHtml(text)}
+          </div>
+          <div class="w-8 h-8 rounded-xl bg-neutral-800 border border-white/10 flex items-center justify-center shrink-0">
+            <i class="bi bi-person-fill text-white/80 text-sm"></i>
+          </div>
+        </div>
+      `;
+      messagesContainer.innerHTML += userMsgHTML;
       inputField.value = '';
-      messageBox.scrollTop = messageBox.scrollHeight;
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-      // Typing Indicator
-      const loadingId = 'loading-' + Date.now();
-      messageBox.innerHTML += `
-        <div id="${loadingId}" class="flex gap-2.5">
-          <div class="w-6 h-6 rounded-full bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shrink-0 text-[10px]"><i class="bi bi-robot"></i></div>
-          <div class="bg-white/10 border border-white/5 p-3 rounded-2xl text-white/70 max-w-[85%]">Thinking...</div>
-        </div>`;
-      messageBox.scrollTop = messageBox.scrollHeight;
+      // 2. Add Typing Indicator
+      const typingId = 'typing-' + Date.now();
+      const typingHTML = `
+        <div id="${typingId}" class="flex gap-3 items-start">
+          <div class="w-8 h-8 rounded-xl bg-cyan-950 border border-cyan-400/40 flex items-center justify-center shrink-0">
+            <i class="bi bi-robot text-cyan-400 text-sm"></i>
+          </div>
+          <div class="bg-neutral-900 border border-white/10 p-3.5 rounded-2xl rounded-tl-none text-xs text-cyan-400 animate-pulse">
+            AI is thinking...
+          </div>
+        </div>
+      `;
+      messagesContainer.innerHTML += typingHTML;
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-      // Simulate ultra-fast smart response
+      // 3. Process Bot Response
       setTimeout(() => {
-        const loadingElem = document.getElementById(loadingId);
-        if (loadingElem) loadingElem.remove();
+        document.getElementById(typingId).remove();
+        const responseText = generateAIResponse(text);
 
-        const botReply = getSmartAIResponse(userText);
-
-        messageBox.innerHTML += `
-          <div class="flex gap-2.5">
-            <div class="w-6 h-6 rounded-full bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shrink-0 text-[10px]"><i class="bi bi-robot"></i></div>
-            <div class="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-white/10 p-3.5 rounded-2xl rounded-tl-sm max-w-[85%] leading-relaxed shadow-lg text-white/90 whitespace-pre-line">
-              ${botReply}
+        const botMsgHTML = `
+          <div class="flex gap-3 items-start">
+            <div class="w-8 h-8 rounded-xl bg-cyan-950 border border-cyan-400/40 flex items-center justify-center shrink-0">
+              <i class="bi bi-robot text-cyan-400 text-sm"></i>
             </div>
-          </div>`;
-        messageBox.scrollTop = messageBox.scrollHeight;
+            <div class="bg-neutral-900 border border-white/10 p-3.5 rounded-2xl rounded-tl-none max-w-[85%] text-xs leading-relaxed text-neutral-200">
+              ${responseText}
+            </div>
+          </div>
+        `;
+        messagesContainer.innerHTML += botMsgHTML;
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
       }, 600);
+    }
+
+    function generateAIResponse(query) {
+      const q = query.toLowerCase();
+
+      // CODE REQUEST HANDLER
+      if (q.includes('code') || q.includes('python') || q.includes('javascript') || q.includes('html') || q.includes('script')) {
+        return `
+          Here is a sample code snippet created for Tarun's tech stack:
+          <div class="mt-2 bg-black/90 p-3 rounded-lg border border-cyan-500/30 font-mono text-[11px] text-cyan-300 overflow-x-auto whitespace-pre">
+<span class="text-rose-400"># Python Gemini API Automation Snippet</span>
+<span class="text-purple-400">import</span> google.generativeai <span class="text-purple-400">as</span> genai
+
+genai.configure(api_key=<span class="text-emerald-300">"YOUR_API_KEY"</span>)
+model = genai.GenerativeModel(<span class="text-emerald-300">'gemini-pro'</span>)
+response = model.generate_content(<span class="text-emerald-300">"Fix bugs in code"</span>)
+print(response.text)</div>
+        `;
+      }
+
+      // TARUN PORTFOLIO KNOWLEDGE BASE
+      if (q.includes('who') || q.includes('tarun') || q.includes('about') || q.includes('bio')) {
+        return "Tarun Singh is a Web Developer pursuing a BCA online at Lovely Professional University (expected 2027). He also works as a Customer Support Executive (Email Process) at Dr ITM Limited since March 2024.";
+      }
+      
+      if (q.includes('skill') || q.includes('tech') || q.includes('language') || q.includes('stack')) {
+        return "Tarun's primary tech stack includes HTML5, CSS3, JavaScript, Tailwind CSS, Python, Git, and Gemini API integrations.";
+      }
+
+      if (q.includes('experience') || q.includes('job') || q.includes('work') || q.includes('itm')) {
+        return "Tarun has been working at Dr ITM Limited as a Customer Support Executive (Email Process) since March 13, 2024, balancing full-time client communications with web engineering development.";
+      }
+
+      if (q.includes('project') || q.includes('bot') || q.includes('app') || q.includes('dashboard')) {
+        return "Tarun's featured projects include the Music Player Streaming App, Live Weather Forecast App, Modern Calculator, Performance Tracker Dashboard, Telegram Q Solver AI Bot (@HelperinfoBuddy_bot), and the Live AI Bug Fixer!";
+      }
+
+      if (q.includes('contact') || q.includes('email') || q.includes('reach')) {
+        return "You can reach out to Tarun through the Contact page link in the main navigation header!";
+      }
+
+      // GUARDRAIL FOR OUT-OF-SCOPE QUESTIONS
+      return "⚠️ <strong>Sorry, I cannot provide this information.</strong> I am specialized strictly to answer questions regarding Tarun Singh's developer portfolio, education, skills, work experience, projects, or generate relevant programming code snippets.";
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
   </script>
 </body>
