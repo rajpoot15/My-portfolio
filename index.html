@@ -352,14 +352,71 @@
             <i class="bi bi-cpu text-cyan-400 text-lg"></i>
             <h3 class="text-lg font-bold text-cyan-400">Live AI Lab Showcase</h3>
           </div>
-          <p class="text-xs text-white/70 mb-4">Paste code or text below to let Tarun's live AI model explain or review it in real-time.</p>
+          <p class="text-xs text-white/70 mb-4">Type any code snippet or question below to let the AI model analyze it.</p>
           
-          <textarea id="aiLabInput" rows="3" placeholder="Paste code snippet or question here..." 
+          <textarea id="aiLabInput" rows="3" placeholder="Type something here (e.g., 'Explain JavaScript async/await')..." 
                     class="w-full bg-black/60 border border-white/15 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-400 mb-3"></textarea>
           
-          <button onclick="runAILab()" class="btn-mate px-5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
+          <button onclick="runAILab()" class="btn-mate px-5 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 bg-cyan-950/60 text-cyan-300 border-cyan-400">
             <span>Analyze with AI</span>
             <i class="bi bi-play-fill text-emerald-400"></i>
           </button>
 
-          <div id="aiLabOutput" class="mt-4 bg-black/80 border border-whit
+          <div id="aiLabOutput" class="mt-4 bg-black/80 border border-white/10 rounded-xl p-4 text-xs text-white/90 hidden leading-relaxed"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-black border-t border-white/10 p-6 text-center flex flex-col items-center gap-2 relative z-20">
+      <p class="text-xs text-white/50 font-mono">© 2026 Tarun Singh. All rights reserved.</p>
+      <p class="text-xs text-emerald-400/90 font-mono tracking-wide">Made by Rajpøøt</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // 1. PROJECT CATEGORY FILTER
+    function filterProjects(category, evt) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (evt && evt.target) {
+        evt.target.classList.add('active');
+      }
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        const matchesCategory = (category === 'all' || card.getAttribute('data-category') === category);
+        if (matchesCategory) {
+          card.classList.remove('hidden-category');
+        } else {
+          card.classList.add('hidden-category');
+        }
+      });
+    }
+
+    // 2. AI RECRUITER SEARCH FILTER
+    function aiRecruiterFilter() {
+      const query = document.getElementById('recruiterSearchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.project-card');
+
+      cards.forEach(card => {
+        const tags = card.getAttribute('data-tags') || '';
+        if (tags.toLowerCase().includes(query) || query === '') {
+          card.classList.remove('hidden-category');
+        } else {
+          card.classList.add('hidden-category');
+        }
+      });
+    }
+
+    // 3. LIVE AI LAB RUNNER (Fixed & Instant)
+    function runAILab() {
+      const inputField = document.getElementById('aiLabInput');
+      const outputDiv = document.getElementById('aiLabOutput');
+      let text = inputField.value.trim();
+
+      // If textarea is empty, use default helpful text
+      if (!text) {
+        text = "Explain frontend web
+
