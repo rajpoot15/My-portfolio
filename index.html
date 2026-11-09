@@ -175,8 +175,9 @@
         <!-- AI RECRUITER SMART FILTER BAR -->
         <div class="w-full max-w-md bg-black/60 backdrop-blur-md p-2 rounded-2xl border border-white/15 flex items-center gap-2 shadow-lg">
           <i class="bi bi-magic text-cyan-400 pl-2 text-sm"></i>
-          <input type="text" id="recruiterSearchInput" placeholder="Recruiter Search: e.g. 'Python', 'Web App', 'Analytics'..." 
-                 class="bg-transparent border-none text-xs text-white placeholder-white/40 focus:outline-none w-full px-1">
+          <input type="text" id="recruiterSearchInput" placeholder="Recruiter Search: e.g. 'Python', 'Music', 'Dashboard'..." 
+                 class="bg-transparent border-none text-xs text-white placeholder-white/40 focus:outline-none w-full px-1"
+                 onkeyup="if(event.key === 'Enter') aiRecruiterFilter()">
           <button onclick="aiRecruiterFilter()" class="btn-mate px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap">
             Filter
           </button>
@@ -344,7 +345,7 @@
             </a>
           </div>
 
-          <!-- AI Bug Fixer Card with fully visible button -->
+          <!-- AI Bug Fixer Card -->
           <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between border-cyan-500/40" data-category="ai" data-tags="ai bug detector code fixer python javascript html syntax">
             <div class="flex flex-col gap-2">
               <div class="flex items-center gap-3">
@@ -358,98 +359,4 @@
               </div>
               <p class="text-xs text-white/70 leading-snug">
                 Interactive AI tool that scans buggy code, highlights errors, and provides fixed code snippets.
-              </p>
-            </div>
-            <a href="ai-fixer.html" class="btn-mate w-full py-2.5 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2 mt-3 bg-cyan-950 text-cyan-300 border-cyan-400 shadow-md">
-              <span>Open Code Fixer Lab ⚡</span>
-              <i class="bi bi-arrow-right"></i>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="w-full bg-black border-t border-white/10 p-6 text-center flex flex-col items-center gap-2 relative z-20">
-      <p class="text-xs text-white/50 font-mono">© 2026 Tarun Singh. All rights reserved.</p>
-      <p class="text-xs text-emerald-400/90 font-mono tracking-wide">Made by Rajpøøt</p>
-    </footer>
-
-  </div>
-
-  <script>
-    // 1. PROJECT CATEGORY FILTER
-    function filterProjects(category, evt) {
-      const buttons = document.querySelectorAll('.filter-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      if (evt && evt.target) {
-        evt.target.classList.add('active');
-      }
-
-      const cards = document.querySelectorAll('.project-card');
-      cards.forEach(card => {
-        const matchesCategory = (category === 'all' || card.getAttribute('data-category') === category);
-        if (matchesCategory) {
-          card.classList.remove('hidden-category');
-        } else {
-          card.classList.add('hidden-category');
-        }
-      });
-    }
-
-    // 2. AI RECRUITER SEARCH FILTER
-    function aiRecruiterFilter() {
-      const query = document.getElementById('recruiterSearchInput').value.toLowerCase().trim();
-      const cards = document.querySelectorAll('.project-card');
-
-      cards.forEach(card => {
-        const tags = card.getAttribute('data-tags') || '';
-        if (tags.toLowerCase().includes(query) || query === '') {
-          card.classList.remove('hidden-category');
-        } else {
-          card.classList.add('hidden-category');
-        }
-      });
-    }
-
-    // 3. MOUSE-SCRUB BACKGROUND VIDEO
-    const video = document.getElementById('heroVideo');
-    let prevX = null;
-    let targetTime = 0;
-    let isSeeking = false;
-
-    if (video) {
-      window.addEventListener('mousemove', (e) => {
-        if (!video.duration) return;
-        if (prevX === null) {
-          prevX = e.clientX;
-          return;
-        }
-
-        const delta = e.clientX - prevX;
-        prevX = e.clientX;
-        const SENSITIVITY = 0.8;
-        const timeOffset = (delta / window.innerWidth) * SENSITIVITY * video.duration;
-
-        targetTime = Math.max(0, Math.min(video.duration, targetTime + timeOffset));
-
-        if (!isSeeking) {
-          isSeeking = true;
-          video.currentTime = targetTime;
-        }
-      });
-
-      video.addEventListener('seeked', () => {
-        if (Math.abs(video.currentTime - targetTime) > 0.05) {
-          video.currentTime = targetTime;
-        } else {
-          isSeeking = false;
-        }
-      });
-    }
-  </script>
-</body>
-</html>
-
+            
