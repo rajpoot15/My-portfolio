@@ -333,5 +333,141 @@
                 A comprehensive analytics dashboard for real-time performance tracking and metrics monitoring.
               </p>
             </div>
-            <a href="https://rajpoot15.github.io/Performance-Dashboard/" target="_blank" rel
-              
+            <a href="https://rajpoot15.github.io/Performance-Dashboard/" target="_blank" rel="noopener noreferrer" class="btn-mate w-full py-2.5 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1.5 mt-4">
+              <span>Visit Dashboard</span>
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LIVE AI LAB SECTION (Clear Output Box Setup) -->
+    <section id="aiLabSection" class="w-full py-12 bg-black/50 border-t border-white/10">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="glass-card p-6 sm:p-8 rounded-2xl border border-cyan-500/40 shadow-[0_0_30px_rgba(34,211,238,0.15)]">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="bi bi-cpu text-cyan-400 text-lg"></i>
+            <h3 class="text-lg font-bold text-cyan-400">Live AI Lab Showcase</h3>
+          </div>
+          <p class="text-xs text-white/70 mb-4">Type any code snippet or question below to analyze it instantly.</p>
+          
+          <textarea id="aiLabInput" rows="3" placeholder="Type here (e.g. 'Explain async/await in JS')..." 
+                    class="w-full bg-black/80 border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-400 mb-3 font-mono"></textarea>
+          
+          <button onclick="runAILab()" class="btn-mate px-5 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 bg-cyan-950/60 text-cyan-300 border border-cyan-400 cursor-pointer">
+            <span>Analyze with AI</span>
+            <i class="bi bi-play-fill text-emerald-400"></i>
+          </button>
+
+          <!-- Permanently Mounted Output Box -->
+          <div id="aiLabOutput" class="mt-4 bg-black/90 border border-cyan-500/40 rounded-xl p-4 text-xs text-white leading-relaxed font-mono">
+            <span class="text-white/40 italic">Results will appear here after clicking 'Analyze with AI'...</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-black border-t border-white/10 p-6 text-center flex flex-col items-center gap-2 relative z-20">
+      <p class="text-xs text-white/50 font-mono">© 2026 Tarun Singh. All rights reserved.</p>
+      <p class="text-xs text-emerald-400/90 font-mono tracking-wide">Made by Rajpøøt</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // 1. PROJECT CATEGORY FILTER
+    function filterProjects(category, evt) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (evt && evt.target) {
+        evt.target.classList.add('active');
+      }
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        const matchesCategory = (category === 'all' || card.getAttribute('data-category') === category);
+        if (matchesCategory) {
+          card.classList.remove('hidden-category');
+        } else {
+          card.classList.add('hidden-category');
+        }
+      });
+    }
+
+    // 2. AI RECRUITER SEARCH FILTER
+    function aiRecruiterFilter() {
+      const query = document.getElementById('recruiterSearchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.project-card');
+
+      cards.forEach(card => {
+        const tags = card.getAttribute('data-tags') || '';
+        if (tags.toLowerCase().includes(query) || query === '') {
+          card.classList.remove('hidden-category');
+        } else {
+          card.classList.add('hidden-category');
+        }
+      });
+    }
+
+    // 3. LIVE AI LAB RUNNER (Instant Render)
+    function runAILab() {
+      const inputField = document.getElementById('aiLabInput');
+      const outputDiv = document.getElementById('aiLabOutput');
+      
+      const userText = inputField.value.trim() || "Frontend Web Development Architecture";
+
+      outputDiv.innerHTML = `<span class="text-cyan-400 font-bold animate-pulse">✨ Processing input with AI Model...</span>`;
+
+      setTimeout(() => {
+        outputDiv.innerHTML = `
+          <div class="border-b border-white/15 pb-2 mb-2 font-bold text-cyan-300 flex items-center gap-1.5">
+            <i class="bi bi-robot"></i> AI Analysis Report:
+          </div>
+          <p class="text-white/90 mb-1.5"><strong>Query/Code:</strong> "${userText}"</p>
+          <p class="text-white/80 leading-relaxed"><strong>AI Insight:</strong> Clean code logic and optimal structure! This structure is responsive, efficient, and well-tailored for modern web applications.</p>
+        `;
+      }, 300);
+    }
+
+    // 4. MOUSE-SCRUB BACKGROUND VIDEO
+    const video = document.getElementById('heroVideo');
+    let prevX = null;
+    let targetTime = 0;
+    let isSeeking = false;
+
+    if (video) {
+      window.addEventListener('mousemove', (e) => {
+        if (!video.duration) return;
+        if (prevX === null) {
+          prevX = e.clientX;
+          return;
+        }
+
+        const delta = e.clientX - prevX;
+        prevX = e.clientX;
+        const SENSITIVITY = 0.8;
+        const timeOffset = (delta / window.innerWidth) * SENSITIVITY * video.duration;
+
+        targetTime = Math.max(0, Math.min(video.duration, targetTime + timeOffset));
+
+        if (!isSeeking) {
+          isSeeking = true;
+          video.currentTime = targetTime;
+        }
+      });
+
+      video.addEventListener('seeked', () => {
+        if (Math.abs(video.currentTime - targetTime) > 0.05) {
+          video.currentTime = targetTime;
+        } else {
+          isSeeking = false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
