@@ -29,13 +29,14 @@
       background-color: #050505;
       color: #ffffff;
       font-family: "Space Mono", monospace;
-      height: 100vh;
+      min-height: 100dvh;
       margin: 0;
       padding: 0;
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
     .glass-card {
-      background: rgba(12, 12, 16, 0.9);
+      background: rgba(12, 12, 16, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(34, 211, 238, 0.2);
@@ -63,7 +64,7 @@
     }
   </style>
 </head>
-<body class="flex flex-col justify-between">
+<body>
 
   <!-- NAVBAR -->
   <nav class="w-full h-14 shrink-0 flex items-center justify-between px-4 bg-black/95 border-b border-white/10 z-50">
@@ -78,12 +79,12 @@
   </nav>
 
   <!-- MAIN CHAT CONTAINER -->
-  <main class="flex-grow w-full max-w-4xl mx-auto p-3 flex flex-col min-h-0">
+  <main class="flex-grow w-full max-w-4xl mx-auto p-3 flex flex-col justify-between" style="height: calc(100dvh - 56px);">
     
-    <div class="glass-card flex-grow rounded-2xl p-3 sm:p-5 flex flex-col justify-between overflow-hidden neon-border">
+    <div class="glass-card w-full h-full rounded-2xl p-3 sm:p-4 flex flex-col justify-between overflow-hidden neon-border">
       
       <!-- CHAT MESSAGES BOX -->
-      <div id="chatMessages" class="chat-scroll flex-grow overflow-y-auto space-y-3 pr-1 mb-2">
+      <div id="chatMessages" class="chat-scroll flex-grow overflow-y-auto space-y-3 pr-1 mb-3">
         
         <!-- BOT WELCOME MSG -->
         <div class="flex gap-2.5 items-start">
@@ -98,7 +99,7 @@
       </div>
 
       <!-- QUICK SUGGESTION PROMPT CHIPS -->
-      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 mb-2 no-scrollbar shrink-0">
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 mb-3 no-scrollbar shrink-0">
         <button onclick="sendQuickPrompt('Who is Tarun Singh?')" class="px-2.5 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-[10px] text-cyan-300 hover:bg-cyan-900/80 whitespace-nowrap transition-all">
           👤 Who is Tarun?
         </button>
@@ -114,7 +115,7 @@
       </div>
 
       <!-- INPUT FORM -->
-      <div class="flex items-center gap-2 bg-black/90 p-1.5 sm:p-2 rounded-xl border border-white/20 shrink-0">
+      <div class="flex items-center gap-2 bg-black/90 p-2 rounded-xl border border-white/20 shrink-0">
         <input type="text" id="userInput" placeholder="Ask about Tarun or request code..." 
                class="bg-transparent text-xs text-white placeholder-neutral-500 focus:outline-none w-full px-2 py-1"
                onkeyup="if(event.key === 'Enter') sendMessage()">
