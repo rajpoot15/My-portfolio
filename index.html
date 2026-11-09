@@ -344,20 +344,112 @@
             </a>
           </div>
 
-          <!-- AI Bug Detector Card with direct anchor click -->
+          <!-- AI Bug Fixer Card with fully visible button -->
           <div class="project-card glass-card p-5 rounded-2xl flex flex-col justify-between border-cyan-500/40" data-category="ai" data-tags="ai bug detector code fixer python javascript html syntax">
-            <div class="flex flex-col gap-3">
+            <div class="flex flex-col gap-2">
               <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-gradient-to-br from-cyan-950 to-neutral-900 rounded-xl border border-cyan-400/40 flex items-center justify-center shrink-0">
-                  <i class="bi bi-bug-fill text-xl text-cyan-400"></i>
+                <div class="w-10 h-10 bg-gradient-to-br from-cyan-950 to-neutral-900 rounded-xl border border-cyan-400/40 flex items-center justify-center shrink-0">
+                  <i class="bi bi-bug-fill text-lg text-cyan-400"></i>
                 </div>
                 <div>
                   <span class="text-[9px] px-2 py-0.5 rounded-full bg-cyan-950 border border-cyan-400/40 text-cyan-300">AI Tool</span>
-                  <h4 class="text-base font-medium mt-1">AI Bug Fixer</h4>
+                  <h4 class="text-base font-medium mt-0.5">AI Bug Fixer</h4>
                 </div>
               </div>
-              <p class="text-xs text-white/70 leading-relaxed">
-                Interactive AI tool that scans buggy code, highlights errors, and provides fixed code snippets in real-time.
+              <p class="text-xs text-white/70 leading-snug">
+                Interactive AI tool that scans buggy code, highlights errors, and provides fixed code snippets.
               </p>
             </div>
-   
+            <a href="ai-fixer.html" class="btn-mate w-full py-2.5 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2 mt-3 bg-cyan-950 text-cyan-300 border-cyan-400 shadow-md">
+              <span>Open Code Fixer Lab ⚡</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-black border-t border-white/10 p-6 text-center flex flex-col items-center gap-2 relative z-20">
+      <p class="text-xs text-white/50 font-mono">© 2026 Tarun Singh. All rights reserved.</p>
+      <p class="text-xs text-emerald-400/90 font-mono tracking-wide">Made by Rajpøøt</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // 1. PROJECT CATEGORY FILTER
+    function filterProjects(category, evt) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (evt && evt.target) {
+        evt.target.classList.add('active');
+      }
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        const matchesCategory = (category === 'all' || card.getAttribute('data-category') === category);
+        if (matchesCategory) {
+          card.classList.remove('hidden-category');
+        } else {
+          card.classList.add('hidden-category');
+        }
+      });
+    }
+
+    // 2. AI RECRUITER SEARCH FILTER
+    function aiRecruiterFilter() {
+      const query = document.getElementById('recruiterSearchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.project-card');
+
+      cards.forEach(card => {
+        const tags = card.getAttribute('data-tags') || '';
+        if (tags.toLowerCase().includes(query) || query === '') {
+          card.classList.remove('hidden-category');
+        } else {
+          card.classList.add('hidden-category');
+        }
+      });
+    }
+
+    // 3. MOUSE-SCRUB BACKGROUND VIDEO
+    const video = document.getElementById('heroVideo');
+    let prevX = null;
+    let targetTime = 0;
+    let isSeeking = false;
+
+    if (video) {
+      window.addEventListener('mousemove', (e) => {
+        if (!video.duration) return;
+        if (prevX === null) {
+          prevX = e.clientX;
+          return;
+        }
+
+        const delta = e.clientX - prevX;
+        prevX = e.clientX;
+        const SENSITIVITY = 0.8;
+        const timeOffset = (delta / window.innerWidth) * SENSITIVITY * video.duration;
+
+        targetTime = Math.max(0, Math.min(video.duration, targetTime + timeOffset));
+
+        if (!isSeeking) {
+          isSeeking = true;
+          video.currentTime = targetTime;
+        }
+      });
+
+      video.addEventListener('seeked', () => {
+        if (Math.abs(video.currentTime - targetTime) > 0.05) {
+          video.currentTime = targetTime;
+        } else {
+          isSeeking = false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
