@@ -103,7 +103,6 @@
       animation: superGlow 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
     }
 
-    /* Custom Scrollbar for Chat Messages */
     #chatMessages::-webkit-scrollbar { width: 4px; }
     #chatMessages::-webkit-scrollbar-thumb { background: rgba(34, 211, 238, 0.3); border-radius: 4px; }
   </style>
@@ -142,7 +141,7 @@
       </a>
 
       <!-- Ask AI Toggle Button -->
-      <button onclick="toggleChat()" class="glowing-nav-btn btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs border border-cyan-400 text-cyan-300 bg-cyan-950/40">
+      <button id="askAiBtn" onclick="toggleChat()" class="glowing-nav-btn btn-mate-accent h-8 sm:h-9 px-3 rounded-full flex items-center gap-1.5 font-semibold text-xs border border-cyan-400 text-cyan-300 bg-cyan-950/40 cursor-pointer">
         <i class="bi bi-robot text-cyan-400 animate-bounce"></i>
         <span>Ask AI 💬</span>
       </button>
@@ -361,4 +360,4 @@
           <textarea id="aiLabInput" rows="3" placeholder="Paste code snippet or question here..." 
                     class="w-full bg-black/60 border border-white/15 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-400 mb-3"></textarea>
           
-          <button onclick="runAILab()" class="btn-mate px-5 py-2 rounded-xl text-xs font-semibold 
+          <button onclick="runAILab()" class="btn-mate px-5 py-2 rounded-xl text-xs font-semibold flex items-cente
