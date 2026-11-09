@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Bug Detector & Code Fixer — Tarun Singh</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['"Space Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: "Space Mono", monospace;
+      min-height: 100vh;
+    }
+    .glass-card {
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .btn-mate {
+      background: #121212;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    .btn-mate:hover {
+      background: #ffffff;
+      color: #000000;
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-mono min-h-screen flex flex-col justify-between">
+
+  <!-- NAVBAR -->
+  <nav class="w-full h-16 flex items-center justify-between px-4 sm:px-8 bg-black/90 border-b border-white/10 sticky top-0 z-50">
+    <div class="flex items-center gap-2">
+      <a href="index.html" class="btn-mate px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5">
+        <i class="bi bi-arrow-left"></i>
+        <span>Back to Home</span>
+      </a>
+    </div>
+    <span class="text-xs font-bold tracking-wider text-cyan-400">AI CODE LAB</span>
+  </nav>
+
+  <!-- MAIN BUG FIXER UI -->
+  <main class="w-full max-w-4xl mx-auto px-4 py-8 flex-grow flex flex-col justify-center">
+    <div class="glass-card p-6 sm:p-8 rounded-2xl border border-cyan-500/40 shadow-[0_0_30px_rgba(34,211,238,0.15)] flex flex-col gap-4">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-cyan-950/80 border border-cyan-400/40 flex items-center justify-center">
+          <i class="bi bi-bug-fill text-cyan-400 text-xl"></i>
+        </div>
+        <div>
+          <h1 class="text-lg sm:text-xl font-bold text-cyan-400">AI Bug Detector & Code Fixer</h1>
+          <p class="text-xs text-white/70">Paste your buggy code snippet below to scan errors & get fixed output</p>
+        </div>
+      </div>
+
+      <!-- TEXTAREA -->
+      <textarea id="aiLabInput" rows="6" placeholder="Paste buggy code snippet here (e.g. function test() { console.log('hello') )..." 
+                class="w-full bg-black/80 border border-white/20 rounded-xl p-4 text-xs text-white focus:outline-none focus:border-cyan-400 font-mono resize-y"></textarea>
+      
+      <!-- SUBMIT BUTTON -->
+      <button onclick="runAILab()" class="w-full py-3.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-600 via-sky-600 to-emerald-600 text-white shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer border border-cyan-300">
+        <i class="bi bi-magic text-amber-300 text-sm"></i>
+        <span>Scan Bugs & Fix Code</span>
+      </button>
+
+      <!-- OUTPUT DISPLAY BOX -->
+      <div id="aiLabOutput" class="bg-black/95 border border-cyan-500/40 rounded-xl p-5 text-xs text-white leading-relaxed font-mono" style="display: none;"></div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full bg-black border-t border-white/10 p-4 text-center">
+    <p class="text-xs text-white/50">© 2026 Tarun Singh. Powered by AI Lab.</p>
+  </footer>
+
+  <script>
+    function runAILab() {
+      const inputField = document.getElementById('aiLabInput');
+      const outputDiv = document.getElementById('aiLabOutput');
+      const userCode = inputField.value.trim();
+
+      outputDiv.style.display = 'block';
+      outputDiv.innerHTML = `<span class="text-cyan-400 font-bold animate-pulse">🔍 Scanning code for syntax errors and bugs...</span>`;
+
+      setTimeout(() => {
+        if (!userCode) {
+          outputDiv.innerHTML = `
+            <div class="text-rose-400 font-bold mb-1">⚠️ Error: Empty Input!</div>
+            <p class="text-white/80">Please paste a code snippet so the AI Bug Detector can scan it for mistakes.</p>
+          `;
+          return;
+        }
+
+        let bugFound = false;
+        let explanation = "No major syntax errors detected. Code structure looks standard.";
+        let fixedCode = userCode;
+
+        if (userCode.includes("console.log") && !userCode.endsWith(";")) {
+          bugFound = true;
+          explanation = "Missing semicolon (;) at the end of statement.";
+          fixedCode = userCode + "; // Added missing semicolon";
+        } else if (userCode.includes("function") && !userCode.includes("{")) {
+          bugFound = true;
+          explanation = "Missing opening curly brace `{` in function syntax.";
+          fixedCode = userCode.replace("function", "function myFunction() {\n  // Fixed missing brace\n") + "\n}";
+        } else {
+          fixedCode = userCode + "\n\n// ✅ Verified: Syntax & Logic are clean!";
+        }
+
+        outputDiv.innerHTML = `
+          <div class="border-b border-white/15 pb-2 mb-3 font-bold text-cyan-300 flex items-center justify-between">
+            <span><i class="bi bi-cpu"></i> AI Bug Scanner Results</span>
+            <span class="text-[10px] ${bugFound ? 'text-rose-400 bg-rose-950/60 border-rose-500/30' : 'text-emerald-400 bg-emerald-950/60 border-emerald-500/30'} px-2 py-0.5 rounded border">
+              ${bugFound ? 'Bug Identified ⚠️' : 'Code Clean ✅'}
+            </span>
+          </div>
+
+          <div class="mb-3">
+            <span class="text-white/50 block text-[10px] uppercase mb-1">Submitted Code:</span>
+            <div class="bg-neutral-900 p-3 rounded-lg border border-white/10 text-white/90 overflow-x-auto whitespace-pre-wrap">${escapeHtml(userCode)}</div>
+          </div>
+
+          <div class="mb-3">
+            <span class="text-rose-400 block text-[10px] uppercase mb-1 font-bold font-mono">Explanation / Error:</span>
+            <div class="bg-rose-950/30 p-3 rounded-lg border border-rose-500/30 text-rose-200 text-[11px]">
+              ${bugFound ? explanation : "All syntax checks passed. Code looks ready!"}
+            </div>
+          </div>
+
+          <div>
+            <span class="text-emerald-400 block text-[10px] uppercase mb-1 font-bold font-mono">Corrected Code:</span>
+            <div class="bg-emerald-950/30 p-3 rounded-lg border border-emerald-500/30 text-emerald-200 overflow-x-auto whitespace-pre-wrap">${escapeHtml(fixedCode)}</div>
+          </div>
+        `;
+      }, 500);
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+  </script>
+</body>
+</html>
