@@ -88,7 +88,7 @@
             <i class="bi bi-robot text-cyan-400 text-sm"></i>
           </div>
           <div class="bg-neutral-900 border border-white/10 p-3.5 rounded-2xl rounded-tl-none max-w-[85%] text-xs leading-relaxed text-neutral-200">
-            👋 Hi! I'm Tarun Singh's Portfolio AI. Ask me anything about Tarun's skills, BCA degree, Dr ITM Limited role, projects, or request custom code snippets!
+            👋 Hi! I'm Tarun Singh's Portfolio AI. Ask me about Tarun's skills, BCA degree, Dr ITM Limited role, projects, or request code snippets!
           </div>
         </div>
 
@@ -191,10 +191,17 @@
     function generateAIResponse(query) {
       const q = query.toLowerCase();
 
+      // OUT OF SCOPE / EDHAR-UDHAR GUARDRAIL CHECK
+      const isOutboundQuery = q.includes('capital') || q.includes('france') || q.includes('cricket') || q.includes('match') || q.includes('weather in') || q.includes('movie') || q.includes('president') || q.includes('prime minister') || q.includes('recipe') || q.includes('history');
+
+      if (isOutboundQuery) {
+        return "⚠️ <strong>Sorry, I can't provide this information.</strong> I am an assistant built specifically for Tarun Singh's portfolio. I can only answer questions about Tarun's education, skills, work experience, projects, or provide relevant programming code snippets.";
+      }
+
       // CODE REQUEST HANDLER
-      if (q.includes('code') || q.includes('python') || q.includes('javascript') || q.includes('html') || q.includes('script')) {
+      if (q.includes('code') || q.includes('python') || q.includes('javascript') || q.includes('html') || q.includes('script') || q.includes('snippet')) {
         return `
-          Here is a sample code snippet created for Tarun's tech stack:
+          Here is a sample code snippet for Tarun's tech stack:
           <div class="mt-2 bg-black/90 p-3 rounded-lg border border-cyan-500/30 font-mono text-[11px] text-cyan-300 overflow-x-auto whitespace-pre">
 <span class="text-rose-400"># Python Gemini API Automation Snippet</span>
 <span class="text-purple-400">import</span> google.generativeai <span class="text-purple-400">as</span> genai
@@ -208,15 +215,15 @@ print(response.text)</div>
 
       // TARUN PORTFOLIO KNOWLEDGE BASE
       if (q.includes('who') || q.includes('tarun') || q.includes('about') || q.includes('bio')) {
-        return "Tarun Singh is a Web Developer pursuing a BCA online at Lovely Professional University (expected 2027). He also works as a Customer Support Executive (Email Process) at Dr ITM Limited since March 2024.";
+        return "Tarun Singh is a Web Developer pursuing a BCA online at Lovely Professional University (expected 2027). He works as a Customer Support Executive (Email Process) at Dr ITM Limited since March 2024.";
       }
       
       if (q.includes('skill') || q.includes('tech') || q.includes('language') || q.includes('stack')) {
-        return "Tarun's primary tech stack includes HTML5, CSS3, JavaScript, Tailwind CSS, Python, Git, and Gemini API integrations.";
+        return "Tarun's core tech stack includes HTML5, CSS3, JavaScript, Tailwind CSS, Python, Git, and Gemini API integrations.";
       }
 
       if (q.includes('experience') || q.includes('job') || q.includes('work') || q.includes('itm')) {
-        return "Tarun has been working at Dr ITM Limited as a Customer Support Executive (Email Process) since March 13, 2024, balancing full-time client communications with web engineering development.";
+        return "Tarun has been working at Dr ITM Limited as a Customer Support Executive (Email Process) since March 13, 2024, balancing full-time responsibilities with web engineering projects.";
       }
 
       if (q.includes('project') || q.includes('bot') || q.includes('app') || q.includes('dashboard')) {
@@ -227,8 +234,8 @@ print(response.text)</div>
         return "You can reach out to Tarun through the Contact page link in the main navigation header!";
       }
 
-      // GUARDRAIL FOR OUT-OF-SCOPE QUESTIONS
-      return "⚠️ <strong>Sorry, I cannot provide this information.</strong> I am specialized strictly to answer questions regarding Tarun Singh's developer portfolio, education, skills, work experience, projects, or generate relevant programming code snippets.";
+      // DEFAULT FALLBACK FOR GENERAL PORTFOLIO TOPICS
+      return "Tarun Singh is a passionate web developer and BCA student at LPU. You can ask me about his technical skills, projects like the Telegram AI Bot or Music App, or his work at Dr ITM Limited!";
     }
 
     function escapeHtml(text) {
