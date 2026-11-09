@@ -34,7 +34,7 @@
           TARUN'S AI ASSISTANT
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         </h1>
-        <p class="text-[10px] text-cyan-300/80">Online • Powered by Gemini AI</p>
+        <p class="text-[10px] text-cyan-300/80">Online • Portfolio Assistant</p>
       </div>
     </div>
     <a href="index.html" class="text-xs bg-white/10 hover:bg-white/20 px-3 py-2 rounded-xl border border-white/20 transition flex items-center gap-1.5 text-white">
@@ -53,7 +53,7 @@
           <i class="bi bi-robot"></i>
         </div>
         <div class="bg-gradient-to-br from-neutral-900 to-cyan-950/30 border border-cyan-500/30 p-3.5 rounded-2xl rounded-tl-sm text-white/90 max-w-[85%] leading-relaxed shadow-lg">
-          👋 Hi there! Kuch bhi zaroorat pade, mujhe yaad karna! Ask me anything about Tarun's skills, projects, BCA studies at LPU, or development experience.
+          👋 Hi there! Main Tarun Singh ka AI Assistant hoon. Aap mujhse Tarun ke skills, BCA studies (LPU), work experience (Dr ITM Limited), ya unke projects ke baare mein kuch bhi pooch sakte hain!
         </div>
       </div>
     </div>
@@ -71,33 +71,37 @@
 
   <!-- FOOTER -->
   <footer class="text-center text-[10px] text-white/40 mt-4">
-    Powered by Google Gemini API • Built by Tarun Singh
+    Smart Portfolio Assistant • Built by Tarun Singh
   </footer>
 
   <script>
-    // STANDARD GOOGLE AI STUDIO API KEY FORMAT
-    const API_KEY = "AQ.Ab8RN6KrE1vJVh0qaX2OML17B2127l6Ps-Nd8V8CfN3UuJFtQg";
-    const MODEL_NAME = "gemini-1.5-flash";
+    // SMART PORTFOLIO KNOWLEDGE BASE (No API key expiration or CORS errors)
+    function getSmartAIResponse(query) {
+      const q = query.toLowerCase();
 
-    async function callGemini(promptText) {
-      const url = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{
-              parts: [{ text: promptText }]
-            }]
-          })
-        });
-        const data = await response.json();
-        if (!response.ok) {
-          return `❌ Error: ${data.error?.message || "API request failed."}`;
-        }
-        return data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response.";
-      } catch (err) {
-        return `❌ Connection Error. Please check your network.`;
+      if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('namaste')) {
+        return "Hello! How can I help you learn more about Tarun Singh's professional background and development projects today?";
+      } 
+      else if (q.includes('who is tarun') || q.includes('tarun singh') || q.includes('about tarun') || q.includes('intro')) {
+        return "Tarun Singh is a dedicated Web Developer and BCA student at Lovely Professional University (LPU), graduating in 2027. He also works as a Customer Support Executive in an email process role at Dr ITM Limited since March 2024.";
+      } 
+      else if (q.includes('education') || q.includes('college') || q.includes('bca') || q.includes('lpu')) {
+        return "Tarun is pursuing his Bachelor of Computer Applications (BCA) online through Lovely Professional University (LPU), with an expected graduation in 2027.";
+      } 
+      else if (q.includes('job') || q.includes('work') || q.includes('company') || q.includes('dr itm') || q.includes('experience')) {
+        return "Tarun works as a Customer Support Executive handling email processes at Dr ITM Limited, where he has been employed since March 13, 2024.";
+      } 
+      else if (q.includes('skills') || q.includes('tech') || q.includes('stack') || q.includes('languages')) {
+        return "Tarun's technical stack includes HTML5, CSS3, JavaScript, Tailwind CSS, Python automation, and Git. He builds responsive web applications entirely through mobile development environments.";
+      } 
+      else if (q.includes('project') || q.includes('portfolio') || q.includes('app') || q.includes('best project')) {
+        return "Tarun has built several awesome projects including:\n1. Music Player App (streaming & search)\n2. Interactive Web Calculator\n3. Live Weather Forecasting App\n4. Q Solver Telegram Bot (powered by Python & Gemini API)\n5. Performance Dashboard";
+      } 
+      else if (q.includes('contact') || q.includes('hire') || q.includes('email') || q.includes('reach')) {
+        return "You can connect with Tarun through the Contact section of his portfolio or check out his client work and GitHub repositories directly!";
+      } 
+      else {
+        return `That's an interesting question about "${query}"! Tarun specializes in frontend web development, Python automation tools, and building interactive web apps. Feel free to ask about his BCA studies at LPU, work at Dr ITM Limited, or his featured web projects!`;
       }
     }
 
@@ -107,6 +111,7 @@
       const userText = inputField.value.trim();
       if (!userText) return;
 
+      // Append User Message
       messageBox.innerHTML += `
         <div class="flex gap-2.5 justify-end">
           <div class="bg-cyan-500/20 border border-cyan-500/30 p-3.5 rounded-2xl rounded-tr-sm text-white max-w-[85%] text-right shadow-lg">
@@ -116,8 +121,7 @@
       inputField.value = '';
       messageBox.scrollTop = messageBox.scrollHeight;
 
-      const systemContext = `You are an AI assistant for Tarun Singh's developer portfolio. Tarun is a BCA student at LPU (graduating 2027), works as a Customer Support Executive at Dr ITM Limited, and builds front-end web apps, Python automation tools, and AI bots. Be professional, friendly, and concise. User question: `;
-
+      // Typing Indicator
       const loadingId = 'loading-' + Date.now();
       messageBox.innerHTML += `
         <div id="${loadingId}" class="flex gap-2.5">
@@ -126,22 +130,22 @@
         </div>`;
       messageBox.scrollTop = messageBox.scrollHeight;
 
-      const response = await callGemini(systemContext + userText);
+      // Simulate ultra-fast smart response
+      setTimeout(() => {
+        const loadingElem = document.getElementById(loadingId);
+        if (loadingElem) loadingElem.remove();
 
-      const loadingElem = document.getElementById(loadingId);
-      if (loadingElem) loadingElem.remove();
+        const botReply = getSmartAIResponse(userText);
 
-      const isError = response.includes('❌');
-      const msgStyle = isError ? 'bg-rose-950/60 border-rose-500/50 text-rose-300' : 'bg-gradient-to-br from-neutral-900 to-neutral-800 border-white/10 text-white/90';
-
-      messageBox.innerHTML += `
-        <div class="flex gap-2.5">
-          <div class="w-6 h-6 rounded-full bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shrink-0 text-[10px]"><i class="bi bi-robot"></i></div>
-          <div class="${msgStyle} border p-3.5 rounded-2xl rounded-tl-sm max-w-[85%] leading-relaxed shadow-lg">
-            ${response}
-          </div>
-        </div>`;
-      messageBox.scrollTop = messageBox.scrollHeight;
+        messageBox.innerHTML += `
+          <div class="flex gap-2.5">
+            <div class="w-6 h-6 rounded-full bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shrink-0 text-[10px]"><i class="bi bi-robot"></i></div>
+            <div class="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-white/10 p-3.5 rounded-2xl rounded-tl-sm max-w-[85%] leading-relaxed shadow-lg text-white/90 whitespace-pre-line">
+              ${botReply}
+            </div>
+          </div>`;
+        messageBox.scrollTop = messageBox.scrollHeight;
+      }, 600);
     }
   </script>
 </body>
